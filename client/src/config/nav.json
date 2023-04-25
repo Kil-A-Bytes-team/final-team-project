@@ -1,0 +1,36 @@
+{
+      "main": [
+    {
+      "name": "Нүүр",
+      "url": "/"
+    },
+    {
+      "name": "Хичээлүүд",
+      "url": "/courses"
+    },
+    {
+      "name": "Мэргэжил",
+      "url": "/elements"
+    },
+    {
+      "name": "Бидний тухай",
+      "url": "/aboutus"
+    },
+    {
+      "name": "Мэдээ мэдээлэл",
+      "url": "",
+      "hasChildren": true,
+      "children": [
+        {
+          "name": "Тэтгэлэг",
+          "url": "/categories"
+        },
+
+        {
+          "name": "Ажлын зарын жишээ",
+          "url": "/categories"
+        }
+      ]
+    }
+  ]
+}
