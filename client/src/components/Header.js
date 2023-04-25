@@ -10,11 +10,11 @@ export const Header = () => {
           <div>Logo</div>
           <div>
             <ul className="navbar-nav">
-              {main.map((menu, i) => {
+              {main.map((menu, i) => (
                 <li className="nav-item">
                   <Link href={menu.url}>{menu.name}</Link>
-                </li>;
-              })}
+                </li>
+              ))}
             </ul>
           </div>
           <div>Search</div>
