@@ -1,36 +1,14 @@
+const placeHolder = "https://via.placeholder.com/400x230";
 
- const placeHolder = "https://via.placeholder.com/400x230";
- 
-const data = [
-   {
-     imageSrc: placeHolder,
-     title: "HTML, CSS, JS",
-     description:
-       "Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.",
-     buttonLabel: "Сагсанд хийх",
-     buttonUrl: "#",
-   },
- ];
 export default function Card({
   imageSrc,
   title,
   description,
   buttonLabel,
-    buttonUrl
+  buttonUrl,
 }) {
- const data = [
-   {
-     imageSrc: placeHolder,
-     title: "HTML, CSS, JS",
-     description:
-       "Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.",
-     buttonLabel: "Сагсанд хийх",
-     buttonUrl: "#",
-   },
- ];
   return (
     <div>
-      List of Courses
       <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <a href="#">
           <img class="rounded-t-lg" src={placeHolder} alt="" />
