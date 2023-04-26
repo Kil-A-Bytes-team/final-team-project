@@ -2,13 +2,14 @@ import Card from "@/components/CourseCard";
 const placeHolder = "https://via.placeholder.com/400x230";
 
 export default function Courses({ data }) {
-  console.log("data is:", data);
   const course = data;
   return (
-    <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-      {course?.map((item, index) => (
-        <Card key={index} {...item} />
-      ))}
+    <div className="mx-10">
+      <div className="container max-w-screen-xl grid mx-auto gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        {course?.map((item, index) => (
+          <Card key={index} {...item} />
+        ))}
+      </div>
     </div>
   );
 }
@@ -17,18 +18,42 @@ export function getStaticProps() {
   const data = [
     {
       imageSrc: placeHolder,
-      title: "HTML, CSS, JS",
+      category: "Programming",
+      title: "Digital Marketing Masterclass",
       description:
-        "Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.",
-      buttonLabel: "Сагсанд хийх",
+        "Open the door to sought-after technology careers with a world-class online Bachelor of Science (BSc) in Computer Science degree from the University of London. You’ll master in-demand computing skills, solve complex problems, and hone your innovation and creativity.",
+      price: "Free",
+      buttonLabel: "Add to cart",
       buttonUrl: "#",
     },
     {
       imageSrc: placeHolder,
-      title: "HTML, CSS, JS",
+      category: "Finance",
+      title: "The Basic Of Financial Analyst Course",
       description:
-        "Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.",
-      buttonLabel: "Сагсанд хийх",
+        "Open the door to sought-after technology careers with a world-class online Bachelor of Science (BSc) in Computer Science degree from the University of London. You’ll master in-demand computing skills, solve complex problems, and hone your innovation and creativity.",
+      price: "$100.00",
+      buttonLabel: "Add to cart",
+      buttonUrl: "#",
+    },
+    {
+      imageSrc: placeHolder,
+      category: "Finance",
+      title: "Stock Trading Strategy",
+      description:
+        "Open the door to sought-after technology careers with a world-class online Bachelor of Science (BSc) in Computer Science degree from the University of London. You’ll master in-demand computing skills, solve complex problems, and hone your innovation and creativity.",
+      price: "$118.00",
+      buttonLabel: "Add to cart",
+      buttonUrl: "#",
+    },
+    {
+      imageSrc: placeHolder,
+      category: "Programming",
+      title: "Stock Trading Strategy Course",
+      description:
+        "Open the door to sought-after technology careers with a world-class online Bachelor of Science (BSc) in Computer Science degree from the University of London. You’ll master in-demand computing skills, solve complex problems, and hone your innovation and creativity.",
+      price: "$118.00",
+      buttonLabel: "Add to cart",
       buttonUrl: "#",
     },
   ];
