@@ -3,7 +3,6 @@ import { Combobox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 
 const people = [
-  { id: 1, name: "Wade Cooper" },
   { id: 2, name: "Arlene Mccoy" },
   { id: 3, name: "Devon Webb" },
   { id: 4, name: "Tom Cook" },
@@ -26,7 +25,7 @@ export default function Example() {
         );
 
   return (
-    <div className="fixed top-16 w-72">
+    <div className="top-16 w-max">
       <Combobox value={selected} onChange={setSelected}>
         <div className="relative mt-1">
           <div className="relative w-full cursor-default overflow-hidden rounded-lg bg-white text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-teal-300 sm:text-sm">
