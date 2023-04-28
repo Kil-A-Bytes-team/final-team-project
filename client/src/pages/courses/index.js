@@ -1,6 +1,14 @@
 import Card from "@/components/CourseCard";
-import { useRouter } from "next/router";
+
 import Dropdown from "@/components/ui/Dropdown";
+
+<html>
+  <title>Courses grid page</title>
+  <meta
+    name="description"
+    content="List of different types of courses uploaded"
+  ></meta>
+</html>;
 
 const placeHolder = "https://via.placeholder.com/400x230";
 

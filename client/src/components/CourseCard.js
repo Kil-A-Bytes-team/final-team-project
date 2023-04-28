@@ -2,6 +2,8 @@ import ReactStars from "react-rating-stars-component";
 
 const placeHolder = "https://via.placeholder.com/400x230";
 
+
+
 export default function Card({
   imageSrc,
   category,
@@ -18,7 +20,13 @@ export default function Card({
     <div className="flex justify-center ">
       <div className="max-w-sm mx-auto bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <a href={imageSrc}>
-          <img className="rounded-t-lg" src={placeHolder} alt="" />
+          <img
+            className="rounded-t-lg w-full h-auto"
+            src={placeHolder}
+            alt="card image"
+            width="400"
+            height="230"
+          />
         </a>
         <div className="p-10 ">
           <div className="flex justify-between items-center ">
