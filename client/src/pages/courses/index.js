@@ -15,9 +15,11 @@ export default function Courses({ data }) {
   const course = data;
 
   return (
-    <div className="mx-10">
-      <Dropdown />
-      <div className="container max-w-screen-xl grid mx-auto gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+    <div className=" mx-10">
+      <div className="container max-w-screen-xl grid mx-auto gap-8 mb-10 mt-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        <Dropdown />
+      </div>
+      <div className="container max-w-screen-xl grid mx-auto gap-8 mb-10 mt-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {course?.map((item, index) => (
           <Card key={index} {...item} />
         ))}
