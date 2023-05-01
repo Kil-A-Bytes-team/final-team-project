@@ -1,5 +1,4 @@
 import Card from "@/components/CourseCard";
-
 import Dropdown from "@/components/ui/Dropdown";
 
 <html>
