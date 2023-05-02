@@ -5,8 +5,12 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import bannerImage from "../../public/home-page-banner.png";
+import { Banner } from "@/components/Banner";
+// import { Banner } from "@/components/Banner";
+
 export default function Home() {
   const placeHolder = "https://via.placeholder.com/400x600";
+
   return (
     <>
       <Head>
@@ -42,6 +46,11 @@ export default function Home() {
             </div>
           </div>
         </HomeLayout>
+        <div className="flex gap-8 text-lg font-medium mb-10 ">
+          <Banner title={"Нийт сурагчид"} count={123} />
+          <Banner title={"Нийт хичээл"} count={1340} />
+          <Banner title={"Нийт багш нар"} count={78} />
+        </div>
 
         <div className="flex flex-row items-center pt-0 p-10 gap-5">
           <Carousel />

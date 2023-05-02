@@ -11,7 +11,7 @@ const people = [
   { id: 6, name: "Dance" },
 ];
 
-export default function Example() {
+export default function Categories() {
   const [selected, setSelected] = useState(people[0]);
   const [query, setQuery] = useState("");
 

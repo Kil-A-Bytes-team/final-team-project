@@ -1,9 +1,6 @@
 import Card from "@/components/CourseCard";
-
-
-import Combobox from "@/components/ui/Combobox";
-import Listbox from "@/components/ui/Listbox";
-
+import Categories from "@/components/ui/Combobox";
+import Sorting from "@/components/ui/Listbox";
 
 <html>
   <title>Courses grid page</title>
@@ -21,8 +18,8 @@ export default function Courses({ data }) {
   return (
     <div className=" mx-10">
       <div className="container max-w-screen-xl flex gap-8 mx-auto mb-10 mt-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-        <Combobox />
-        <Listbox />
+        <Categories />
+        <Sorting />
       </div>
       <div className="container max-w-screen-xl grid mx-auto gap-8 mb-10 mt-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {course?.map((item, index) => (
