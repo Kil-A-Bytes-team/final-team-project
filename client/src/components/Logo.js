@@ -13,7 +13,7 @@ export const Logo = () => {
           scale: 1.5,
           backgroundColor: [
             "#121212",
-            "rgba(131,58,180,1)",
+            "rgba(65,147,140,1)",
             "rgba(253,29,29,1)",
             "rgba(252,176,69,1)",
             "rgba(131,58,180,1)",

@@ -3,8 +3,9 @@ import nav from "../config/nav.json";
 import { useState } from "react";
 import { Logo } from "./Logo";
 import { useRouter } from "next/router";
+import { motion } from "framer-motion";
 
-export const Header = ({ toggle }) => {
+export const Header = () => {
   const { main } = nav;
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
@@ -14,6 +15,34 @@ export const Header = ({ toggle }) => {
   };
   const handleToggle = () => {
     handleClickMenu();
+  };
+
+  // trying animate sideNavbar
+  const quote = {
+    initial: {
+      opacity: 0,
+    },
+    animate: {
+      opacity: 1,
+      transition: {
+        delay: 2,
+        staggerChildren: 1,
+      },
+    },
+  };
+  const singleWord = {
+    initial: {
+      opacity: 0,
+      x: 50,
+    },
+    animate: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        delay: 2,
+        duration: 1,
+      },
+    },
   };
   return (
     <>
@@ -32,7 +61,10 @@ export const Header = ({ toggle }) => {
                 <ul className="navbar-nav w-full md:auto md:space-x-1 xl:space-x-2 flex">
                   {main.map((menu, i) => (
                     <li className="nav-item">
-                      <Link href={menu.url} className="mr-4 relative group">
+                      <Link
+                        href={menu.url}
+                        className="mr-4 relative group  flex flex-col justify-between items-center"
+                      >
                         {menu.name}
                         <span
                           className={`h-[1px] inline-block bg-dark group-hover:w-full transition-[width] ease duration-300 ${
@@ -47,33 +79,45 @@ export const Header = ({ toggle }) => {
                 </ul>
               </div>
               {/* Mobile menu */}
-              {isOpen ? (
-                <div
-                  className=" bg-dark text-light absolute right-0 top-0 bottom-0 min-w-[30vw] hidden xl:flex"
-                  id="mobile-menu-3"
+              {/* {isOpen ? (
+                
+              ) : null} */}
+              <div
+                className={`bg-dark text-light h-vh fixed top-0 bottom-0 min-w-[30vw] hidden xl:flex opacity-80 ease-in duration-700 ${
+                  isOpen ? "right-0" : "-right-full"
+                }`}
+                id="mobile-menu-3"
+              >
+                <motion.ul
+                  className={`navbar-nav w-full md:auto md:space-x-1 xl:space-x-2 flex flex-col relative ml-10 mt-40`}
+                  variants={quote}
+                  initial="initial"
+                  animate="animate"
                 >
-                  <ul className="navbar-nav w-full md:auto md:space-x-1 xl:space-x-2 flex flex-col relative mt-40">
-                    {main.map((menu, i) => (
-                      <li className="nav-item my-5">
-                        <Link
-                          href={menu.url}
-                          className="mr-4 relative group"
-                          onClick={handleToggle}
+                  {main.map((menu, i) => (
+                    <motion.li
+                      className={`nav-item my-5`}
+                      variants={singleWord}
+                      key={i}
+                    >
+                      <Link
+                        href={menu.url}
+                        className="mr-4 relative group flex flex-col justify-between items-center"
+                        onClick={handleToggle}
+                      >
+                        {menu.name}
+                        <span
+                          className={`h-[1px] inline-block bg-light group-hover:w-full  transition-all ease duration-300 ${
+                            router.asPath === menu.url ? "w-full" : "w-0"
+                          }`}
                         >
-                          {menu.name}
-                          <span
-                            className={`h-[1px] inline-block bg-dark group-hover:w-full transition-[width] ease duration-300 ${
-                              router.asPath === menu.url ? "w-full" : "w-0"
-                            }`}
-                          >
-                            &nbsp;
-                          </span>
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ) : null}
+                          &nbsp;
+                        </span>
+                      </Link>
+                    </motion.li>
+                  ))}
+                </motion.ul>
+              </div>
 
               <div className="flex">
                 <div className="relative mr-3 md:mr-0 md:block">
@@ -111,14 +155,14 @@ export const Header = ({ toggle }) => {
                   }`}
                 ></span>
                 <span
-                  className={`bg-dark dark:bg-light block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${
-                    isOpen ? "opacity-0" : "opacity-100 my-0.5"
+                  className={`bg-dark dark:bg-light  my-0.5 transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${
+                    isOpen ? "hidden" : "block"
                   }`}
                 ></span>
                 <span
                   className={` block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${
                     isOpen
-                      ? "-rotate-45 -translate-y-0.5 bg-light dark:bg-dark"
+                      ? "-rotate-45 translate-y-0 bg-light dark:bg-dark"
                       : "translate-y-0.5 bg-dark dark:bg-light"
                   }`}
                 ></span>

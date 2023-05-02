@@ -27,7 +27,8 @@
     "react-router-dom": "^6.10.0",
     "react-spring": "^9.7.1",
     "react-spring-carousel": "^2.0.19",
-    "sass": "^1.62.0"
+    "sass": "^1.62.0",
+    "use-count-up": "^3.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.14",
