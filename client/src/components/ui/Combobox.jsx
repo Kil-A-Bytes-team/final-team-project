@@ -1,6 +1,6 @@
 import { Fragment, useState } from "react";
 import { Combobox, Transition } from "@headlessui/react";
-import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
+import { CheckIcon, ChevronDownIcon } from "@heroicons/react/20/solid";
 
 const people = [
   { id: 1, name: "Categories" },
@@ -34,9 +34,12 @@ export default function Example() {
               className="w-full border-none py-2 pl-3 pr-10 text-sm leading-5 text-gray-900 focus:ring-0"
               displayValue={(person) => person.name}
               onChange={(event) => setQuery(event.target.value)}
+              onClick={(event) => {
+                event.target.setSelectionRange(0, event.target.value.length);
+              }}
             />
             <Combobox.Button className="absolute inset-y-0 right-0 flex items-center pr-2">
-              <ChevronUpDownIcon
+              <ChevronDownIcon
                 className="h-5 w-5 text-gray-400"
                 aria-hidden="true"
               />

@@ -4,8 +4,8 @@ import { HomeLayout } from "./HomeLayout";
 export const Footer = () => {
   return (
     <>
-      <footer className="w-full border-t-2 border-solid border-dark font-medium text-lg">
-        <HomeLayout className="py-8 flex items-center justify-between ">
+      <footer className="flex justify-center mx-10 border-t-2 border-solid border-dark font-medium text-lg">
+        <HomeLayout className="container py-8 flex items-center justify-between ">
           <span>{new Date().getFullYear()} &copy; All Rights Reserved.</span>
           <div>
             {" "}
@@ -15,7 +15,7 @@ export const Footer = () => {
             by&nbsp;
             <Link href="/">Kil-A-Bytes</Link>
           </div>
-          <Link href="/">Say hello</Link>
+          <Link href="/">Say hello team green</Link>
         </HomeLayout>
       </footer>
     </>

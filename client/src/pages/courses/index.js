@@ -1,5 +1,9 @@
 import Card from "@/components/CourseCard";
-import Dropdown from "@/components/ui/Dropdown";
+
+
+import Combobox from "@/components/ui/Combobox";
+import Listbox from "@/components/ui/Listbox";
+
 
 <html>
   <title>Courses grid page</title>
@@ -16,8 +20,9 @@ export default function Courses({ data }) {
 
   return (
     <div className=" mx-10">
-      <div className="container max-w-screen-xl grid mx-auto gap-8 mb-10 mt-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-        <Dropdown />
+      <div className="container max-w-screen-xl flex gap-8 mx-auto mb-10 mt-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        <Combobox />
+        <Listbox />
       </div>
       <div className="container max-w-screen-xl grid mx-auto gap-8 mb-10 mt-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {course?.map((item, index) => (
@@ -67,6 +72,26 @@ export function getStaticProps() {
       description:
         "Open the door to sought-after technology careers with a world-class online Bachelor of Science (BSc) in Computer Science degree from the University of London. You’ll master in-demand computing skills, solve complex problems, and hone your innovation and creativity.",
       price: "$118.00",
+      buttonLabel: "Add to cart",
+      buttonUrl: "#",
+    },
+    {
+      imageSrc: placeHolder,
+      category: "Finance",
+      title: "The Basic Of Financial Analyst Course",
+      description:
+        "Open the door to sought-after technology careers with a world-class online Bachelor of Science (BSc) in Computer Science degree from the University of London. You’ll master in-demand computing skills, solve complex problems, and hone your innovation and creativity.",
+      price: "$100.00",
+      buttonLabel: "Add to cart",
+      buttonUrl: "#",
+    },
+    {
+      imageSrc: placeHolder,
+      category: "Finance",
+      title: "The Basic Of Financial Analyst Course",
+      description:
+        "Open the door to sought-after technology careers with a world-class online Bachelor of Science (BSc) in Computer Science degree from the University of London. You’ll master in-demand computing skills, solve complex problems, and hone your innovation and creativity.",
+      price: "$100.00",
       buttonLabel: "Add to cart",
       buttonUrl: "#",
     },
