@@ -5,10 +5,10 @@ export default function Order() {
     <div className="sm:container sm:mx-auto py-[60px] ">
       <div className="flex justify-between gap-5">
         <div class="w-1/4">
-          <img src="https://placeimg.com/640/480/any" alt="Profile Image" className="w-48 h-48 rounded-full my-2" />
+          <img src="https://placeimg.com/640/480/any" alt="Profile Image" className="w-36 h-36 rounded-full" />
 
           <div class="row-start-auto">
-            <div class="w-64 mt-36 text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+            <div class="w-64 mt-12 text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
               <button
                 type="button"
                 class="relative inline-flex items-center w-full px-4 py-2 text-sm font-medium border-b border-gray-200 rounded-t-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white space-x-3"
