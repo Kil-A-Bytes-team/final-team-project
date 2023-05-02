@@ -11,7 +11,7 @@ const items = [
   { value: "titleDesc", name: "Z-A" },
 ];
 
-export default function Example() {
+export default function Sorting() {
   const [selected, setSelected] = useState(items[0]);
 
   return (
