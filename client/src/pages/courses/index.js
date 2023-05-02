@@ -1,7 +1,9 @@
 import Card from "@/components/CourseCard";
 
+
 import Combobox from "@/components/ui/Combobox";
 import Listbox from "@/components/ui/Listbox";
+
 
 <html>
   <title>Courses grid page</title>
