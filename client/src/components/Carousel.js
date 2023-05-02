@@ -117,7 +117,7 @@ export const Carousel = () => {
         className="text-xl md:text-5xl cursor-pointer"
         onClick={() => handleLeftClick()}
       >
-        {"<"}
+        &#8249;
       </div>
       {cards
         .filter((f) => f.active === true)
@@ -129,7 +129,7 @@ export const Carousel = () => {
         className="text-xl md:text-5xl cursor-pointer"
         onClick={() => handleRightClick()}
       >
-        {">"}
+        &#8250;
       </div>
     </>
   );
