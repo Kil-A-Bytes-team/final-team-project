@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function Order() {
   return (
-    <div className="sm:container sm:mx-auto py-[60px] ">
+    <div className="sm:container sm:mx-auto">
       <div className="flex justify-between gap-5">
         <div class="w-1/4">
           <img src="https://placeimg.com/640/480/any" alt="Profile Image" className="w-36 h-36 rounded-full ml-12" />
