@@ -134,7 +134,7 @@ export default function UserProfile({}) {
         {tabIndex === 0 && <Comp />}
         {tabIndex === 1 && <Comp2 />}
       </div> */}
-      <div className="sm:container sm:mx-auto py-[60px] ">
+      <div className="sm:container sm:mx-auto">
         <div className="grid grid-rows-3 grid-flow-col gap-4">
           <div class="row-span-2 col-auto">
             <div className="flex justify-between gap-5">
