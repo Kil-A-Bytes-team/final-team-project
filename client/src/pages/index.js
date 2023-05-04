@@ -46,7 +46,7 @@ export default function Home() {
             </div>
           </div>
         </HomeLayout>
-        <div className="flex gap-8 text-lg font-medium mb-10 ">
+        <div className="flex flex-col lg:flex-row items-center gap-20 text-lg mb-20 font-medium ">
           <Banner title={"Нийт сурагчид"} count={123} />
           <Banner title={"Нийт хичээл"} count={1340} />
           <Banner title={"Нийт багш нар"} count={78} />
