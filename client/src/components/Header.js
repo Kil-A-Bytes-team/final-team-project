@@ -4,12 +4,26 @@ import { useState } from "react";
 import { Logo } from "./Logo";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
+import { RiMoonFill, RiSunFill } from "react-icons/ri";
 
 export const Header = () => {
   const { main } = nav;
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
+  const [darkMode, setDarkMode] = useState();
 
+  const handleDarkMode = () => {
+    const theme = localStorage.getItem("theme");
+    if (theme === "light" || typeof theme === "undefined") {
+      localStorage.theme = "dark";
+      document.documentElement.classList.add("dark");
+      setDarkMode(true);
+    } else {
+      localStorage.theme = "light";
+      document.documentElement.classList.remove("dark");
+      setDarkMode(false);
+    }
+  };
   const handleClickMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -55,7 +69,7 @@ export const Header = () => {
               </div>
               {/* Desktop menu */}
               <div
-                className="justify-between items-start w-full md:w-auto md:order-1 h-full lg:flex hidden"
+                className=" text-dark dark:text-light justify-between items-start w-full md:w-auto md:order-1 h-full lg:flex hidden"
                 id=""
               >
                 <ul className="navbar-nav w-full md:auto md:space-x-1 xl:space-x-2 flex">
@@ -67,7 +81,7 @@ export const Header = () => {
                       >
                         {menu.name}
                         <span
-                          className={`h-[1px] inline-block bg-dark group-hover:w-full transition-[width] ease duration-300 ${
+                          className={`h-[1px] inline-block bg-dark dark:bg-light group-hover:w-full transition-[width] ease duration-300 ${
                             router.asPath === menu.url ? "w-full" : "w-0"
                           }`}
                         >
@@ -146,6 +160,9 @@ export const Header = () => {
                   />
                 </div>
               </div>
+              <button onClick={handleDarkMode}>
+                {darkMode ? <RiSunFill /> : <RiMoonFill />}
+              </button>
               {/* hamburger menu */}
               <motion.button
                 className="flex-col items-center justify-center lg:hidden flex"
@@ -155,9 +172,9 @@ export const Header = () => {
                 onClick={handleClickMenu}
               >
                 <span
-                  className={`bg-dark dark:bg-light block transition-all duration-700 ease-out h-0.5 w-6 rounded-sm  ${
+                  className={`block transition-all duration-700 ease-out h-0.5 w-6 rounded-sm  ${
                     isOpen
-                      ? "rotate-45 translate-y-0.5 bg-light dark:bg-dark"
+                      ? "rotate-45 translate-y-0.5 bg-dark dark:bg-light"
                       : "-translate-y-0.5 bg-dark dark:bg-light"
                   }`}
                 ></span>
@@ -169,7 +186,7 @@ export const Header = () => {
                 <span
                   className={` block transition-all duration-700 ease-out h-0.5 w-6 rounded-sm ${
                     isOpen
-                      ? "-rotate-45 translate-y-0 bg-light dark:bg-dark"
+                      ? "-rotate-45 translate-y-0 bg-dark dark:bg-light"
                       : "translate-y-0.5 bg-dark dark:bg-light"
                   }`}
                 ></span>
