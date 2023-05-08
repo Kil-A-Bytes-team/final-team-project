@@ -6,9 +6,12 @@ import Image from "next/image";
 import Link from "next/link";
 import bannerImage from "../../public/home-page-banner.png";
 import { Banner } from "@/components/Banner";
+import Swiper from "swiper";
+import { SwiperSlide } from "swiper/react";
+import FeaturedCourses from "@/components/FeaturedCourses";
 // import { Banner } from "@/components/Banner";
 
-export default function Home() {
+export default function Home({ data }) {
   const placeHolder = "https://via.placeholder.com/400x600";
 
   return (
@@ -52,10 +55,66 @@ export default function Home() {
           <Banner title={"Нийт багш нар"} count={78} />
         </div>
 
-        <div className="flex flex-row items-center pt-0 p-10 gap-5">
-          <Carousel />
+        <div className="container">
+          <FeaturedCourses items={data} />
+          {/* <Carousel /> */}
         </div>
       </main>
     </>
   );
+}
+
+export function getStaticProps() {
+  const placeHolder = "https://via.placeholder.com/400x230";
+  const data = [
+    {
+      imageSrc: placeHolder,
+      category: "Programming",
+      title: "Digital Marketing Masterclass",
+      price: "Free",
+      buttonLabel: "Add to cart",
+      buttonUrl: "#",
+    },
+    {
+      imageSrc: placeHolder,
+      category: "Finance",
+      title: "The Basic Of Financial Analyst Course",
+      price: "$100.00",
+      buttonLabel: "Add to cart",
+      buttonUrl: "#",
+    },
+    {
+      imageSrc: placeHolder,
+      category: "Finance",
+      title: "Stock Trading Strategy",
+      price: "$118.00",
+      buttonLabel: "Add to cart",
+      buttonUrl: "#",
+    },
+    {
+      imageSrc: placeHolder,
+      category: "Programming",
+      title: "Stock Trading Strategy Course",
+      price: "$118.00",
+      buttonLabel: "Add to cart",
+      buttonUrl: "#",
+    },
+    {
+      imageSrc: placeHolder,
+      category: "Finance",
+      title: "The Basic Of Financial Analyst Course",
+      price: "$100.00",
+      buttonLabel: "Add to cart",
+      buttonUrl: "#",
+    },
+    {
+      imageSrc: placeHolder,
+      category: "Finance",
+      title: "The Basic Of Financial Analyst Course",
+      price: "$100.00",
+      buttonLabel: "Add to cart",
+      buttonUrl: "#",
+    },
+  ];
+  return { props: { data } };
 }

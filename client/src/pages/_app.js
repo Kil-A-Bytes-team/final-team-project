@@ -1,5 +1,10 @@
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
 import "@/styles/globals.css";
 import { Montserrat } from "next/font/google";
 import Head from "next/head";
