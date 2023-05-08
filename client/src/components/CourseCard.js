@@ -2,8 +2,6 @@ import ReactStars from "react-rating-stars-component";
 
 const placeHolder = "https://via.placeholder.com/400x230";
 
-
-
 export default function Card({
   imageSrc,
   category,
@@ -37,8 +35,9 @@ export default function Card({
               {category}
             </a>
             <ReactStars
+              value={5}
               count={5}
-              onChange={ratingChanged}
+              edit={false}
               size={18}
               activeColor="#ffd700"
             />
