@@ -49,13 +49,17 @@ export default function Home({ data }) {
             </div>
           </div>
         </HomeLayout>
-        <div className="flex flex-col lg:flex-row items-center gap-20 text-lg mb-20 font-medium ">
+        <div className="flex flex-col lg:flex-row items-center gap-10 text-lg mb-20 font-medium ">
           <Banner title={"Нийт сурагчид"} count={123} />
           <Banner title={"Нийт хичээл"} count={1340} />
           <Banner title={"Нийт багш нар"} count={78} />
         </div>
 
         <div className="container">
+          <div className="flex flex-col items-center">
+            <h3 className="font-bold text-4xl">Хичээлүүд</h3>
+            {/* <div className="bg-blue-500 rounded-3xl h-1.5 w-32 my-6"></div> */}
+          </div>
           <FeaturedCourses items={data} />
           {/* <Carousel /> */}
         </div>
