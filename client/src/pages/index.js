@@ -9,9 +9,10 @@ import { Banner } from "@/components/Banner";
 import Swiper from "swiper";
 import { SwiperSlide } from "swiper/react";
 import FeaturedCourses from "@/components/FeaturedCourses";
+import FeaturedInfo from "@/components/FeaturedInfo";
 // import { Banner } from "@/components/Banner";
 
-export default function Home({ data }) {
+export default function Home({ data, info }) {
   const placeHolder = "https://via.placeholder.com/400x600";
 
   return (
@@ -61,7 +62,13 @@ export default function Home({ data }) {
             {/* <div className="bg-blue-500 rounded-3xl h-1.5 w-32 my-6"></div> */}
           </div>
           <FeaturedCourses items={data} />
-          {/* <Carousel /> */}
+        </div>
+        <div className="container">
+          <div className="flex flex-col items-center">
+            <h3 className="font-bold text-4xl">Мэдээ, мэдээлэл</h3>
+            {/* <div className="bg-blue-500 rounded-3xl h-1.5 w-32 my-6"></div> */}
+          </div>
+          <FeaturedInfo items={info} />
         </div>
       </main>
     </>
@@ -73,7 +80,7 @@ export function getStaticProps() {
   const data = [
     {
       imageSrc: placeHolder,
-      category: "Programming",
+      category: "Web development",
       title: "Digital Marketing Masterclass",
       price: "Free",
       buttonLabel: "Add to cart",
@@ -120,5 +127,37 @@ export function getStaticProps() {
       buttonUrl: "#",
     },
   ];
-  return { props: { data } };
+  const info = [
+    {
+      imageSrc: placeHolder,
+      category: "Scholarship",
+      title: "USA Scholarship",
+    },
+    {
+      imageSrc: placeHolder,
+      category: "Essay",
+      title: "USA Scholarship essay",
+    },
+    {
+      imageSrc: placeHolder,
+      category: "Interview",
+      title: "Harvard graduate interview",
+    },
+    {
+      imageSrc: placeHolder,
+      category: "Scholarship",
+      title: "UK Scholarship",
+    },
+    {
+      imageSrc: placeHolder,
+      category: "Scholarship",
+      title: "Japan Scholarship",
+    },
+    {
+      imageSrc: placeHolder,
+      category: "Interview",
+      title: "Harvard graduate interview",
+    },
+  ];
+  return { props: { data, info } };
 }
