@@ -4,14 +4,15 @@ import { useState } from "react";
 import { Logo } from "./Logo";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
-import { RiMoonFill, RiSunFill } from "react-icons/ri";
+import { RiMoonFill, RiSearchLine, RiSunFill } from "react-icons/ri";
+import SearchModal from "./SearchModal";
 
 export const Header = () => {
   const { main } = nav;
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [darkMode, setDarkMode] = useState();
-
+  const [searchModal, setSearchModal] = useState(false);
   const handleDarkMode = () => {
     const theme = localStorage.getItem("theme");
     if (theme === "light" || typeof theme === "undefined") {
@@ -62,14 +63,18 @@ export const Header = () => {
     <>
       <header className="header w-full px-32 py-8 font-medium ">
         <div className="">
-          <nav className="border-gray-200 px-2 mb-10 items-center justify-between">
-            <div className="container mx-auto flex items-center justify-between">
-              <div className="order-0 mr-10">
+          <nav className="border-gray-200 px-2 mb-10 items-center justify-between relative">
+            <div
+              className={`container mx-auto flex items-center justify-between ${
+                searchModal ? "opacity-0" : "opacity-1"
+              }`}
+            >
+              <div className="order-1 mr-10">
                 <Logo />
               </div>
               {/* Desktop menu */}
               <div
-                className=" text-dark dark:text-light justify-between items-start w-full md:w-auto md:order-1 h-full lg:flex hidden"
+                className="order-2 text-dark dark:text-light justify-between items-start w-full md:w-auto h-full lg:flex hidden"
                 id=""
               >
                 <ul className="navbar-nav w-full md:auto md:space-x-1 xl:space-x-2 flex">
@@ -97,7 +102,7 @@ export const Header = () => {
                 
               ) : null} */}
               <div
-                className={`bg-dark text-light h-vh fixed top-0 bottom-0 min-w-[30vw] lg:hidden flex opacity-80 ease-in duration-500 ${
+                className={`order-3 bg-dark text-light h-vh fixed top-0 bottom-0 min-w-[30vw] lg:hidden flex opacity-80 ease-in duration-500 ${
                   isOpen ? "right-0" : "-right-full"
                 }`}
                 id="mobile-menu-3"
@@ -135,37 +140,23 @@ export const Header = () => {
                   ))}
                 </motion.ul>
               </div>
-
-              <div className="">
-                <div className="relative mr-3 md:mr-0 md:block">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <svg
-                      className="w-5 h-5 text-gray-500"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fill="evenodd"
-                        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                  </div>
-                  <input
-                    type="text"
-                    id="email-adress-icon"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2"
-                    placeholder="Search..."
-                  />
-                </div>
-              </div>
-              <button onClick={handleDarkMode}>
+              {/* dark mode sun&moon */}
+              <button className="order-4" onClick={handleDarkMode}>
                 {darkMode ? <RiSunFill /> : <RiMoonFill />}
               </button>
+              {/* search bar */}
+              <button
+                className="order-5"
+                onClick={() => {
+                  setSearchModal(true);
+                }}
+              >
+                <RiSearchLine />
+              </button>
+
               {/* hamburger menu */}
               <motion.button
-                className="flex-col items-center justify-center lg:hidden flex"
+                className="order-6 flex-col items-center justify-center lg:hidden flex"
                 animate={{ x: [null, 100, 0] }}
                 whileHover={{ scale: [null, 1.5, 1.4] }}
                 transition={{ duration: 0.3 }}
@@ -192,6 +183,10 @@ export const Header = () => {
                 ></span>
               </motion.button>
             </div>
+            <SearchModal
+              searchModal={searchModal}
+              setSearchModal={setSearchModal}
+            />
           </nav>
         </div>
       </header>
