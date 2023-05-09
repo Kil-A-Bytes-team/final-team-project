@@ -12,8 +12,11 @@ export default ({ items }) => {
   return (
     <Swiper
       spaceBetween={20}
-      className={`w-full mb-10 relative py-[50px] mx-auto`}
+      className={`w-full mb-10 relative py-[50px] mx-auto px-5 sm:px-0`}
       breakpoints={{
+        639: {
+          slidesPerView: 1,
+        },
         640: {
           slidesPerView: 2,
         },
