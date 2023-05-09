@@ -12,8 +12,21 @@ export default ({ items }) => {
   return (
     <Swiper
       spaceBetween={20}
-      className="w-full mb-10 relative py-[50px]"
-      slidesPerView={4}
+      className={`w-full mb-10 relative py-[50px] mx-auto`}
+      breakpoints={{
+        640: {
+          slidesPerView: 2,
+        },
+        768: {
+          slidesPerView: 3,
+        },
+        1024: {
+          slidesPerView: 4,
+        },
+        1536: {
+          slidesPerView: 5,
+        },
+      }}
       autoplay={false}
       navigation={{ nextEl: ".next-nav", prevEl: ".prev-nav" }}
       pagination={{ clickable: true }}
@@ -34,7 +47,7 @@ export default ({ items }) => {
                 />
               </a>
               <div className="pt-5 px-8">
-                <div className="mb-5 flex justify-between items-center ">
+                <div className="mb-5 flex justify-between items-center h-12">
                   <a
                     href="#"
                     className="text-blue-500 hover:text-black focus:ring-4 focus:outline-none dark:text-white dark:hover:text-gray-300"
@@ -51,7 +64,7 @@ export default ({ items }) => {
                 </div>
 
                 <a href="#">
-                  <h3 className="mb-8 font-semibold tracking-tight text-gray-900 dark:text-white transform transition duration-200 hover:scale-105">
+                  <h3 className="mb-8 h-12 font-semibold tracking-tight text-gray-900 dark:text-white transform transition duration-200 hover:scale-105">
                     {slide.title}
                   </h3>
                 </a>
