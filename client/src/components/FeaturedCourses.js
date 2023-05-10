@@ -12,6 +12,7 @@ export default ({ items }) => {
   return (
     <Swiper
       spaceBetween={20}
+      // loop={true}
       className={`w-full mb-10 relative py-[50px] mx-auto px-5 sm:px-0`}
       breakpoints={{
         639: {
