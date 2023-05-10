@@ -140,48 +140,49 @@ export const Header = () => {
                   ))}
                 </motion.ul>
               </div>
-              {/* dark mode sun&moon */}
-              <button className="order-4" onClick={handleDarkMode}>
-                {darkMode ? <RiSunFill /> : <RiMoonFill />}
-              </button>
-              {/* search bar */}
-              <button
-                className="order-5"
-                onClick={() => {
-                  setSearchModal(true);
-                }}
-              >
-                <RiSearchLine />
-              </button>
-
-              {/* hamburger menu */}
-              <motion.button
-                className="order-6 flex-col items-center justify-center lg:hidden flex"
-                animate={{ x: [null, 100, 0] }}
-                whileHover={{ scale: [null, 1.5, 1.4] }}
-                transition={{ duration: 0.3 }}
-                onClick={handleClickMenu}
-              >
-                <span
-                  className={`block transition-all duration-700 ease-out h-0.5 w-6 rounded-sm  ${
-                    isOpen
-                      ? "rotate-45 translate-y-0.5 bg-dark dark:bg-light"
-                      : "-translate-y-0.5 bg-dark dark:bg-light"
-                  }`}
-                ></span>
-                <span
-                  className={`bg-dark dark:bg-light  my-0.5 transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${
-                    isOpen ? "hidden" : "block"
-                  }`}
-                ></span>
-                <span
-                  className={` block transition-all duration-700 ease-out h-0.5 w-6 rounded-sm ${
-                    isOpen
-                      ? "-rotate-45 translate-y-0 bg-dark dark:bg-light"
-                      : "translate-y-0.5 bg-dark dark:bg-light"
-                  }`}
-                ></span>
-              </motion.button>
+              <div className="order-4 flex">
+                {/* dark mode sun&moon */}
+                <button className="order-4 mr-8" onClick={handleDarkMode}>
+                  {darkMode ? <RiSunFill /> : <RiMoonFill />}
+                </button>
+                {/* search bar */}
+                <button
+                  className="order-5 mr-8"
+                  onClick={() => {
+                    setSearchModal(true);
+                  }}
+                >
+                  <RiSearchLine />
+                </button>
+                {/* hamburger menu */}
+                <motion.button
+                  className="order-6 flex-col items-center justify-center lg:hidden flex"
+                  animate={{ x: [null, 100, 0] }}
+                  whileHover={{ scale: [null, 1.5, 1.4] }}
+                  transition={{ duration: 0.3 }}
+                  onClick={handleClickMenu}
+                >
+                  <span
+                    className={`block transition-all duration-700 ease-out h-0.5 w-6 rounded-sm  ${
+                      isOpen
+                        ? "rotate-45 translate-y-0.5 bg-dark dark:bg-light"
+                        : "-translate-y-0.5 bg-dark dark:bg-light"
+                    }`}
+                  ></span>
+                  <span
+                    className={`bg-dark dark:bg-light  my-0.5 transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${
+                      isOpen ? "hidden" : "block"
+                    }`}
+                  ></span>
+                  <span
+                    className={` block transition-all duration-700 ease-out h-0.5 w-6 rounded-sm ${
+                      isOpen
+                        ? "-rotate-45 translate-y-0 bg-dark dark:bg-light"
+                        : "translate-y-0.5 bg-dark dark:bg-light"
+                    }`}
+                  ></span>
+                </motion.button>
+              </div>
             </div>
             <SearchModal
               searchModal={searchModal}
