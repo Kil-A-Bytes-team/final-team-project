@@ -29,7 +29,7 @@ const SearchModal = ({ searchModal, setSearchModal }) => {
     <div
       className={`search-modal ${
         searchModal
-          ? "open visible opacity-100 !items-start absolute top-0 left-0 right-0 z-10 h-full transition bg-light dark:bg-black "
+          ? "open visible opacity-100 !items-start absolute top-0 left-0 right-0 z-10 h-full transition bg-light dark:bg-dark "
           : "invisible opacity-0  "
       }`}
     >
@@ -41,7 +41,7 @@ const SearchModal = ({ searchModal, setSearchModal }) => {
       </button>
       <input
         type="text"
-        className="form-input bg-light h-full w-full !items-start border-0 bg-body placeholder:text-base dark:bg-darkmode-body"
+        className="form-input bg-light dark:bg-dark h-full w-full !items-start border-0 placeholder:text-base dark:bg-darkmode-body"
         id="searchModal"
         placeholder="Type and hit enter..."
         onChange={(e) => setInput(e.target.value)}
