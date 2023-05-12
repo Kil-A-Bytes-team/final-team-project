@@ -1,16 +1,25 @@
 import Link from "next/link";
 import { useState } from "react";
 import { InputGroup } from "./InputGroup";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { useRouter } from "next/router";
 
 export const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter();
+  let status = 201;
 
   const submitSignIn = () => {
     const body = { email, password };
-    axios.post("/signin", body).then(() => {
-      toast.success("Амжилттай нэвтэрлээ");
-      navigate("/");
+    axios.post("http://localhost:5000/signin", body).then((res) => {
+      console.log(res.status);
+      if (res.status === status) {
+        toast.success("Амжилттай нэвтэрлээ");
+
+        router.push("/");
+      }
     });
   };
   return (
@@ -46,13 +55,12 @@ export const SignIn = () => {
               />
               {/* <Button type="submit">Бүртгүүлэх</Button> */}
               <div className="flex items-center self-start mt-2">
-                <Link
+                <button
                   type="submit"
                   className="flex items-center bg-dark text-light p-2.5 px-6 rounded-lg text-lg font-semibold hover:bg-light hover:text-dark border-2 border-solid border-transparent hover:border-dark"
-                  href="/"
                 >
                   Нэвтрэх
-                </Link>
+                </button>
               </div>
 
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">
