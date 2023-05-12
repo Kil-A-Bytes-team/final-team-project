@@ -102,10 +102,10 @@ body {
 .shapes .container {
   position: absolute;
   top: -20px;
-  bottom: -70px;
-  left: -50px;
-  right: -50px;
-  width: calc(100% + 100px);
+  bottom: -50px;
+  left: -30px;
+  right: -30px;
+  width: calc(100% + 60px);
   pointer-events: none;
 }
 
