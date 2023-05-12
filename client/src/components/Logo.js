@@ -47,7 +47,7 @@ export const Logo = () => {
     </motion.div> */}
       <MotionConfig transition={transition}>
         <motion.button
-          className="signButton w-32 h-16"
+          className="signButton w-32 h-16 shadow-xl dark:shadow-cyan-900"
           ref={ref}
           initial={false}
           animate={isHover ? "hover" : "rest"}
