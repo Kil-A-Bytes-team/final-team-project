@@ -1,26 +1,41 @@
 import { Injectable } from '@nestjs/common';
 import { CreateStudentDto } from './dto/create-student.dto';
 import { UpdateStudentDto } from './dto/update-student.dto';
+import { InjectModel } from '@nestjs/mongoose';
+import { Student } from './entities/student.entity';
+import { Model } from 'mongoose';
 
 @Injectable()
 export class StudentsService {
-  create(createStudentDto: CreateStudentDto) {
-    return 'This action adds a new student';
+  constructor(
+    @InjectModel(Student.name) private readonly studentModel: Model<Student>,
+  ) {}
+  async create(createStudentDto: CreateStudentDto) {
+    return await this.studentModel.create(createStudentDto);
   }
 
-  findAll() {
-    return `This action returns all students`;
+  async findAll() {
+    return await this.studentModel.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} student`;
+  async findOne(_id: string) {
+    return await this.studentModel.findOne({ _id });
   }
 
-  update(id: number, updateStudentDto: UpdateStudentDto) {
-    return `This action updates a #${id} student`;
+  async findOneByEmail(email: string) {
+    return await this.studentModel.findOne({ email });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} student`;
+  async update(_id: string, updateStudentDto: UpdateStudentDto) {
+    const result = await this.studentModel.findOneAndUpdate(
+      { _id },
+      updateStudentDto,
+    );
+    return result;
+  }
+
+  async remove(_id: string) {
+    await this.studentModel.deleteOne({ _id });
+    return _id;
   }
 }

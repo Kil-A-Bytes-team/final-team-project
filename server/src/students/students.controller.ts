@@ -26,17 +26,21 @@ export class StudentsController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.studentsService.findOne(+id);
+  findOne(@Param('id') _id: string) {
+    return this.studentsService.findOne(_id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateStudentDto: UpdateStudentDto) {
-    return this.studentsService.update(+id, updateStudentDto);
+  @Patch(':_id')
+  update(
+    @Param('_id') _id: string,
+    @Body() updateStudentDto: UpdateStudentDto,
+  ) {
+    console.log('controller _id', _id);
+    return this.studentsService.update(_id, updateStudentDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.studentsService.remove(+id);
+  @Delete(':_id')
+  remove(@Param('id') _id: string) {
+    return this.studentsService.remove(_id);
   }
 }

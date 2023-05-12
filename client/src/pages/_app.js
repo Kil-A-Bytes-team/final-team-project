@@ -4,7 +4,8 @@ import { Header } from "@/components/Header";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "@/styles/globals.css";
 import { Montserrat } from "next/font/google";
 import Head from "next/head";
@@ -25,6 +26,7 @@ export default function App({ Component, pageProps }) {
       >
         <Header />
         <Component {...pageProps} />
+        <ToastContainer position="bottom-right" />
         <Footer />
       </main>
     </>
