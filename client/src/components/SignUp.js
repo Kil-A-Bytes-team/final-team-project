@@ -14,10 +14,15 @@ export const SignUp = () => {
 
   const submitSignUp = () => {
     const body = { email, password, repassword };
-    axios.post("http://localhost:5000/signup", body).then(() => {
-      toast.success("Бүртгэл амжилттай");
-      router.push("/signin");
-    });
+    axios
+      .post("http://localhost:5000/signup", body)
+      .then(() => {
+        toast.success("Бүртгэл амжилттай");
+        router.push("/signin");
+      })
+      .catch((e) => {
+        toast.error("Алдаа гарлаа");
+      });
   };
   return (
     <section className="bg-white dark:bg-dark min-h-screen">
