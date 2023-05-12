@@ -23,7 +23,7 @@ export default function Home({ data, info }) {
       </Head>
       <main className="flex flex-col items-center text-dark dark:text-light w-full sm:px-32 md:px-16 px-8">
         <HomeLayout className="pt-0 pb-16 ">
-          <div className="block items-center justify-between lg:flex w-full md:px-32 sm:px-16">
+          <div className="block items-center justify-between lg:flex w-full px-32 md:px-32 sm:px-16">
             <div className="lg:w-1/2 flex flex-col items-center self-center md:w-full">
               <AnimatedText
                 text={"Welcome to Kil -A- Bytes team project"}
@@ -35,9 +35,9 @@ export default function Home({ data, info }) {
               <div className="flex invisible lg:visible items-center self-start mt-2">
                 <Link
                   className="flex items-center bg-dark dark:bg-light dark:text-dark text-light p-2.5 px-6 rounded-lg text-lg font-semibold hover:bg-light dark:hover:bg-dark dark:hover:text-light hover:text-dark border-2 border-solid border-transparent dark:hover:border-light dark:border-dark hover:border-dark"
-                  href="/sign"
+                  href="/signin"
                 >
-                  Sign Up
+                  Sign In
                 </Link>
               </div>
             </div>
@@ -45,7 +45,7 @@ export default function Home({ data, info }) {
               <Image
                 src={bannerImage}
                 alt="Kil-A-Bytes"
-                className="w-full h-auto aspect-square"
+                className="w-full h-auto"
               />
             </div>
           </div>
