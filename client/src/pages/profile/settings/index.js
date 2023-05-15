@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-export default function Order() {
+export default function settings() {
   return (
     <div className="sm:container sm:mx-auto">
       <div className="flex justify-between gap-5">
