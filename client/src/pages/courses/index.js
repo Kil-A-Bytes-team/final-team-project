@@ -33,6 +33,7 @@ export default function Courses({ data }) {
 export function getStaticProps() {
   const data = [
     {
+      id: 1,
       imageSrc: placeHolder,
       category: "Programming",
       title: "Digital Marketing Masterclass",
@@ -43,6 +44,7 @@ export function getStaticProps() {
       buttonUrl: "#",
     },
     {
+      id: 2,
       imageSrc: placeHolder,
       category: "Finance",
       title: "The Basic Of Financial Analyst Course",
@@ -53,6 +55,7 @@ export function getStaticProps() {
       buttonUrl: "#",
     },
     {
+      id: 3,
       imageSrc: placeHolder,
       category: "Finance",
       title: "Stock Trading Strategy",
@@ -63,6 +66,7 @@ export function getStaticProps() {
       buttonUrl: "#",
     },
     {
+      id: 4,
       imageSrc: placeHolder,
       category: "Programming",
       title: "Stock Trading Strategy Course",
@@ -73,6 +77,7 @@ export function getStaticProps() {
       buttonUrl: "#",
     },
     {
+      id: 5,
       imageSrc: placeHolder,
       category: "Finance",
       title: "The Basic Of Financial Analyst Course",
@@ -83,6 +88,7 @@ export function getStaticProps() {
       buttonUrl: "#",
     },
     {
+      id: 6,
       imageSrc: placeHolder,
       category: "Finance",
       title: "The Basic Of Financial Analyst Course",

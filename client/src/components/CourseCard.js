@@ -3,6 +3,7 @@ import ReactStars from "react-rating-stars-component";
 const placeHolder = "https://via.placeholder.com/400x230";
 
 export default function Card({
+  id,
   imageSrc,
   category,
   title,
@@ -17,7 +18,7 @@ export default function Card({
   return (
     <div className="flex justify-center ">
       <div className="max-w-sm mx-auto bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-        <a href={imageSrc}>
+        <a href={`courses/${id}`}>
           <img
             className="rounded-t-lg w-full h-auto"
             src={placeHolder}
@@ -29,7 +30,7 @@ export default function Card({
         <div className="p-10 ">
           <div className="flex justify-between items-center ">
             <a
-              href="#"
+              href={`courses/${id}`}
               className="text-blue-500 hover:text-black focus:ring-4 focus:outline-none dark:text-white dark:hover:text-gray-300"
             >
               {category}
@@ -43,7 +44,7 @@ export default function Card({
             />
           </div>
 
-          <a href="#">
+          <a href={`courses/${id}`}>
             <h5 className="mt-3 mb-5 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
               {title}
             </h5>
