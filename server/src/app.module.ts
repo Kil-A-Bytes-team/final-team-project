@@ -5,6 +5,7 @@ import { CoursesModule } from './courses/courses.module';
 import { StudentsModule } from './students/students.module';
 import { AuthModule } from './auth/auth.module';
 import { MongooseModule } from '@nestjs/mongoose';
+import { NewsModule } from './news/news.module';
 import env from './env';
 
 @Module({
@@ -13,6 +14,7 @@ import env from './env';
     CoursesModule,
     StudentsModule,
     AuthModule,
+    NewsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
