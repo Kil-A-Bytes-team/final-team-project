@@ -9,26 +9,30 @@ export class CoursesController {
 
   @Post()
   create(@Body() createCourseDto: CreateCourseDto) {
-    return this.coursesService.create(createCourseDto);
+    return this.coursesService.createCourse(createCourseDto);
   }
 
+  @Get('total')
+  getTotal(){
+    return this.coursesService.getTotalCourse()
+  }
   @Get()
   findAll() {
-    return this.coursesService.findAll();
+    return this.coursesService.findAllCourse();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.coursesService.findOne(+id);
+  @Get(':_id')
+  findOne(@Param('_id') _id: string) {
+    return this.coursesService.findOneCourse(_id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateCourseDto: UpdateCourseDto) {
-    return this.coursesService.update(+id, updateCourseDto);
+  @Patch(':_id')
+  update(@Param('_id') _id: string, @Body() updateCourseDto: UpdateCourseDto) {
+    return this.coursesService.updateCourse(_id, updateCourseDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.coursesService.remove(+id);
+  @Delete(':_id')
+  remove(@Param('_id') _id: string) {
+    return this.coursesService.removeCourse(_id);
   }
 }
