@@ -1,7 +1,7 @@
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import Layout from '../../components/Layout';
-import { useState } from 'react';
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useState } from "react";
+import { Layout } from "../layout";
 
 const AllDiv = () => {
   return (
@@ -28,7 +28,10 @@ const AllDiv = () => {
         </thead>
         <tbody>
           <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            <th
+              scope="row"
+              class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+            >
               Digital Marketing Masterclass
             </th>
             <td class="px-6 py-4">Category</td>
@@ -37,7 +40,10 @@ const AllDiv = () => {
             <td class="px-6 py-4">-</td>
           </tr>
           <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            <th
+              scope="row"
+              class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+            >
               Investment Master : Key To Success
             </th>
             <td class="px-6 py-4">Category</td>
@@ -46,7 +52,10 @@ const AllDiv = () => {
             <td class="px-6 py-4">-</td>
           </tr>
           <tr class="bg-white dark:bg-gray-800">
-            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            <th
+              scope="row"
+              class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+            >
               The Business Intelligence Analyst
             </th>
             <td class="px-6 py-4">Category</td>
@@ -84,7 +93,10 @@ const InProgressDiv = () => {
         </thead>
         <tbody>
           <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            <th
+              scope="row"
+              class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+            >
               Digital Marketing Masterclass
             </th>
             <td class="px-6 py-4">Category</td>
@@ -93,7 +105,10 @@ const InProgressDiv = () => {
             <td class="px-6 py-4">-</td>
           </tr>
           <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            <th
+              scope="row"
+              class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+            >
               Investment Master : Key To Success
             </th>
             <td class="px-6 py-4">Category</td>
@@ -102,7 +117,10 @@ const InProgressDiv = () => {
             <td class="px-6 py-4">-</td>
           </tr>
           <tr class="bg-white dark:bg-gray-800">
-            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            <th
+              scope="row"
+              class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+            >
               The Business Intelligence Analyst
             </th>
             <td class="px-6 py-4">Category</td>
@@ -139,15 +157,26 @@ export default function UserProfile({}) {
           <div class="row-span-2 col-auto">
             <div className="flex justify-between gap-5">
               <div class="w-1/4">
-                <img src="https://placeimg.com/640/480/any" alt="Profile Image" className="w-36 h-36 rounded-full ml-12" />
+                <img
+                  src="https://placeimg.com/640/480/any"
+                  alt="Profile Image"
+                  className="w-36 h-36 rounded-full ml-12"
+                />
 
                 <div class="row-start-auto">
                   <div class="w-64 mt-12 text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
                     <Link
-                      href={'/profile'}
+                      href={"/profile"}
                       class="relative inline-flex items-center w-full px-4 py-2 text-sm font-medium border-b border-gray-200 rounded-t-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-10 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white space-x-3"
                     >
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
                         <path
                           stroke-linecap="round"
                           stroke-linejoin="round"
@@ -158,10 +187,17 @@ export default function UserProfile({}) {
                     </Link>
 
                     <Link
-                      href={'/profile/order'}
+                      href={"/profile/order"}
                       class="relative inline-flex items-center w-full px-4 py-2 text-sm font-medium border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white space-x-3"
                     >
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
                         <path
                           stroke-linecap="round"
                           stroke-linejoin="round"
@@ -171,10 +207,17 @@ export default function UserProfile({}) {
                       <div>Orders</div>
                     </Link>
                     <Link
-                      href={'/profile/settings'}
+                      href={"/profile/settings"}
                       class="relative inline-flex items-center w-full px-4 py-2 text-sm font-medium rounded-b-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white space-x-3"
                     >
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
                         <path
                           stroke-linecap="round"
                           stroke-linejoin="round"
@@ -184,11 +227,22 @@ export default function UserProfile({}) {
                       <div>Settings</div>
                     </Link>
                     <Link
-                      href={'/l'}
+                      href={"/l"}
                       class="relative inline-flex items-center w-full px-4 py-2 text-sm font-medium border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white dark:bg-gray-500 space-x-3"
                     >
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75"
+                        />
                       </svg>
                       <div>Logout</div>
                     </Link>
@@ -214,14 +268,17 @@ export default function UserProfile({}) {
                 <hr />
 
                 <div>
-                  <a class="mt-10 inline-block p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500">Enrolled</a>
+                  <a class="mt-10 inline-block p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500">
+                    Enrolled
+                  </a>
                   <div class="text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700">
                     <ul class="flex flex-wrap">
                       <li class="mr-2">
                         <button
                           onClick={() => setTabIndex(0)}
                           class={`inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 ${
-                            tabIndex === 0 && `dark:text-blue-500 dark:border-blue-500 border-blue-600`
+                            tabIndex === 0 &&
+                            `dark:text-blue-500 dark:border-blue-500 border-blue-600`
                           }hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300`}
                         >
                           All
@@ -231,7 +288,8 @@ export default function UserProfile({}) {
                         <button
                           onClick={() => setTabIndex(1)}
                           class={`inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 ${
-                            tabIndex === 1 && `dark:text-blue-500 dark:border-blue-500 border-blue-600`
+                            tabIndex === 1 &&
+                            `dark:text-blue-500 dark:border-blue-500 border-blue-600`
                           }hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300`}
                         >
                           In progress
@@ -241,7 +299,8 @@ export default function UserProfile({}) {
                         <button
                           onClick={() => setTabIndex(2)}
                           class={`inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 ${
-                            tabIndex === 2 && `dark:text-blue-500 dark:border-blue-500 border-blue-600`
+                            tabIndex === 2 &&
+                            `dark:text-blue-500 dark:border-blue-500 border-blue-600`
                           }hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300`}
                         >
                           Finished
@@ -251,7 +310,8 @@ export default function UserProfile({}) {
                         <button
                           onClick={() => setTabIndex(3)}
                           class={`inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 ${
-                            tabIndex === 3 && `dark:text-blue-500 dark:border-blue-500 border-blue-600`
+                            tabIndex === 3 &&
+                            `dark:text-blue-500 dark:border-blue-500 border-blue-600`
                           }hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300`}
                         >
                           Passed
@@ -261,7 +321,8 @@ export default function UserProfile({}) {
                         <button
                           onClick={() => setTabIndex(4)}
                           class={`inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 ${
-                            tabIndex === 4 && `dark:text-blue-500 dark:border-blue-500 border-blue-600`
+                            tabIndex === 4 &&
+                            `dark:text-blue-500 dark:border-blue-500 border-blue-600`
                           }hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300`}
                         >
                           Failed
