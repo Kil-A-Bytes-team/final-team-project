@@ -34,8 +34,8 @@ export class StudentsService {
     return result;
   }
 
-  async remove(_id: string) {
-    await this.studentModel.deleteOne({ _id });
-    return _id;
+  async removeStudent(_id: string):Promise<Student>  {
+   return await this.studentModel.findByIdAndDelete({ _id });
+    
   }
 }
