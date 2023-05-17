@@ -2,23 +2,23 @@ import ReactStars from "react-rating-stars-component";
 
 const placeHolder = "https://via.placeholder.com/400x230";
 
-export default function Card({
-  id,
-  imageSrc,
-  category,
-  title,
-  description,
-  price,
-  buttonLabel,
-  buttonUrl,
-}) {
+export default function Card({ course }) {
+  const {
+    imageSrc,
+    category,
+    name,
+    description,
+    price,
+    buttonLabel,
+    buttonUrl,
+  } = course;
   const ratingChanged = (newRating) => {
     console.log(newRating);
   };
   return (
     <div className="flex justify-center ">
       <div className="max-w-sm mx-auto bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-        <a href={`courses/${id}`}>
+        <a href={`courses/${course._id}`}>
           <img
             className="rounded-t-lg w-full h-auto"
             src={placeHolder}
@@ -30,7 +30,7 @@ export default function Card({
         <div className="p-10 ">
           <div className="flex justify-between items-center ">
             <a
-              href={`courses/${id}`}
+              href={`courses/${course._id}`}
               className="text-blue-500 hover:text-black focus:ring-4 focus:outline-none dark:text-white dark:hover:text-gray-300"
             >
               {category}
@@ -44,9 +44,9 @@ export default function Card({
             />
           </div>
 
-          <a href={`courses/${id}`}>
+          <a href={`courses/${course._id}`}>
             <h5 className="mt-3 mb-5 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              {title}
+              {name}
             </h5>
           </a>
           <p className="mb-5 font-normal text-gray-700 dark:text-gray-400 line-clamp-4">
