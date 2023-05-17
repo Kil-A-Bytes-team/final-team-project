@@ -5,10 +5,11 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { StudentsModule } from 'src/students/students.module';
 import { JwtModule } from '@nestjs/jwt';
 import env from 'src/env';
+import { Otp, OtpSchema } from './entities/otp.entity';
 
 @Module({
   imports: [
-    MongooseModule.forFeature(),
+    MongooseModule.forFeature([{name: Otp.name, schema: OtpSchema}]),
     StudentsModule,
     JwtModule.register({
       global: true,

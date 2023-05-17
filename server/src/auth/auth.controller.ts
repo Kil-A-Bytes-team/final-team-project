@@ -2,6 +2,8 @@ import { Controller, Post, Body } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { SignupDto } from './dto/signup.dto';
 import { SigninDto } from './dto/signin.dto';
+import { CreateOTPDto } from './dto/createOtp.dto';
+import { CheckOTPDto } from './dto/checkOtp.dto';
 
 @Controller()
 export class AuthController {
@@ -21,5 +23,14 @@ export class AuthController {
   signin(@Body() signinDto: SigninDto) {
     console.log('signinDto:', signinDto);
     return this.authService.signin(signinDto);
+  }
+  @Post('/otp/signin')
+  siginOTP(@Body() createOTPDto: CreateOTPDto) {
+    return this.authService.createOTP(createOTPDto);
+  }
+
+  @Post('/otp/signin/verify')
+  siginOTPConfirm(@Body() checkOTPDto: CheckOTPDto) {
+    return this.authService.verifyOTP(checkOTPDto);
   }
 }

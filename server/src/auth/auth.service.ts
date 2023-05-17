@@ -1,15 +1,20 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable, Logger } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
-import { InjectModel } from '@nestjs/mongoose';
 import { StudentsService } from 'src/students/students.service';
 import { JwtService } from '@nestjs/jwt';
 import { SignupDto } from './dto/signup.dto';
 import { SigninDto } from './dto/signin.dto';
+import { Model } from 'mongoose';
+import { InjectModel } from '@nestjs/mongoose';
+import { Otp } from './entities/otp.entity';
+import { CheckOTPDto } from './dto/checkOtp.dto';
+import { sendEmail } from 'src/utils/sendEmail';
+import { CreateOTPDto } from './dto/createOtp.dto';
 
 @Injectable()
 export class AuthService {
   constructor(
-    // @InjectModel() private readonly otpmodel: Model<Otp>,
+    @InjectModel(Otp.name) private readonly otpmodel: Model<Otp>,
     private readonly studentsService: StudentsService,
     private readonly jwtService: JwtService,
   ) {}
@@ -38,6 +43,51 @@ export class AuthService {
       throw new HttpException('Password not matching', HttpStatus.BAD_REQUEST);
     const payload = { sub: user };
     const token = this.jwtService.sign(payload);
+    return token;
+  }
+  async createOTP(createOTPDto: CreateOTPDto) {
+    const { email } = createOTPDto;
+    const tdo: Otp = await this.otpmodel.create({ email });
+    sendEmail(email, 'Your one time passport', `<p>Your one time password is: <b>${tdo.token}</b></p>`)
+      .then(() => {
+        Logger.log(`OTP sent to: ${email}`);
+        return true;
+      })
+      .catch((error) => {
+        Logger.error(`OTP not send to ${email} error: ${error.message}`);
+        return false;
+      });
+  }
+
+  async verifyOTP(checkOTPDto: CheckOTPDto) {
+    const { otp: token, email } = checkOTPDto;
+    const otp = await this.otpmodel.findOne({ token });
+
+    if (!otp) throw new HttpException('OTP not found', HttpStatus.BAD_REQUEST);
+    if (email !== otp.email) throw new HttpException('Email not match', HttpStatus.BAD_REQUEST);
+
+    const isExpired = this.isOTPExpired(otp);
+    if (isExpired) {
+      this.removeOTP(token);
+      throw new HttpException('OTP is expired', HttpStatus.BAD_REQUEST);
+    }
+
+    let user = await this.studentsService.findOneByEmail(email);
+
+    if (!user) user = await this.studentsService.create({ email });
+    this.removeOTP(token);
+    const payload = { sub: user };
+    return this.jwtService.sign(payload);
+  }
+
+  isOTPExpired(otp: Otp): boolean {
+    // date from 10 minutes after otp created
+    const expireDate = new Date(otp.createdAt.getTime() * 10 * 1000 * 60);
+    return expireDate < new Date();
+  }
+
+  async removeOTP(token: number) {
+    await this.otpmodel.findOneAndDelete({ token });
     return token;
   }
 }
