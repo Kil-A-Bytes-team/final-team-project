@@ -2,7 +2,7 @@ import React from "react";
 import { MdMenuBook } from "react-icons/md";
 
 function CourseLayout({ children }) {
-  const courses = [
+  const lessons = [
     {
       id: 1,
       title: "You can learn marketing in this lesson",
@@ -67,18 +67,19 @@ function CourseLayout({ children }) {
   ];
   return (
     <>
+      {/* Search bar */}
       <div className="absolute">
         <form>
-          <div className="fixed top-0  bg-white z-10 w-[300px] xl:w-[475px] ">
+          <div className="fixed top-0 h-[50px] bg-white z-10 w-[300px] xl:w-[475px] ">
             <input
               id="search-dropdown"
-              className="block italic p-2.5 w-full z-20 text-[13px] text-gray-900 bg-gray-50 border-l-gray-50 border-l-2 border border-gray-300  dark:bg-gray-700 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+              className="block italic p-2.5 w-full z-20 text-[13px] h-[50px] text-gray-900 bg-gray-50 border-l-gray-50 border-l-2 border border-gray-300  dark:bg-gray-700 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
               placeholder="Search for course content.."
               required
             />
             <button
               type="submit"
-              className="absolute top-0 right-0 p-2.5 text-sm font-medium text-black focus:outline-none"
+              className="absolute top-0 right-0 bottom-0 p-2.5 text-sm font-medium text-black focus:outline-none"
             >
               <svg
                 aria-hidden="true"
@@ -100,19 +101,20 @@ function CourseLayout({ children }) {
           </div>
         </form>
 
-        <div className="overflow-y-auto pt-[42px] h-screen w-[300px] xl:w-[475px] fixed">
+        {/* Sidebar */}
+        <div className="overflow-y-auto  h-screen w-[300px] xl:w-[475px] fixed">
           <ul>
-            {courses.map((course) => (
-              <li key={course.id}>
+            {lessons.map((lesson) => (
+              <li key={lesson.id}>
                 <a className="p-4 flex justify-between border cursor-pointer">
                   <div className="flex gap-4 w-[calc(100%-80px)]">
                     <MdMenuBook className="text-xl w-[20px]" />
                     <span className="text-[15px] font-medium w-[calc(100%-20px)]">
-                      {course.title}
+                      {lesson.title}
                     </span>
                   </div>
                   <span className="text-sm text-gray-500 w-[85px] text-right">
-                    {course.time}
+                    {lesson.time}
                   </span>
                 </a>
               </li>
@@ -120,16 +122,17 @@ function CourseLayout({ children }) {
           </ul>
         </div>
       </div>
-      <div className="ml-[310px] xl:ml-[480px]">
-        <a className="w-full border cursor-pointer h-[41.5px] p-2 ">
-          <div className="flex justify-between items-center">
-            <h2 className="font-bold text-sm">
-              Financial Markets Introduction
-            </h2>
-            <div className="text-sm">1 of 15 items</div>
-            <div className="text-sm">progress bar</div>
-          </div>
-        </a>
+
+      {/* Header */}
+      <div className="ml-[300px] xl:ml-[480px] w-full fixed top-0 flex items-center h-[50px] bg-slate-50 ">
+        <h2 className="font-bold text-base pl-8">
+          <a href="" className="w-full cursor-pointer">
+            Financial Markets Introduction
+          </a>
+        </h2>
+      </div>
+      <div className=" pl-[300px] xl:pl-[480px] w-full mt-[50px]">
+        {children}
       </div>
     </>
   );
