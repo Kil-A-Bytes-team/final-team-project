@@ -3,7 +3,6 @@ import {
   mdiCartOutline,
   mdiChartPie,
   mdiChartTimelineVariant,
-  mdiGithub,
   mdiMonitorCellphone,
   mdiReload,
 } from '@mdi/js'
@@ -47,17 +46,11 @@ const Dashboard = () => {
         <title>{getPageTitle('Dashboard')}</title>
       </Head>
       <SectionMain>
-        <SectionTitleLineWithButton icon={mdiChartTimelineVariant} title="Overview" main>
-          <BaseButton
-            href="https://github.com/justboil/admin-one-react-tailwind"
-            target="_blank"
-            icon={mdiGithub}
-            label="Star on GitHub"
-            color="contrast"
-            roundedFull
-            small
-          />
-        </SectionTitleLineWithButton>
+        <SectionTitleLineWithButton
+          icon={mdiChartTimelineVariant}
+          title="Overview"
+          main
+        ></SectionTitleLineWithButton>
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 mb-6">
           <CardBoxWidget
