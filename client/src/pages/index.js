@@ -11,10 +11,10 @@ import { SwiperSlide } from "swiper/react";
 import FeaturedCourses from "@/components/FeaturedCourses";
 import FeaturedInfo from "@/components/FeaturedInfo";
 import { Layout } from "./layout";
-import Decoration from "../components/Decoration";
+import axios from "axios";
 // import { Banner } from "@/components/Banner";
 
-export default function Home({ data, info }) {
+export default function Home({ courses, news }) {
   const placeHolder = "https://via.placeholder.com/400x600";
 
   return (
@@ -64,7 +64,7 @@ export default function Home({ data, info }) {
               <h3 className="font-bold text-4xl">Хичээлүүд</h3>
               {/* <div className="bg-blue-500 rounded-3xl h-1.5 w-32 my-6"></div> */}
             </div>
-            <FeaturedCourses items={data} />
+            <FeaturedCourses items={courses} />
           </div>
           <div></div>
           <div>
@@ -75,7 +75,7 @@ export default function Home({ data, info }) {
               <h3 className="font-bold text-4xl">Мэдээ, мэдээлэл</h3>
               {/* <div className="bg-blue-500 rounded-3xl h-1.5 w-32 my-6"></div> */}
             </div>
-            <FeaturedInfo items={info} />
+            <FeaturedInfo items={news} />
           </div>
         </main>
       </Layout>
@@ -83,7 +83,7 @@ export default function Home({ data, info }) {
   );
 }
 
-export function getStaticProps() {
+export const getStaticProps = async (ctx) => {
   const placeHolder = "https://via.placeholder.com/400x230";
   const data = [
     {
@@ -135,37 +135,10 @@ export function getStaticProps() {
       buttonUrl: "#",
     },
   ];
-  const info = [
-    {
-      imageSrc: placeHolder,
-      category: "Scholarship",
-      title: "USA Scholarship",
-    },
-    {
-      imageSrc: placeHolder,
-      category: "Essay",
-      title: "USA Scholarship essay",
-    },
-    {
-      imageSrc: placeHolder,
-      category: "Interview",
-      title: "Harvard graduate interview",
-    },
-    {
-      imageSrc: placeHolder,
-      category: "Scholarship",
-      title: "UK Scholarship",
-    },
-    {
-      imageSrc: placeHolder,
-      category: "Scholarship",
-      title: "Japan Scholarship",
-    },
-    {
-      imageSrc: placeHolder,
-      category: "Interview",
-      title: "Harvard graduate interview",
-    },
-  ];
-  return { props: { data, info } };
-}
+  const coursesRequest = await axios.get(`http://localhost:5000/courses`);
+  const courses = coursesRequest.data;
+  const newsReq = await axios.get(`http://localhost:5000/news`);
+  const news = newsReq.data;
+
+  return { props: { courses, news } };
+};
