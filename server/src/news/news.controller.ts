@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { NewsService } from './news.service';
 import { CreateNewsDto } from './dto/create-news.dto';
 import { UpdateNewsDto } from './dto/update-news.dto';
@@ -12,7 +20,7 @@ export class NewsController {
     return this.newsService.createNews(createNewsDto);
   }
   @Get('total')
-  getTotalNews(){
+  getTotalNews() {
     return this.newsService.getTotalNews();
   }
   @Get()

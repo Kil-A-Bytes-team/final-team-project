@@ -1,7 +1,7 @@
 import { mdiAccount, mdiBallotOutline, mdiGithub, mdiMail, mdiUpload } from '@mdi/js'
 import { Field, Form, Formik } from 'formik'
 import Head from 'next/head'
-import { ReactElement } from 'react'
+import { ReactElement, useState } from 'react'
 import BaseButton from '../components/BaseButton'
 import BaseButtons from '../components/BaseButtons'
 import BaseDivider from '../components/BaseDivider'
@@ -15,8 +15,23 @@ import SectionMain from '../components/SectionMain'
 import SectionTitle from '../components/SectionTitle'
 import SectionTitleLineWithButton from '../components/SectionTitleLineWithButton'
 import { getPageTitle } from '../config'
+import { useEffect } from 'react'
+import axios from 'axios'
 
-const FormsPage = () => {
+const Categories = () => {
+  const [categories, setCategories] = useState([])
+  const createCategory = (e) => {
+    return
+  }
+  useEffect(() => {
+    fetchCategories()
+  }, [])
+  async function fetchCategories() {
+    const response = await axios.get('http://localhost:5000/categories')
+    const data = await response.data
+    setCategories(data)
+  }
+
   return (
     <>
       <Head>
@@ -24,55 +39,49 @@ const FormsPage = () => {
       </Head>
 
       <SectionMain>
-        <SectionTitleLineWithButton icon={mdiBallotOutline} title="Formik forms example" main>
-          <BaseButton
-            href="https://github.com/justboil/admin-one-react-tailwind"
-            target="_blank"
-            icon={mdiGithub}
-            label="Star on GitHub"
-            color="contrast"
-            roundedFull
-            small
-          />
-        </SectionTitleLineWithButton>
+        <SectionTitleLineWithButton
+          icon={mdiBallotOutline}
+          title="Add courses"
+          main
+        ></SectionTitleLineWithButton>
 
         <CardBox>
           <Formik
             initialValues={{
-              fullname: 'John Doe',
-              email: 'john.doe@example.com',
-              phone: '',
-              color: 'green',
-              textarea: 'Hello',
+              title: '',
+              price: '',
+              image: '',
+              video: '',
+              category: '',
+              textarea: '',
             }}
             onSubmit={(values) => alert(JSON.stringify(values, null, 2))}
           >
             <Form>
-              <FormField label="Grouped with icons" icons={[mdiAccount, mdiMail]}>
-                <Field name="fullname" placeholder="Full name" />
-                <Field type="email" name="email" placeholder="Email" />
+              <FormField label="Basic information" icons={[mdiAccount, mdiMail]}>
+                <Field name="title" placeholder="Course title" />
+                <Field type="number" name="price" placeholder="Price" />
               </FormField>
 
-              <FormField
-                label="With help line and labelFor"
-                labelFor="phone"
-                help="Help line comes here"
-              >
-                <Field name="phone" placeholder="Phone" id="phone" />
+              <FormField label="Urls" labelFor="phone">
+                <Field name="image" placeholder="Image Url" id="image" />
+                <Field name="video" placeholder="Video Url" id="video" />
               </FormField>
 
-              <FormField label="Dropdown" labelFor="color">
-                <Field name="color" id="color" component="select">
-                  <option value="red">Red</option>
-                  <option value="green">Green</option>
-                  <option value="blue">Blue</option>
+              <FormField label="Category" labelFor="category">
+                <Field name="category" id="category" component="select">
+                  {categories.map((category) => (
+                    <option value={category._id} key={category._id}>
+                      {category.name}
+                    </option>
+                  ))}
                 </Field>
               </FormField>
 
               <BaseDivider />
 
-              <FormField label="Textarea" hasTextareaHeight>
-                <Field name="textarea" as="textarea" placeholder="Your text here" />
+              <FormField label="Description" hasTextareaHeight>
+                <Field name="textarea" as="textarea" placeholder="Course description here" />
               </FormField>
 
               <BaseDivider />
@@ -86,9 +95,7 @@ const FormsPage = () => {
         </CardBox>
       </SectionMain>
 
-      <SectionTitle>Custom elements</SectionTitle>
-
-      <SectionMain>
+      {/* <SectionMain>
         <CardBox>
           <Formik
             initialValues={{ checkboxes: ['lorem'], switches: ['lorem'], radio: 'lorem' }}
@@ -141,13 +148,13 @@ const FormsPage = () => {
             <FormFilePicker label="Upload" color="info" icon={mdiUpload} />
           </FormField>
         </CardBox>
-      </SectionMain>
+      </SectionMain> */}
     </>
   )
 }
 
-FormsPage.getLayout = function getLayout(page: ReactElement) {
+Categories.getLayout = function getLayout(page: ReactElement) {
   return <LayoutAuthenticated>{page}</LayoutAuthenticated>
 }
 
-export default FormsPage
+export default Categories
