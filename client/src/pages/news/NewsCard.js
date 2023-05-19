@@ -2,15 +2,16 @@ import Link from 'next/link';
 
 const placeHolder = 'https://via.placeholder.com/400x230';
 
-export default function Card({ imageSrc, category, title, description, price, buttonLabel, buttonUrl }) {
+export default function Card({ news }) {
+  const { imageUrl, category, title, description, buttonLabel, buttonUrl } = news;
   const ratingChanged = (newRating) => {
     console.log(newRating);
   };
   return (
     <div className="flex justify-center ">
       <div className="max-w-sm mx-auto bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-        <Link href={'/news/details'}>
-          <img className="rounded-t-lg w-full h-auto" src={imageSrc} alt="card image" width="400" height="230" />
+        <Link href={`/news/${news._id}`}>
+          <img className="rounded-t-lg w-full h-auto" src={imageUrl} alt="card image" width="400" height="230" />
         </Link>
         <div className="p-10 ">
           <div className="flex justify-between items-center ">
@@ -24,7 +25,6 @@ export default function Card({ imageSrc, category, title, description, price, bu
           </a>
           <p className="mb-5 font-normal text-gray-700 dark:text-gray-400 line-clamp-4">{description}</p>
           <div className="flex justify-between items-center mt-5">
-            <div className="text-xl mr-auto text-blue-500  dark:text-white">{price}</div>
             <div className="self-end">
               <a
                 href={buttonUrl}

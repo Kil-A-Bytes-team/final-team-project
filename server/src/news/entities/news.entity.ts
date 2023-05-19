@@ -14,6 +14,9 @@ export class News {
 
     @Prop()
     imageUrl: string;
+    
+    @Prop()
+    text: string;
 
     createdAt: Date;
     updatedAt: Date;

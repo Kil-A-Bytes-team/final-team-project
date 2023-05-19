@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString } from "class-validator";
+import { IsNotEmpty, isString, IsString } from "class-validator";
 
 export class CreateNewsDto {
         @IsString()
@@ -12,5 +12,6 @@ export class CreateNewsDto {
     @IsString()
     imageUrl: string;
 
-
+    @IsString()
+    text: string;
 }
