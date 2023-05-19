@@ -7,25 +7,34 @@ import { Model } from 'mongoose';
 
 @Injectable()
 export class CategoriesService {
+  constructor(
+    @InjectModel(Category.name) private categoryModel: Model<Category>,
+  ) {}
 
-  constructor(@InjectModel(Category.name) private categoryModel: Model<Category>) {}
-
-   async createCategory(createCategoryDto: CreateCategoryDto): Promise<Category> {
+  async createCategory(
+    createCategoryDto: CreateCategoryDto,
+  ): Promise<Category> {
     const createdCategory = new this.categoryModel(createCategoryDto);
     return await createdCategory.save();
   }
-   async findAllCategory(): Promise<Category[]> {
+  async findAllCategory(): Promise<Category[]> {
     return await this.categoryModel.find().exec();
   }
   async findOneCategory(_id: string): Promise<Category | null> {
-    return await this.categoryModel.findById({_id})
+    return await this.categoryModel.findById({ _id });
   }
 
-  async updateCategory(_id: string, updateCategoryDto: UpdateCategoryDto):Promise<Category> {
-    return await this.categoryModel.findByIdAndUpdate({_id}, updateCategoryDto);
+  async updateCategory(
+    _id: string,
+    updateCategoryDto: UpdateCategoryDto,
+  ): Promise<Category> {
+    return await this.categoryModel.findByIdAndUpdate(
+      { _id },
+      updateCategoryDto,
+    );
   }
 
-  async removeCategory(_id: string):Promise<Category> {
-    return await this.categoryModel.findByIdAndDelete({_id});
+  async removeCategory(_id: string): Promise<Category> {
+    return await this.categoryModel.findByIdAndDelete({ _id });
   }
 }

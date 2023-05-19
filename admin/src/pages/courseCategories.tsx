@@ -18,7 +18,6 @@ import { getPageTitle } from '../config'
 import axios from 'axios'
 
 const Categories = () => {
-  const [category, setCategories] = useState()
   const createCategory = async (values) => {
     console.log(values)
     const response = await axios.post('http://localhost:5000/categories', values)
