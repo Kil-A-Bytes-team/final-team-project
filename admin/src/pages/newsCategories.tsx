@@ -17,10 +17,12 @@ import SectionTitleLineWithButton from '../components/SectionTitleLineWithButton
 import { getPageTitle } from '../config'
 import axios from 'axios'
 
-const Categories = () => {
-  const [category, setCategories] = useState()
-  const createCategory = (e) => {
-    return
+const NewsCategories = () => {
+  const createCategory = async (values) => {
+    console.log(values)
+    const response = await axios.post('http://localhost:5000/news-categories', values)
+    const data = await response.data
+    console.log(data)
   }
 
   return (
@@ -37,14 +39,10 @@ const Categories = () => {
         ></SectionTitleLineWithButton>
 
         <CardBox>
-          <Formik initialValues={{}} onSubmit={(values) => alert(JSON.stringify(values, null, 2))}>
+          <Formik initialValues={{}} onSubmit={(values) => createCategory(values)}>
             <Form>
               <FormField label="News category" icons={[mdiBookMultipleOutline]}>
-                <Field name="fullname" placeholder="Category name" />
-              </FormField>
-
-              <FormField label="Text area" hasTextareaHeight>
-                <Field name="textarea" as="textarea" placeholder="Your text here" />
+                <Field name="name" placeholder="Category name" />
               </FormField>
 
               <BaseDivider />
@@ -61,8 +59,8 @@ const Categories = () => {
   )
 }
 
-Categories.getLayout = function getLayout(page: ReactElement) {
+NewsCategories.getLayout = function getLayout(page: ReactElement) {
   return <LayoutAuthenticated>{page}</LayoutAuthenticated>
 }
 
-export default Categories
+export default NewsCategories

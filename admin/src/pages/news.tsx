@@ -1,26 +1,30 @@
-import { mdiAccount, mdiBallotOutline, mdiGithub, mdiMail, mdiUpload } from '@mdi/js'
+import { mdiAccount, mdiBallotOutline, mdiMail } from '@mdi/js'
 import { Field, Form, Formik } from 'formik'
 import Head from 'next/head'
-import { ReactElement, useState } from 'react'
+import { ReactElement, useEffect, useState } from 'react'
 import BaseButton from '../components/BaseButton'
 import BaseButtons from '../components/BaseButtons'
 import BaseDivider from '../components/BaseDivider'
 import CardBox from '../components/CardBox'
-import FormCheckRadio from '../components/FormCheckRadio'
-import FormCheckRadioGroup from '../components/FormCheckRadioGroup'
 import FormField from '../components/FormField'
-import FormFilePicker from '../components/FormFilePicker'
 import LayoutAuthenticated from '../layouts/Authenticated'
 import SectionMain from '../components/SectionMain'
-import SectionTitle from '../components/SectionTitle'
 import SectionTitleLineWithButton from '../components/SectionTitleLineWithButton'
 import { getPageTitle } from '../config'
 import axios from 'axios'
 
-const Categories = () => {
-  const [category, setCategories] = useState()
+const NewsCategories = () => {
+  const [categories, setCategories] = useState([])
   const createCategory = (e) => {
     return
+  }
+  useEffect(() => {
+    fetchCategories()
+  }, [])
+  async function fetchCategories() {
+    const response = await axios.get('http://localhost:5000/news-categories')
+    const data = await response.data
+    setCategories(data)
   }
 
   return (
@@ -40,9 +44,7 @@ const Categories = () => {
           <Formik
             initialValues={{
               title: '',
-              price: '',
               image: '',
-              video: '',
               category: '',
               textarea: '',
             }}
@@ -59,9 +61,11 @@ const Categories = () => {
 
               <FormField label="Category" labelFor="category">
                 <Field name="category" id="category" component="select">
-                  <option value="red">Category 1</option>
-                  <option value="green">Category 2</option>
-                  <option value="blue">Category 3</option>
+                  {categories.map((category) => (
+                    <option value={category._id} key={category._id}>
+                      {category.name}
+                    </option>
+                  ))}
                 </Field>
               </FormField>
 
@@ -140,8 +144,8 @@ const Categories = () => {
   )
 }
 
-Categories.getLayout = function getLayout(page: ReactElement) {
+NewsCategories.getLayout = function getLayout(page: ReactElement) {
   return <LayoutAuthenticated>{page}</LayoutAuthenticated>
 }
 
-export default Categories
+export default NewsCategories

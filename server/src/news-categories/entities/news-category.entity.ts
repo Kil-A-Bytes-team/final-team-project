@@ -2,7 +2,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { nanoid } from 'nanoid';
 
 @Schema({ timestamps: true })
-export class Category {
+export class NewsCategory {
   @Prop({ default: () => nanoid() })
   _id: string;
 
@@ -15,4 +15,4 @@ export class Category {
   createdAt: Date;
   updatedAt: Date;
 }
-export const CategorySchema = SchemaFactory.createForClass(Category);
+export const NewsCategorySchema = SchemaFactory.createForClass(NewsCategory);
