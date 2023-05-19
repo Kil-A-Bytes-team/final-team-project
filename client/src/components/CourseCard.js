@@ -3,15 +3,7 @@ import ReactStars from "react-rating-stars-component";
 const placeHolder = "https://via.placeholder.com/400x230";
 
 export default function Card({ course }) {
-  const {
-    imageSrc,
-    category,
-    name,
-    description,
-    price,
-    buttonLabel,
-    buttonUrl,
-  } = course;
+  const { imageUrl, category, name, description, price, rating } = course;
   const ratingChanged = (newRating) => {
     console.log(newRating);
   };
@@ -21,7 +13,7 @@ export default function Card({ course }) {
         <a href={`courses/${course._id}`}>
           <img
             className="rounded-t-lg w-full h-auto"
-            src={placeHolder}
+            src={imageUrl}
             alt="card image"
             width="400"
             height="230"
@@ -36,7 +28,7 @@ export default function Card({ course }) {
               {category}
             </a>
             <ReactStars
-              value={5}
+              value={rating}
               count={5}
               edit={false}
               size={18}
@@ -59,10 +51,10 @@ export default function Card({ course }) {
             </div>
             <div className="self-end">
               <a
-                href={buttonUrl}
+                href={`courses/${course._id}`}
                 className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >
-                {buttonLabel}
+                Add to card
                 <svg
                   aria-hidden="true"
                   className="w-4 h-4 ml-2 -mr-1"
