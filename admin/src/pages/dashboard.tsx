@@ -97,9 +97,10 @@ const Dashboard = () => {
           </div>
         </div>
 
+        {/* 
         <div className="my-6">
           <SectionBannerStarOnGitHub />
-        </div>
+        </div> */}
 
         <SectionTitleLineWithButton icon={mdiChartPie} title="Trends overview">
           <BaseButton icon={mdiReload} color="whiteDark" onClick={fillChartData} />
@@ -109,9 +110,9 @@ const Dashboard = () => {
 
         <SectionTitleLineWithButton icon={mdiAccountMultiple} title="Clients" />
 
-        <NotificationBar color="info" icon={mdiMonitorCellphone}>
+        {/* <NotificationBar color="info" icon={mdiMonitorCellphone}>
           <b>Responsive table.</b> Collapses on mobile
-        </NotificationBar>
+        </NotificationBar> */}
 
         <CardBox hasTable>
           <TableSampleClients />
