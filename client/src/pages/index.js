@@ -11,6 +11,7 @@ import { SwiperSlide } from "swiper/react";
 import FeaturedCourses from "@/components/FeaturedCourses";
 import FeaturedInfo from "@/components/FeaturedInfo";
 import { Layout } from "./layout";
+import Decoration from "../components/Decoration";
 // import { Banner } from "@/components/Banner";
 
 export default function Home({ data, info }) {
@@ -64,6 +65,10 @@ export default function Home({ data, info }) {
               {/* <div className="bg-blue-500 rounded-3xl h-1.5 w-32 my-6"></div> */}
             </div>
             <FeaturedCourses items={data} />
+          </div>
+          <div></div>
+          <div>
+            <Decoration />
           </div>
           <div className="container">
             <div className="flex flex-col items-center">
