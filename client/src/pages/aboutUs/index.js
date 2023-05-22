@@ -9,6 +9,7 @@ export default function aboutUs() {
   // ];
   // // const { us } = props;
   // // console.log('us', us);
+  console.log('Hi');
   return (
     <Layout>
       <AboutUs />;
