@@ -35,7 +35,10 @@ export default ({ items }) => {
       // pagination={{ clickable: true }}
       modules={[Navigation, Pagination]}
     >
-      {items?.map((slide, i) => {
+      {items.map((slide, i) => {
+        // console.log(slide.category);
+        // const categoryItem = slide.category;
+        // console.log(`categoryItem is ${categoryItem}`);
         return (
           <SwiperSlide key={i}>
             <div className=" bg-white border border-gray-200 rounded-lg shadow dark:bg-dark dark:border-y-gray-400">
@@ -55,7 +58,7 @@ export default ({ items }) => {
                     href="#"
                     className=" text-sm text-blue-500 hover:text-black focus:ring-4 focus:outline-none dark:text-white dark:hover:text-gray-300"
                   >
-                    {slide.category}
+                    {slide.category?.name}
                   </a>
                   <ReactStars
                     value={5}

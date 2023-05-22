@@ -17,7 +17,7 @@ export class Course {
   @Prop({type: Types.ObjectId, ref: 'Category'})
   category: {
     name:string
-  }
+}
 
   @Prop()
   description: string;

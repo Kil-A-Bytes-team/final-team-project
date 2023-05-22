@@ -3,10 +3,12 @@ import ReactStars from "react-rating-stars-component";
 const placeHolder = "https://via.placeholder.com/400x230";
 
 export default function Card({ course }) {
+  // const data = course.map((cour) => cour.category);
   const { imageUrl, category, name, description, price, rating } = course;
   const ratingChanged = (newRating) => {
     console.log(newRating);
   };
+  console.log(course.category?.name);
   return (
     <div className="flex justify-center ">
       <div className="max-w-sm mx-auto bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
@@ -25,7 +27,7 @@ export default function Card({ course }) {
               href={`courses/${course._id}`}
               className="text-blue-500 hover:text-black focus:ring-4 focus:outline-none dark:text-white dark:hover:text-gray-300"
             >
-              {category}
+              {course.category?.name}
             </a>
             <ReactStars
               value={rating}

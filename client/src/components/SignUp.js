@@ -11,18 +11,18 @@ export const SignUp = () => {
   const [password, setPassword] = useState("");
   const [repassword, setRepassword] = useState("");
   const router = useRouter();
-  const submitSignUp = () => {
-    const body = { email, password, repassword };
-    axios
-      .post("http://localhost:5000/signup", body)
-      .then(() => {
-        toast.success("Бүртгэл амжилттай");
-        router.push("/signin");
-      })
-      .catch((e) => {
-        toast.error("Алдаа гарлаа");
-      });
-  };
+  // const submitSignUp = () => {
+  //   const body = { email, password, repassword };
+  //   axios
+  //     .post("http://localhost:5000/signup", body)
+  //     .then(() => {
+  //       toast.success("Бүртгэл амжилттай");
+  //       router.push("/signin");
+  //     })
+  //     .catch((e) => {
+  //       toast.error("Алдаа гарлаа");
+  //     });
+  // };
   const handleCheckEmail = async () => {
     try {
       const body = { email, password, repassword };
