@@ -1,19 +1,17 @@
 //scroll wrap
 import React from "react";
 import CourseLayout from "@/components/CourseLayout";
+import axios from "axios";
 
-function Lesson() {
+function Lesson(props) {
+  const { course } = props;
   return (
     <CourseLayout>
       <div className="w-full max-w-5xl  mx-auto">
         <div className="p-8">
           <div className="pb-[40px]">
-            <h1 className="font-semibold text-[36px] mb-4">
-              Python programming language
-            </h1>
-            <span className="text-[20px]">
-              You can learn the basic of python in this lesson
-            </span>
+            <h1 className="font-semibold text-[36px] mb-4">{course.name}</h1>
+            <span className="text-[20px]">{course.description}</span>
           </div>
           <div className="mb-10 aspect-video relative">
             <iframe
@@ -42,5 +40,17 @@ function Lesson() {
     </CourseLayout>
   );
 }
+export const getServerSideProps = async (ctx) => {
+  const { _id } = ctx.params;
+  const coursesRequest = await axios.get(
+    `process.env.NEXT_PUBLIC_API_URL/courses/${_id}`
+  );
+  const course = coursesRequest.data;
+  return {
+    props: {
+      course,
+    },
+  };
+};
 
 export default Lesson;

@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "@/styles/globals.css";
 import { Montserrat } from "next/font/google";
 import Head from "next/head";
+import { RecoilRoot } from "recoil";
 const montserrat = Montserrat({
   subsets: ["latin"],
   variable: "--font-mont",
@@ -16,7 +17,7 @@ const montserrat = Montserrat({
 
 export default function App({ Component, pageProps }) {
   return (
-    <>
+    <RecoilRoot>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -25,6 +26,6 @@ export default function App({ Component, pageProps }) {
         <Component {...pageProps} />
         <ToastContainer position="bottom-right" />
       </main>
-    </>
+    </RecoilRoot>
   );
 }

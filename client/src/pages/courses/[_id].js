@@ -5,31 +5,19 @@ import { FaGraduationCap } from "react-icons/fa";
 import { BiTimeFive } from "react-icons/bi";
 import { MdFlag, MdLanguage, MdMenuBook, MdOutlineQuiz } from "react-icons/md";
 import { toast } from "react-toastify";
-import { Layout } from "../layout";
+import { Layout } from "../../layouts/layout";
+import axios from "axios";
 
 const placeHolder = "https://via.placeholder.com/400x230";
 
-const Overview = () => {
-  return <div>description</div>;
-};
-const Curriculum = () => {
-  return <div>description 1</div>;
-};
-const Instructor = () => {
-  return <div>description 2</div>;
-};
-const Reviews = () => {
-  return <div>description 3</div>;
-};
-
-const ProductView = ({ courses }) => {
+const ProductView = (props) => {
   const [quantity, setQuantity] = useState(1);
   const [tabIndex, setTabIndex] = useState(0);
 
   const handleActive = () => {};
   //   const { addToBasket } = useBasket();
-  const product = courses;
-  console.log(product);
+  const { course } = props;
+  console.log("course:", course);
   const updateProductCount = () => {
     if (count < 0 && quantity === 1) {
       toast.warning("1 ээс бага бараа сагслах боломжгүй");
@@ -48,18 +36,26 @@ const ProductView = ({ courses }) => {
     { title: "Instructor", id: 2 },
     { title: "Reviews", id: 3 },
   ];
+  const Overview = () => {
+    return <div>{course.description}</div>;
+  };
+  const Curriculum = () => {
+    return <div>description 1</div>;
+  };
+  const Instructor = () => {
+    return <div>description 2</div>;
+  };
+  const Reviews = () => {
+    return <div>description 3</div>;
+  };
   return (
     <Layout>
       <div className="px-32">
         <div className="flex justify-between mb-20">
           <div className=" w-2/3">
-            <div className="text-5xl font-semibold pb-5">1.1 title</div>
+            <div className="text-5xl font-semibold pb-5">1.1 {course.name}</div>
             <div className="text-lg text-stone-700 pb-5">
-              1.2 description Open the door to sought-after technology careers
-              with a world-class online Bachelor of Science (BSc) in Computer
-              Science degree from the University of London. You’ll master
-              in-demand computing skills, solve complex problems, and hone your
-              innovation and creativity.
+              1.2 {course.description}
             </div>
             <div>
               <ul className="flex gap-x-28 gap-y-5 flex-wrap">
@@ -92,10 +88,10 @@ const ProductView = ({ courses }) => {
             </div>
           </div>
           <div className="mt-20 mr-40 flex flex-col gap-y-10 items-center">
-            <span className=" font-semibold">Price $$$</span>
+            <span className=" font-semibold">{course.price} $$$</span>
             <Link
               className="flex shadow-xl items-center bg-dark dark:bg-light dark:text-dark text-light p-2.5 px-6 rounded-lg text-lg font-semibold hover:bg-light dark:hover:bg-dark dark:hover:text-light hover:text-dark border-2 border-solid border-transparent dark:hover:border-light dark:border-dark hover:border-dark"
-              href="#"
+              href={`lessons/${course._id}`}
             >
               Buy
             </Link>
@@ -103,20 +99,6 @@ const ProductView = ({ courses }) => {
         </div>
         <div>
           <div>
-            {/* <ul className="flex gap-8">
-            <li>
-              <button onClick={() => setTabIndex(0)}>Overview</button>
-            </li>
-            <li>
-              <button onClick={() => setTabIndex(1)}>Curriculum</button>
-            </li>
-            <li>
-              <button onClick={() => setTabIndex(2)}>Instructor</button>
-            </li>
-            <li>
-              <button onClick={() => setTabIndex(3)}>Reviews</button>
-            </li>
-          </ul> */}
             <ul className="flex gap-8 h-10">
               {tabData.map((singleTabData) => (
                 <li>
@@ -151,83 +133,15 @@ const ProductView = ({ courses }) => {
   );
 };
 
-export const getServerSideProps = async () => {
-  const productsRequest = [
-    {
-      id: 1,
-      imageSrc: placeHolder,
-      category: "Programming",
-      title: "Digital Marketing Masterclass",
-      description:
-        "Open the door to sought-after technology careers with a world-class online Bachelor of Science (BSc) in Computer Science degree from the University of London. You’ll master in-demand computing skills, solve complex problems, and hone your innovation and creativity.",
-      price: "Free",
-      buttonLabel: "Add to cart",
-      buttonUrl: "#",
-    },
-    {
-      id: 2,
-      imageSrc: placeHolder,
-      category: "Finance",
-      title: "The Basic Of Financial Analyst Course",
-      description:
-        "Open the door to sought-after technology careers with a world-class online Bachelor of Science (BSc) in Computer Science degree from the University of London. You’ll master in-demand computing skills, solve complex problems, and hone your innovation and creativity.",
-      price: "$100.00",
-      buttonLabel: "Add to cart",
-      buttonUrl: "#",
-    },
-    {
-      id: 3,
-      imageSrc: placeHolder,
-      category: "Finance",
-      title: "Stock Trading Strategy",
-      description:
-        "Open the door to sought-after technology careers with a world-class online Bachelor of Science (BSc) in Computer Science degree from the University of London. You’ll master in-demand computing skills, solve complex problems, and hone your innovation and creativity.",
-      price: "$118.00",
-      buttonLabel: "Add to cart",
-      buttonUrl: "#",
-    },
-    {
-      id: 4,
-      imageSrc: placeHolder,
-      category: "Programming",
-      title: "Stock Trading Strategy Course",
-      description:
-        "Open the door to sought-after technology careers with a world-class online Bachelor of Science (BSc) in Computer Science degree from the University of London. You’ll master in-demand computing skills, solve complex problems, and hone your innovation and creativity.",
-      price: "$118.00",
-      buttonLabel: "Add to cart",
-      buttonUrl: "#",
-    },
-    {
-      id: 5,
-      imageSrc: placeHolder,
-      category: "Finance",
-      title: "The Basic Of Financial Analyst Course",
-      description:
-        "Open the door to sought-after technology careers with a world-class online Bachelor of Science (BSc) in Computer Science degree from the University of London. You’ll master in-demand computing skills, solve complex problems, and hone your innovation and creativity.",
-      price: "$100.00",
-      buttonLabel: "Add to cart",
-      buttonUrl: "#",
-    },
-    {
-      id: 6,
-      imageSrc: placeHolder,
-      category: "Finance",
-      title: "The Basic Of Financial Analyst Course",
-      description:
-        "Open the door to sought-after technology careers with a world-class online Bachelor of Science (BSc) in Computer Science degree from the University of London. You’ll master in-demand computing skills, solve complex problems, and hone your innovation and creativity.",
-      price: "$100.00",
-      buttonLabel: "Add to cart",
-      buttonUrl: "#",
-    },
-  ];
-  //   const { _id } = ctx.params;
-  //   const productsRequest = await axios.get(
-  //     `http://localhost:3005/products/${_id}`
-  //   );
-  const courses = productsRequest.filter((product) => product.id);
+export const getServerSideProps = async (ctx) => {
+  const { _id } = ctx.params;
+  const coursesRequest = await axios.get(
+    `process.env.NEXT_PUBLIC_API_URLcourses/${_id}`
+  );
+  const course = coursesRequest.data;
   return {
     props: {
-      courses,
+      course,
     },
   };
 };

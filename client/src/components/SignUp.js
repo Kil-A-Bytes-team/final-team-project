@@ -11,11 +11,10 @@ export const SignUp = () => {
   const [password, setPassword] = useState("");
   const [repassword, setRepassword] = useState("");
   const router = useRouter();
-
   const submitSignUp = () => {
     const body = { email, password, repassword };
     axios
-      .post("http://localhost:5000/signup", body)
+      .post("process.env.NEXT_PUBLIC_API_URL/signup", body)
       .then(() => {
         toast.success("Бүртгэл амжилттай");
         router.push("/signin");
@@ -24,9 +23,41 @@ export const SignUp = () => {
         toast.error("Алдаа гарлаа");
       });
   };
+  const handleCheckEmail = async () => {
+    try {
+      const body = { email, password, repassword };
+      await axios
+        .post("process.env.NEXT_PUBLIC_API_URL/otp/signup", body)
+        .then((res) => {
+          const otp = window.prompt("Your OTP?");
+          axios
+            .post("process.env.NEXT_PUBLIC_API_URL/otp/signup/verify", {
+              email,
+              otp,
+            })
+            .then((res) => {
+              axios
+                .post("process.env.NEXT_PUBLIC_API_URL/signup", body)
+                .then(() => {
+                  toast.success("Бүртгэл амжилттай");
+                  router.push("/signin");
+                })
+                .catch((e) => {
+                  toast.error("Алдаа гарлаа");
+                });
+            })
+            .catch((e) => {
+              toast.error("OTP is invalid");
+            });
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
-    <section className="bg-white dark:bg-dark min-h-screen">
-      <div className="flex flex-col items-center justify-center px-6 mx-auto md:h-screen lg:py-2 sm:mx-auto">
+    <section className="bg-white dark:bg-dark min-h-[70vh] my-auto">
+      <div className="flex flex-col items-center justify-center px-6 mx-auto lg:py-2 sm:mx-auto">
         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
@@ -36,7 +67,7 @@ export const SignUp = () => {
               className="space-y-4 md:space-y-6"
               onSubmit={(e) => {
                 e.preventDefault();
-                submitSignUp();
+                handleCheckEmail();
               }}
             >
               <InputGroup

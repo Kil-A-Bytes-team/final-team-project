@@ -35,10 +35,10 @@ export default ({ items }) => {
       //   pagination={{ clickable: true }}
       modules={[Navigation, Pagination]}
     >
-      {items?.map((slide) => {
+      {items?.map((slide, i) => {
         return (
-          <SwiperSlide>
-            <div className=" bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+          <SwiperSlide key={i}>
+            <div className=" bg-white border border-gray-200 rounded-lg shadow dark:bg-dark dark:border-gray-400">
               <a
                 href="#"
                 className="aspect-video block relative overflow-hidden"
@@ -69,9 +69,9 @@ export default ({ items }) => {
           </SwiperSlide>
         );
       })}
-      {items?.map((slide) => {
+      {items?.map((slide, i) => {
         return (
-          <SwiperSlide>
+          <SwiperSlide key={i}>
             <div className=" bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
               <a
                 href="#"
@@ -79,7 +79,7 @@ export default ({ items }) => {
               >
                 <img
                   className="rounded-t-lg absolute w-full h-full object-cover hover:opacity-75 hover:scale-110 transition duration-500 "
-                  src={placeHolder}
+                  src={slide.imageUrl}
                   alt="product image"
                 />
               </a>

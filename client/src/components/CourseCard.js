@@ -2,26 +2,20 @@ import ReactStars from "react-rating-stars-component";
 
 const placeHolder = "https://via.placeholder.com/400x230";
 
-export default function Card({
-  id,
-  imageSrc,
-  category,
-  title,
-  description,
-  price,
-  buttonLabel,
-  buttonUrl,
-}) {
+export default function Card({ course }) {
+  // const data = course.map((cour) => cour.category);
+  const { imageUrl, category, name, description, price, rating } = course;
   const ratingChanged = (newRating) => {
     console.log(newRating);
   };
+  console.log(course.category?.name);
   return (
     <div className="flex justify-center ">
       <div className="max-w-sm mx-auto bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-        <a href={`courses/${id}`}>
+        <a href={`courses/${course._id}`}>
           <img
             className="rounded-t-lg w-full h-auto"
-            src={placeHolder}
+            src={imageUrl}
             alt="card image"
             width="400"
             height="230"
@@ -30,13 +24,13 @@ export default function Card({
         <div className="p-10 ">
           <div className="flex justify-between items-center ">
             <a
-              href={`courses/${id}`}
+              href={`courses/${course._id}`}
               className="text-blue-500 hover:text-black focus:ring-4 focus:outline-none dark:text-white dark:hover:text-gray-300"
             >
-              {category}
+              {course.category?.name}
             </a>
             <ReactStars
-              value={5}
+              value={rating}
               count={5}
               edit={false}
               size={18}
@@ -44,9 +38,9 @@ export default function Card({
             />
           </div>
 
-          <a href={`courses/${id}`}>
+          <a href={`courses/${course._id}`}>
             <h5 className="mt-3 mb-5 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              {title}
+              {name}
             </h5>
           </a>
           <p className="mb-5 font-normal text-gray-700 dark:text-gray-400 line-clamp-4">
@@ -59,10 +53,10 @@ export default function Card({
             </div>
             <div className="self-end">
               <a
-                href={buttonUrl}
+                href={`courses/${course._id}`}
                 className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >
-                {buttonLabel}
+                Add to cart
                 <svg
                   aria-hidden="true"
                   className="w-4 h-4 ml-2 -mr-1"
