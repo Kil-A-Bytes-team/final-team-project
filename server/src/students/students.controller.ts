@@ -25,8 +25,8 @@ export class StudentsController {
     return this.studentsService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') _id: string) {
+  @Get(':_id')
+  findOne(@Param('_id') _id: string) {
     return this.studentsService.findOne(_id);
   }
 
@@ -40,7 +40,7 @@ export class StudentsController {
   }
 
   @Delete(':_id')
-  remove(@Param('id') _id: string) {
+  remove(@Param('_id') _id: string) {
     return this.studentsService.removeStudent(_id);
   }
 }

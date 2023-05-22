@@ -12,7 +12,7 @@ export const Layout = ({ children }) => {
   useEffect(() => {
     if (!currentUser) {
       axios
-        .get("http://localhost:3000/currentUser", {
+        .get("http://localhost:5000/currentUser", {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("token"),
           },
@@ -29,7 +29,7 @@ export const Layout = ({ children }) => {
   useEffect(() => {
     if (currentUser) {
       axios
-        .get("http://localhost:3000/baskets/main", {
+        .get("http://localhost:5000/baskets/main", {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("token"),
           },

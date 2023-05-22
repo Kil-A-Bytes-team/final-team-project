@@ -1,10 +1,10 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, Get } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { SignupDto } from './dto/signup.dto';
 import { SigninDto } from './dto/signin.dto';
 import { CreateOTPDto } from './dto/createOtp.dto';
 import { CheckOTPDto } from './dto/checkOtp.dto';
-
+import { CurrentUser } from './current-user.decorator';
 @Controller()
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
@@ -13,6 +13,11 @@ export class AuthController {
   // create(@Body() createAuthDto: CreateAuthDto) {
   //   return this.authService.create(createAuthDto);
   // }
+  @Get('/currentUser')
+  currentUser(@CurrentUser() currentUser) {
+    console.log(`current user is : ${currentUser}`);
+    return currentUser;
+  }
 
   @Post('/signup')
   signup(@Body() signupDto: SignupDto) {

@@ -13,6 +13,7 @@ import FeaturedInfo from "@/components/FeaturedInfo";
 import { Layout } from "./layout";
 import axios from "axios";
 // import { Banner } from "@/components/Banner";
+import  Decoration from "../components/Decoration"
 
 export default function Home({ courses, news }) {
   const placeHolder = "https://via.placeholder.com/400x600";

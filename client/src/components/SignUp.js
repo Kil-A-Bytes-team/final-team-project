@@ -10,14 +10,9 @@ export const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repassword, setRepassword] = useState("");
-  const router = useRouter();
-
+  const router = useRouter();  
   const submitSignUp = () => {
     const body = { email, password, repassword };
-
-    // tanii mailruu neg udaagiin code yvuulsaan mail ee batalgaajuulj yg odoo ter code iig end bich!!!
-
-    // if(otp === oruulsan code )
     axios
       .post("http://localhost:5000/signup", body)
       .then(() => {
@@ -28,6 +23,28 @@ export const SignUp = () => {
         toast.error("Алдаа гарлаа");
       });
   };
+  const handleCheckEmail = async ()=>{
+    const body = { email, password, repassword };
+     await axios.post("http://localhost:5000/otp/signup", body).then((res) => {
+      const otp = window.prompt("Your OTP?");
+      axios
+        .post("http://localhost:5000/otp/signup/verify", { email, otp , password , repassword})
+        .then((res) => {
+          axios
+      .post("http://localhost:5000/signup", body)
+      .then(() => {
+        toast.success("Бүртгэл амжилттай");
+        router.push("/signin");
+      })
+      .catch((e) => {
+        toast.error("Алдаа гарлаа");
+      });
+        }).catch((e)=>{
+          toast.error("OTP is invalid")
+        })
+  })}
+
+
   return (
     <section className="bg-white dark:bg-dark min-h-[70vh] my-auto">
       <div className="flex flex-col items-center justify-center px-6 mx-auto lg:py-2 sm:mx-auto">
@@ -40,7 +57,7 @@ export const SignUp = () => {
               className="space-y-4 md:space-y-6"
               onSubmit={(e) => {
                 e.preventDefault();
-                submitSignUp();
+                handleCheckEmail();
               }}
             >
               <InputGroup
