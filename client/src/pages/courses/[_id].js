@@ -5,7 +5,7 @@ import { FaGraduationCap } from "react-icons/fa";
 import { BiTimeFive } from "react-icons/bi";
 import { MdFlag, MdLanguage, MdMenuBook, MdOutlineQuiz } from "react-icons/md";
 import { toast } from "react-toastify";
-import { Layout } from "../layout";
+import { Layout } from "../../layouts/layout";
 import axios from "axios";
 
 const placeHolder = "https://via.placeholder.com/400x230";

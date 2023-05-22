@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Layout } from "../layout";
+import { Layout } from "../../layouts/layout";
 
 export default function Index(props) {
   const { news } = props;

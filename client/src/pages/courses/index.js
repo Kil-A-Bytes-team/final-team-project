@@ -1,7 +1,7 @@
 import Card from "@/components/CourseCard";
 import Categories from "@/components/ui/Combobox";
 import Sorting from "@/components/ui/Listbox";
-import { Layout } from "../layout";
+import { Layout } from "../../layouts/layout";
 import axios from "axios";
 
 <html>

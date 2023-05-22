@@ -1,5 +1,5 @@
-import { Layout } from "@/pages/layout";
 import Link from "next/link";
+import { Layout } from "../../../layouts/layout";
 
 export default function Order() {
   return (

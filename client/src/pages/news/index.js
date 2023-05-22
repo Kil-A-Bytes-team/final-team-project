@@ -1,7 +1,7 @@
 import Sorting from "@/components/ui/Listbox";
 import Categories from "./Categories";
 import NewsCard from "./NewsCard";
-import { Layout } from "../layout";
+import { Layout } from "../../layouts/layout";
 import axios from "axios";
 
 <html>

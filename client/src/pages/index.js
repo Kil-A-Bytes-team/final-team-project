@@ -10,7 +10,7 @@ import Swiper from "swiper";
 import { SwiperSlide } from "swiper/react";
 import FeaturedCourses from "@/components/FeaturedCourses";
 import FeaturedInfo from "@/components/FeaturedInfo";
-import { Layout } from "./layout";
+import { Layout } from "../layouts/layout";
 import axios from "axios";
 // import { Banner } from "@/components/Banner";
 import Decoration from "../components/Decoration";
