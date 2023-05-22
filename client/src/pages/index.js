@@ -13,7 +13,7 @@ import FeaturedInfo from "@/components/FeaturedInfo";
 import { Layout } from "./layout";
 import axios from "axios";
 // import { Banner } from "@/components/Banner";
-import  Decoration from "../components/Decoration"
+import Decoration from "../components/Decoration";
 
 export default function Home({ courses, news }) {
   const placeHolder = "https://via.placeholder.com/400x600";
@@ -60,7 +60,11 @@ export default function Home({ courses, news }) {
             <Banner title={"Нийт багш нар"} count={78} />
           </div>
 
-          <div className="container">
+          <div>
+            <Decoration />
+          </div>
+
+          <div className="container mt-4">
             <div className="flex flex-col items-center">
               <h3 className="font-bold text-4xl">Хичээлүүд</h3>
               {/* <div className="bg-blue-500 rounded-3xl h-1.5 w-32 my-6"></div> */}
@@ -68,9 +72,7 @@ export default function Home({ courses, news }) {
             <FeaturedCourses items={courses} />
           </div>
           <div></div>
-          <div>
-            <Decoration />
-          </div>
+
           <div className="container">
             <div className="flex flex-col items-center">
               <h3 className="font-bold text-4xl">Мэдээ, мэдээлэл</h3>
