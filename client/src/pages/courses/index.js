@@ -1,7 +1,7 @@
 import Card from "@/components/CourseCard";
 import Categories from "@/components/ui/Combobox";
 import Sorting from "@/components/ui/Listbox";
-import { Layout } from "../layout";
+import { Layout } from "../../layouts/layout";
 import axios from "axios";
 
 <html>
@@ -107,7 +107,9 @@ export default function Courses(props) {
 // }
 
 export const getServerSideProps = async (ctx) => {
-  const coursesRequest = await axios.get(`http://localhost:5000/courses`);
+  const coursesRequest = await axios.get(
+    `process.env.NEXT_PUBLIC_API_URL/courses`
+  );
   const courses = coursesRequest.data;
   return {
     props: {

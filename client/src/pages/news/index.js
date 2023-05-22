@@ -1,7 +1,7 @@
 import Sorting from "@/components/ui/Listbox";
 import Categories from "./Categories";
 import NewsCard from "./NewsCard";
-import { Layout } from "../layout";
+import { Layout } from "../../layouts/layout";
 import axios from "axios";
 
 <html>
@@ -35,7 +35,7 @@ export default function Courses(props) {
 }
 
 export const getStaticProps = async () => {
-  const newsRequest = await axios.get(`http://localhost:5000/news`);
+  const newsRequest = await axios.get(`process.env.NEXT_PUBLIC_API_URL/news`);
   const news = newsRequest.data;
   return {
     props: {

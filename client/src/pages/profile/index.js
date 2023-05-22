@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { Layout } from "../layout";
 import { useCurrentUser } from "../../hooks/useCurrentUser";
+import { Layout } from "../../layouts/layout";
 
 const AllDiv = () => {
   return (

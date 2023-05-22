@@ -1,5 +1,5 @@
-import axios from 'axios';
-import { Layout } from '../layout';
+import axios from "axios";
+import { Layout } from "../../layouts/layout";
 
 export default function Index(props) {
   const { news } = props;
@@ -28,7 +28,9 @@ export default function Index(props) {
 
 export const getServerSideProps = async (ctx) => {
   const { _id } = ctx.params;
-  const newsRequest = await axios.get(`http://localhost:5000/news/${_id}`);
+  const newsRequest = await axios.get(
+    `process.env.NEXT_PUBLIC_API_URL/news/${_id}`
+  );
   const news = newsRequest.data;
   return {
     props: {

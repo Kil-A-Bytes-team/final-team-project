@@ -13,7 +13,7 @@ export const SignIn = () => {
 
   const submitSignIn = () => {
     const body = { email, password };
-    axios.post("http://localhost:5000/signin", body).then((res) => {
+    axios.post("process.env.NEXT_PUBLIC_API_URL/signin", body).then((res) => {
       console.log(res.status);
       if (res.status === status) {
         localStorage.setItem("token", res.data);

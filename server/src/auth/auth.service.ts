@@ -49,8 +49,12 @@ export class AuthService {
     const { email } = createOTPDto;
     const tdo: Otp = await this.otpmodel.create({ email });
     console.log(`tdo : ${tdo}`);
-    
-    sendEmail(email, 'Your one time passport', `<p>Your one time password is: <b>${tdo.token}</b></p>`)
+
+    sendEmail(
+      email,
+      'Your one time password',
+      `<p>Your one time password is: <b>${tdo.token}</b></p>`,
+    )
       .then(() => {
         Logger.log(`OTP sent to: ${email}`);
         return true;
@@ -66,14 +70,15 @@ export class AuthService {
     const otp = await this.otpmodel.findOne({ token });
 
     if (!otp) throw new HttpException('OTP not found', HttpStatus.BAD_REQUEST);
-    if (email !== otp.email) throw new HttpException('Email not match', HttpStatus.BAD_REQUEST);
+    if (email !== otp.email)
+      throw new HttpException('Email not match', HttpStatus.BAD_REQUEST);
 
     const isExpired = this.isOTPExpired(otp);
     if (isExpired) {
       this.removeOTP(token);
       throw new HttpException('OTP is expired', HttpStatus.BAD_REQUEST);
     }
-    return otp
+    return otp;
     // let user = await this.studentsService.findOneByEmail(email);
 
     // if (!user) user = await this.studentsService.create({ email });

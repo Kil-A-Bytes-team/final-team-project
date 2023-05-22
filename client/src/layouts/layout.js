@@ -13,7 +13,7 @@ export const Layout = ({ children }) => {
   useEffect(() => {
     if (!currentUser) {
       axios
-        .get("http://localhost:5000/currentUser", {
+        .get("process.env.NEXT_PUBLIC_API_URL/currentUser", {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("token"),
           },
@@ -31,7 +31,7 @@ export const Layout = ({ children }) => {
   useEffect(() => {
     if (currentUser) {
       axios
-        .get("http://localhost:5000/baskets/main", {
+        .get("process.env.NEXT_PUBLIC_API_URL/baskets/main", {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("token"),
           },
