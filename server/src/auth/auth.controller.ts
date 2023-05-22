@@ -5,6 +5,7 @@ import { SigninDto } from './dto/signin.dto';
 import { CreateOTPDto } from './dto/createOtp.dto';
 import { CheckOTPDto } from './dto/checkOtp.dto';
 import { CurrentUser } from './current-user.decorator';
+import { Secured } from './secured.decorator';
 @Controller()
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
@@ -13,6 +14,7 @@ export class AuthController {
   // create(@Body() createAuthDto: CreateAuthDto) {
   //   return this.authService.create(createAuthDto);
   // }
+  @Secured()
   @Get('/currentUser')
   currentUser(@CurrentUser() currentUser) {
     console.log(`current user is : ${currentUser}`);

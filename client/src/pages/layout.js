@@ -3,10 +3,11 @@ import { Header } from "@/components/Header";
 import { useCurrentUser } from "../hooks/useCurrentUser";
 import { useEffect } from "react";
 import axios from "axios";
+import { useBasket } from "../hooks/useBasket";
 
 export const Layout = ({ children }) => {
   const { currentUser, setCurrentUser } = useCurrentUser();
-  // const { basket, setBasket } = useBasket();
+  const { basket, setBasket } = useBasket();
   // const loading = useLoading();
 
   useEffect(() => {
@@ -18,6 +19,7 @@ export const Layout = ({ children }) => {
           },
         })
         .then((res) => {
+          console.log(res);
           setCurrentUser(res.data);
         })
         .catch((error) => {

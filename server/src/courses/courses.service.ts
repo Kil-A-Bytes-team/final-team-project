@@ -4,10 +4,12 @@ import { UpdateCourseDto } from './dto/update-course.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Course } from './entities/course.entity';
+import { Category } from 'src/categories/entities/category.entity';
 
 @Injectable()
 export class CoursesService {
-   constructor(@InjectModel(Course.name) private courseModel: Model<Course>) {}
+   constructor(@InjectModel(Course.name) private courseModel: Model<Course>,
+   @InjectModel(Category.name) private categoryModel: Model<Category>,) {}
 
    async getTotalCourse(){
     return await this.courseModel.count();
@@ -18,7 +20,7 @@ export class CoursesService {
     return await createdCourse.save();
   }
    async findAllCourse(): Promise<Course[]> {
-    return await this.courseModel.find().exec();
+    return await this.courseModel.find().populate("category").exec();
   }
   async findOneCourse(_id: string): Promise<Course | null> {
     return await this.courseModel.findById({_id})

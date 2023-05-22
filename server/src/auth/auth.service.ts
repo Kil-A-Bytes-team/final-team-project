@@ -31,7 +31,7 @@ export class AuthService {
         HttpStatus.BAD_REQUEST,
       );
     const password = bcrypt.hashSync(signupDto.password, 10);
-    return await this.studentsService.create({ ...signupDto, password });
+    return await this.studentsService.create({ email, password });
   }
   async signin(signinDto: SigninDto) {
     const { email, password } = signinDto;
@@ -73,13 +73,13 @@ export class AuthService {
       this.removeOTP(token);
       throw new HttpException('OTP is expired', HttpStatus.BAD_REQUEST);
     }
+    return otp
+    // let user = await this.studentsService.findOneByEmail(email);
 
-    let user = await this.studentsService.findOneByEmail(email);
-
-    if (!user) user = await this.studentsService.create({ email });
-    this.removeOTP(token);
-    const payload = { sub: user };
-    return this.jwtService.sign(payload);
+    // if (!user) user = await this.studentsService.create({ email });
+    // this.removeOTP(token);
+    // const payload = { sub: user };
+    // return this.jwtService.sign(payload);
   }
 
   isOTPExpired(otp: Otp): boolean {
