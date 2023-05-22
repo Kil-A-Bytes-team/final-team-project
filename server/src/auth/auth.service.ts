@@ -48,6 +48,8 @@ export class AuthService {
   async createOTP(createOTPDto: CreateOTPDto) {
     const { email } = createOTPDto;
     const tdo: Otp = await this.otpmodel.create({ email });
+    console.log(`tdo : ${tdo}`);
+    
     sendEmail(email, 'Your one time passport', `<p>Your one time password is: <b>${tdo.token}</b></p>`)
       .then(() => {
         Logger.log(`OTP sent to: ${email}`);
