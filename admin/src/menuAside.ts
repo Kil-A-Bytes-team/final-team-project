@@ -1,16 +1,11 @@
 import {
   mdiAccountCircle,
   mdiMonitor,
-  mdiGithub,
   mdiLock,
-  mdiAlertCircle,
   mdiSquareEditOutline,
   mdiTable,
   mdiViewList,
-  mdiTelevisionGuide,
-  mdiResponsive,
-  mdiPalette,
-  mdiVuejs,
+  mdiBookMultipleOutline,
 } from '@mdi/js'
 import { MenuAsideItem } from './interfaces'
 
@@ -26,25 +21,68 @@ const menuAside: MenuAsideItem[] = [
     icon: mdiTable,
   },
   {
-    href: '/forms',
-    label: 'Forms',
-    icon: mdiSquareEditOutline,
+    label: 'Add',
+    icon: mdiViewList,
+    menu: [
+      {
+        href: '/courses',
+        label: 'Courses',
+        icon: mdiSquareEditOutline,
+      },
+      {
+        href: '/news',
+        label: 'News',
+        icon: mdiSquareEditOutline,
+      },
+      {
+        label: 'Categories',
+        icon: mdiBookMultipleOutline,
+        menu: [
+          {
+            href: '/courseCategories',
+            label: 'Course',
+            icon: mdiSquareEditOutline,
+          },
+          {
+            href: '/newsCategories',
+            label: 'News',
+            icon: mdiSquareEditOutline,
+          },
+        ],
+      },
+    ],
   },
-  {
-    href: '/ui',
-    label: 'UI',
-    icon: mdiTelevisionGuide,
-  },
-  {
-    href: '/responsive',
-    label: 'Responsive',
-    icon: mdiResponsive,
-  },
-  {
-    href: '/',
-    label: 'Styles',
-    icon: mdiPalette,
-  },
+
+  // {
+  //   href: '/news',
+  //   label: 'News',
+  //   icon: mdiSquareEditOutline,
+  // },
+  // {
+  //   href: '/categories',
+  //   label: 'Categories',
+  //   icon: mdiSquareEditOutline,
+  // },
+  // {
+  //   href: '/courses',
+  //   label: 'Courses',
+  //   icon: mdiSquareEditOutline,
+  // },
+  // {
+  //   href: '/ui',
+  //   label: 'UI',
+  //   icon: mdiTelevisionGuide,
+  // },
+  // {
+  //   href: '/responsive',
+  //   label: 'Responsive',
+  //   icon: mdiResponsive,
+  // },
+  // {
+  //   href: '/',
+  //   label: 'Styles',
+  //   icon: mdiPalette,
+  // },
   {
     href: '/profile',
     label: 'Profile',
@@ -55,35 +93,11 @@ const menuAside: MenuAsideItem[] = [
     label: 'Login',
     icon: mdiLock,
   },
-  {
-    href: '/error',
-    label: 'Error',
-    icon: mdiAlertCircle,
-  },
-  {
-    label: 'Dropdown',
-    icon: mdiViewList,
-    menu: [
-      {
-        label: 'Item One',
-      },
-      {
-        label: 'Item Two',
-      },
-    ],
-  },
-  {
-    href: 'https://github.com/justboil/admin-one-react-tailwind',
-    label: 'GitHub',
-    icon: mdiGithub,
-    target: '_blank',
-  },
-  {
-    href: 'https://github.com/justboil/admin-one-vue-tailwind',
-    label: 'Vue version',
-    icon: mdiVuejs,
-    target: '_blank',
-  },
+  // {
+  //   href: '/error',
+  //   label: 'Error',
+  //   icon: mdiAlertCircle,
+  // },
 ]
 
 export default menuAside
