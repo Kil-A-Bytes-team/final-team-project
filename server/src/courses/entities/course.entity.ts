@@ -1,5 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Types } from 'mongoose';
 import { nanoid } from 'nanoid';
+import { Category } from 'src/categories/entities/category.entity';
 
 @Schema({ timestamps: true })
 export class Course {
@@ -8,6 +10,14 @@ export class Course {
 
   @Prop({ required: true })
   name: string;
+
+  @Prop()
+  categoryId: string
+
+  @Prop({type: Types.ObjectId, ref: 'Category'})
+  category: {
+    name:string
+  }
 
   @Prop()
   description: string;
@@ -32,3 +42,10 @@ export class Course {
 }
 
 export const CourseSchema = SchemaFactory.createForClass(Course);
+
+// CourseSchema.virtual('category', {
+//   ref: 'Category',
+//   localField: 'categoryId',
+//   foreignField: '_id',
+//   justOne: true,
+// });

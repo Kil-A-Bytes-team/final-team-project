@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { Layout } from "../layout";
+import { useCurrentUser } from "../../hooks/useCurrentUser";
 
 const AllDiv = () => {
   return (
@@ -133,10 +134,17 @@ const InProgressDiv = () => {
     </div>
   );
 };
-export default function UserProfile({}) {
+export default function UserProfile() {
+  const { currentUser, setCurrentUser } = useCurrentUser();
+  console.log(`profile index.js currentUser is ${currentUser}`);
   const router = useRouter();
   const { id } = router.query;
   const [tabIndex, setTabIndex] = useState(1);
+
+  const logOut = () => {
+    setCurrentUser(undefined);
+    localStorage.removeItem("token");
+  };
 
   return (
     <Layout>
@@ -227,7 +235,7 @@ export default function UserProfile({}) {
                       <div>Settings</div>
                     </Link>
                     <Link
-                      href={"/l"}
+                      href={"/"}
                       class="relative inline-flex items-center w-full px-4 py-2 text-sm font-medium border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white dark:bg-gray-500 space-x-3"
                     >
                       <svg
@@ -244,7 +252,7 @@ export default function UserProfile({}) {
                           d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75"
                         />
                       </svg>
-                      <div>Logout</div>
+                      <div onClick={() => logOut()}>Logout</div>
                     </Link>
                   </div>
                 </div>

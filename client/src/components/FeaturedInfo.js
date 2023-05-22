@@ -35,9 +35,9 @@ export default ({ items }) => {
       //   pagination={{ clickable: true }}
       modules={[Navigation, Pagination]}
     >
-      {items?.map((slide) => {
+      {items?.map((slide, i) => {
         return (
-          <SwiperSlide>
+          <SwiperSlide key={i}>
             <div className=" bg-white border border-gray-200 rounded-lg shadow dark:bg-dark dark:border-gray-400">
               <a
                 href="#"
@@ -69,9 +69,9 @@ export default ({ items }) => {
           </SwiperSlide>
         );
       })}
-      {items?.map((slide) => {
+      {items?.map((slide, i) => {
         return (
-          <SwiperSlide>
+          <SwiperSlide key={i}>
             <div className=" bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
               <a
                 href="#"
