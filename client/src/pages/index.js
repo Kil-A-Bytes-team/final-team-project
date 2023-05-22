@@ -139,10 +139,10 @@ export const getStaticProps = async (ctx) => {
     },
   ];
   const coursesRequest = await axios.get(
-    `process.env.NEXT_PUBLIC_API_URLcourses`
+    `${process.env.NEXT_PUBLIC_API_URL}/courses`
   );
   const courses = coursesRequest.data;
-  const newsReq = await axios.get(`process.env.NEXT_PUBLIC_API_URLnews`);
+  const newsReq = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/news`);
   const news = newsReq.data;
 
   return { props: { courses, news } };
