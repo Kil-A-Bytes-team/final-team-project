@@ -8,6 +8,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { NewsModule } from './news/news.module';
 import { CategoriesModule } from './categories/categories.module';
 import { NewsCategoriesModule } from './news-categories/news-categories.module';
+import { BasketsModule } from './baskets/baskets.module';
 import env from './env';
 
 @Module({
@@ -19,6 +20,7 @@ import env from './env';
     NewsModule,
     CategoriesModule,
     NewsCategoriesModule,
+    BasketsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

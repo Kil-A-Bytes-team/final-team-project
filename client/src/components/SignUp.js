@@ -10,7 +10,7 @@ export const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repassword, setRepassword] = useState("");
-  const router = useRouter();  
+  const router = useRouter();
   const submitSignUp = () => {
     const body = { email, password, repassword };
     axios
@@ -23,27 +23,35 @@ export const SignUp = () => {
         toast.error("Алдаа гарлаа");
       });
   };
-  const handleCheckEmail = async ()=>{
-    const body = { email, password, repassword };
-     await axios.post("http://localhost:5000/otp/signup", body).then((res) => {
-      const otp = window.prompt("Your OTP?");
-      axios
-        .post("http://localhost:5000/otp/signup/verify", { email, otp , password , repassword})
-        .then((res) => {
-          axios
-      .post("http://localhost:5000/signup", body)
-      .then(() => {
-        toast.success("Бүртгэл амжилттай");
-        router.push("/signin");
-      })
-      .catch((e) => {
-        toast.error("Алдаа гарлаа");
+  const handleCheckEmail = async () => {
+    try {
+      const body = { email, password, repassword };
+      await axios.post("http://localhost:5000/otp/signup", body).then((res) => {
+        const otp = window.prompt("Your OTP?");
+        axios
+          .post("http://localhost:5000/otp/signup/verify", {
+            email,
+            otp,
+          })
+          .then((res) => {
+            axios
+              .post("http://localhost:5000/signup", body)
+              .then(() => {
+                toast.success("Бүртгэл амжилттай");
+                router.push("/signin");
+              })
+              .catch((e) => {
+                toast.error("Алдаа гарлаа");
+              });
+          })
+          .catch((e) => {
+            toast.error("OTP is invalid");
+          });
       });
-        }).catch((e)=>{
-          toast.error("OTP is invalid")
-        })
-  })}
-
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <section className="bg-white dark:bg-dark min-h-[70vh] my-auto">
