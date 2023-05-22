@@ -27,7 +27,7 @@ const Categories = () => {
     fetchCategories()
   }, [])
   async function fetchCategories() {
-    const response = await axios.get('http://localhost:5000/categories')
+    const response = await axios.get('process.env.NEXT_PUBLIC_API_URL/categories')
     const data = await response.data
     setCategories(data)
   }

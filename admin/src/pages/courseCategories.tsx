@@ -20,7 +20,7 @@ import axios from 'axios'
 const Categories = () => {
   const createCategory = async (values) => {
     console.log(values)
-    const response = await axios.post('http://localhost:5000/categories', values)
+    const response = await axios.post('process.env.NEXT_PUBLIC_API_URL/categories', values)
     const data = await response.data
     console.log(data)
   }

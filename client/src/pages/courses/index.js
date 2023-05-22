@@ -107,7 +107,9 @@ export default function Courses(props) {
 // }
 
 export const getServerSideProps = async (ctx) => {
-  const coursesRequest = await axios.get(`http://localhost:5000/courses`);
+  const coursesRequest = await axios.get(
+    `process.env.NEXT_PUBLIC_API_URL/courses`
+  );
   const courses = coursesRequest.data;
   return {
     props: {

@@ -136,7 +136,7 @@ const ProductView = (props) => {
 export const getServerSideProps = async (ctx) => {
   const { _id } = ctx.params;
   const coursesRequest = await axios.get(
-    `http://localhost:5000/courses/${_id}`
+    `process.env.NEXT_PUBLIC_API_URLcourses/${_id}`
   );
   const course = coursesRequest.data;
   return {

@@ -1,15 +1,18 @@
-import Sorting from '@/components/ui/Listbox';
-import Categories from './Categories';
-import NewsCard from './NewsCard';
-import { Layout } from '../layout';
-import axios from 'axios';
+import Sorting from "@/components/ui/Listbox";
+import Categories from "./Categories";
+import NewsCard from "./NewsCard";
+import { Layout } from "../layout";
+import axios from "axios";
 
 <html>
   <title>News grid page</title>
-  <meta name="description" content="List of different types of courses uploaded"></meta>
+  <meta
+    name="description"
+    content="List of different types of courses uploaded"
+  ></meta>
 </html>;
 
-const placeHolder = 'https://via.placeholder.com/400x230';
+const placeHolder = "https://via.placeholder.com/400x230";
 
 export default function Courses(props) {
   const { news } = props;
@@ -32,7 +35,7 @@ export default function Courses(props) {
 }
 
 export const getStaticProps = async () => {
-  const newsRequest = await axios.get(`http://localhost:5000/news`);
+  const newsRequest = await axios.get(`process.env.NEXT_PUBLIC_API_URL/news`);
   const news = newsRequest.data;
   return {
     props: {

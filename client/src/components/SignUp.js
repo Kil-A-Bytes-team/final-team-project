@@ -14,7 +14,7 @@ export const SignUp = () => {
   const submitSignUp = () => {
     const body = { email, password, repassword };
     axios
-      .post("http://localhost:5000/signup", body)
+      .post("process.env.NEXT_PUBLIC_API_URL/signup", body)
       .then(() => {
         toast.success("Бүртгэл амжилттай");
         router.push("/signin");
@@ -26,28 +26,30 @@ export const SignUp = () => {
   const handleCheckEmail = async () => {
     try {
       const body = { email, password, repassword };
-      await axios.post("http://localhost:5000/otp/signup", body).then((res) => {
-        const otp = window.prompt("Your OTP?");
-        axios
-          .post("http://localhost:5000/otp/signup/verify", {
-            email,
-            otp,
-          })
-          .then((res) => {
-            axios
-              .post("http://localhost:5000/signup", body)
-              .then(() => {
-                toast.success("Бүртгэл амжилттай");
-                router.push("/signin");
-              })
-              .catch((e) => {
-                toast.error("Алдаа гарлаа");
-              });
-          })
-          .catch((e) => {
-            toast.error("OTP is invalid");
-          });
-      });
+      await axios
+        .post("process.env.NEXT_PUBLIC_API_URL/otp/signup", body)
+        .then((res) => {
+          const otp = window.prompt("Your OTP?");
+          axios
+            .post("process.env.NEXT_PUBLIC_API_URL/otp/signup/verify", {
+              email,
+              otp,
+            })
+            .then((res) => {
+              axios
+                .post("process.env.NEXT_PUBLIC_API_URL/signup", body)
+                .then(() => {
+                  toast.success("Бүртгэл амжилттай");
+                  router.push("/signin");
+                })
+                .catch((e) => {
+                  toast.error("Алдаа гарлаа");
+                });
+            })
+            .catch((e) => {
+              toast.error("OTP is invalid");
+            });
+        });
     } catch (error) {
       console.log(error);
     }
