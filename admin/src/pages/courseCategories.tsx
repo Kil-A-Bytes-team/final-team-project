@@ -16,14 +16,10 @@ import SectionTitle from '../components/SectionTitle'
 import SectionTitleLineWithButton from '../components/SectionTitleLineWithButton'
 import { getPageTitle } from '../config'
 import axios from 'axios'
+import { useCrud } from '../hooks/useCrud'
 
 const Categories = () => {
-  const createCategory = async (values) => {
-    console.log(values)
-    const response = await axios.post('process.env.NEXT_PUBLIC_API_URL/categories', values)
-    const data = await response.data
-    console.log(data)
-  }
+  const { createItem } = useCrud('categories')
 
   return (
     <>
@@ -39,7 +35,7 @@ const Categories = () => {
         ></SectionTitleLineWithButton>
 
         <CardBox>
-          <Formik initialValues={{}} onSubmit={(values) => createCategory(values)}>
+          <Formik initialValues={{}} onSubmit={(values) => createItem(values)}>
             <Form>
               <FormField label="Course category" icons={[mdiBookMultipleOutline]}>
                 <Field name="name" placeholder="Category name" />

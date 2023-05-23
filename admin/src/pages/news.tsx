@@ -71,19 +71,17 @@ const NewsCategories = () => {
               </FormField>
 
               <FormField label="Category" labelFor="category">
-                <Field
+                <select
                   name="category"
                   id="category"
-                  component="select"
                   onChange={(e) => setCategory(e.target.value)}
                 >
-                  <option value="">Select a category</option>
                   {categories.map((category) => (
                     <option value={category._id} key={category._id}>
                       {category.name}
                     </option>
                   ))}
-                </Field>
+                </select>
               </FormField>
 
               <BaseDivider />

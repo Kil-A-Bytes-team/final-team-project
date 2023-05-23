@@ -12,7 +12,7 @@ export const useCrud = (path: string) => {
 
   const deleteItem = (id: string) => {
     axios
-      .delete('http://localhost:8000/' + path + '/' + id)
+      .delete('http://localhost:5000/' + path + '/' + id)
       .then(() => {
         setItems(items.filter((item: any) => item._id !== id))
       })
@@ -23,7 +23,7 @@ export const useCrud = (path: string) => {
 
   const updateItem = (id: string) => {
     axios
-      .put('http://localhost:8000/' + path + '/' + id)
+      .put('http://localhost:5000/' + path + '/' + id)
       .then((res) => {
         setItems(items.map((item: any) => (item.id === id ? res.data : item)))
       })
@@ -33,6 +33,7 @@ export const useCrud = (path: string) => {
   }
 
   const createItem = (item: any) => {
+    console.log('items:', item)
     axios
       .post('http://localhost:5000/' + path, item)
       .then((res) => {

@@ -18,8 +18,9 @@ export class CoursesService {
   }
 
   async createCourse(createCourseDto: CreateCourseDto): Promise<Course> {
+    console.log('courses:', createCourseDto);
     const createdCourse = new this.courseModel(createCourseDto);
-    return await createdCourse.save();
+    return (await createdCourse.save()).populate('category');
   }
   async findAllCourse(): Promise<Course[]> {
     return await this.courseModel.find().populate('category').exec();

@@ -17,20 +17,17 @@ import SectionTitleLineWithButton from '../components/SectionTitleLineWithButton
 import { getPageTitle } from '../config'
 import { useEffect } from 'react'
 import axios from 'axios'
+import { useCrud } from '../hooks/useCrud'
 
 const Categories = () => {
-  const [categories, setCategories] = useState([])
-  const createCategory = (e) => {
-    return
-  }
-  useEffect(() => {
-    fetchCategories()
-  }, [])
-  async function fetchCategories() {
-    const response = await axios.get('process.env.NEXT_PUBLIC_API_URL/categories')
-    const data = await response.data
-    setCategories(data)
-  }
+  const [name, setName] = useState('')
+  const [price, setPrice] = useState('')
+  const [imageUrl, setImageUrl] = useState('')
+  const [videoUrl, setVideoUrl] = useState('')
+  const [description, setDescription] = useState('')
+  const [category, setCategory] = useState('')
+  const { createItem } = useCrud('courses')
+  const { items: categories } = useCrud('categories')
 
   return (
     <>
@@ -48,40 +45,74 @@ const Categories = () => {
         <CardBox>
           <Formik
             initialValues={{
-              title: '',
+              name: '',
               price: '',
               image: '',
               video: '',
               category: '',
               textarea: '',
             }}
-            onSubmit={(values) => alert(JSON.stringify(values, null, 2))}
+            onSubmit={undefined}
           >
-            <Form>
+            <Form
+              onSubmit={(e) => {
+                e.preventDefault()
+                createItem({ name, imageUrl, description, ategory: category, videoUrl })
+              }}
+            >
               <FormField label="Basic information" icons={[mdiAccount, mdiMail]}>
-                <Field name="title" placeholder="Course title" />
-                <Field type="number" name="price" placeholder="Price" />
+                <Field
+                  name="title"
+                  placeholder="Course title"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+                <Field
+                  type="number"
+                  name="price"
+                  placeholder="Price"
+                  value={price}
+                  onChange={(e) => setPrice(e.target.value)}
+                />
               </FormField>
 
               <FormField label="Urls" labelFor="phone">
-                <Field name="image" placeholder="Image Url" id="image" />
-                <Field name="video" placeholder="Video Url" id="video" />
+                <Field
+                  name="image"
+                  placeholder="Image Url"
+                  id="image"
+                  value={imageUrl}
+                  onChange={(e) => setImageUrl(e.target.value)}
+                />
+                <Field
+                  name="video"
+                  placeholder="Video Url"
+                  id="video"
+                  value={videoUrl}
+                  onChange={(e) => setVideoUrl(e.target.value)}
+                />
               </FormField>
 
               <FormField label="Category" labelFor="category">
-                <Field name="category" id="category" component="select">
+                <select name="category" id="category" onChange={(e) => setCategory(e.target.value)}>
                   {categories.map((category) => (
                     <option value={category._id} key={category._id}>
                       {category.name}
                     </option>
                   ))}
-                </Field>
+                </select>
               </FormField>
 
               <BaseDivider />
 
               <FormField label="Description" hasTextareaHeight>
-                <Field name="textarea" as="textarea" placeholder="Course description here" />
+                <Field
+                  name="textarea"
+                  as="textarea"
+                  placeholder="Course description here"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                />
               </FormField>
 
               <BaseDivider />
@@ -94,61 +125,6 @@ const Categories = () => {
           </Formik>
         </CardBox>
       </SectionMain>
-
-      {/* <SectionMain>
-        <CardBox>
-          <Formik
-            initialValues={{ checkboxes: ['lorem'], switches: ['lorem'], radio: 'lorem' }}
-            onSubmit={() => null}
-          >
-            <Form>
-              <FormField label="Checkbox">
-                <FormCheckRadioGroup>
-                  <FormCheckRadio type="checkbox" label="Lorem">
-                    <Field type="checkbox" name="checkboxes" value="lorem" />
-                  </FormCheckRadio>
-                  <FormCheckRadio type="checkbox" label="Ipsum">
-                    <Field type="checkbox" name="checkboxes" value="ipsum" />
-                  </FormCheckRadio>
-                  <FormCheckRadio type="checkbox" label="Dolore">
-                    <Field type="checkbox" name="checkboxes" value="dolore" />
-                  </FormCheckRadio>
-                </FormCheckRadioGroup>
-              </FormField>
-
-              <BaseDivider />
-
-              <FormField label="Radio">
-                <FormCheckRadioGroup>
-                  <FormCheckRadio type="radio" label="Lorem">
-                    <Field type="radio" name="radio" value="lorem" />
-                  </FormCheckRadio>
-                  <FormCheckRadio type="radio" label="Ipsum">
-                    <Field type="radio" name="radio" value="ipsum" />
-                  </FormCheckRadio>
-                </FormCheckRadioGroup>
-              </FormField>
-
-              <BaseDivider />
-
-              <FormField label="Switch">
-                <FormCheckRadioGroup>
-                  <FormCheckRadio type="switch" label="Lorem">
-                    <Field type="checkbox" name="switches" value="lorem" />
-                  </FormCheckRadio>
-                  <FormCheckRadio type="switch" label="Ipsum">
-                    <Field type="checkbox" name="switches" value="ipsum" />
-                  </FormCheckRadio>
-                </FormCheckRadioGroup>
-              </FormField>
-            </Form>
-          </Formik>
-          <BaseDivider />
-          <FormField>
-            <FormFilePicker label="Upload" color="info" icon={mdiUpload} />
-          </FormField>
-        </CardBox>
-      </SectionMain> */}
     </>
   )
 }
