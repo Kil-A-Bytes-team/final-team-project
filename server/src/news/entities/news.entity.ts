@@ -1,5 +1,8 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Types } from 'mongoose';
 import { nanoid } from 'nanoid';
+import { type } from 'os';
+import { NewsCategory } from 'src/news-categories/entities/news-category.entity';
 
 @Schema({ timestamps: true })
 export class News {
@@ -14,6 +17,9 @@ export class News {
 
   @Prop()
   imageUrl: string;
+
+  @Prop({ type: String, ref: 'NewsCategory' })
+  newsCategory: NewsCategory;
 
   @Prop()
   text: string;
