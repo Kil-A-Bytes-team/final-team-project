@@ -43,7 +43,7 @@ function Lesson(props) {
 export const getServerSideProps = async (ctx) => {
   const { _id } = ctx.params;
   const coursesRequest = await axios.get(
-    `process.env.NEXT_PUBLIC_API_URL/courses/${_id}`
+    `${process.env.NEXT_PUBLIC_API_URL}/courses/${_id}`
   );
   const course = coursesRequest.data;
   return {

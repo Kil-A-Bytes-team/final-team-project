@@ -14,7 +14,7 @@ export const SignUp = () => {
   const submitSignUp = () => {
     const body = { email, password, repassword };
     axios
-      .post("process.env.NEXT_PUBLIC_API_URL/signup", body)
+      .post(`${process.env.NEXT_PUBLIC_API_URL}/signup`, body)
       .then(() => {
         toast.success("Бүртгэл амжилттай");
         router.push("/signin");
@@ -27,17 +27,17 @@ export const SignUp = () => {
     try {
       const body = { email, password, repassword };
       await axios
-        .post("process.env.NEXT_PUBLIC_API_URL/otp/signup", body)
+        .post(`${process.env.NEXT_PUBLIC_API_URL}/otp/signup`, body)
         .then((res) => {
           const otp = window.prompt("Your OTP?");
           axios
-            .post("process.env.NEXT_PUBLIC_API_URL/otp/signup/verify", {
+            .post(`${process.env.NEXT_PUBLIC_API_URL}/otp/signup/verify`, {
               email,
               otp,
             })
             .then((res) => {
               axios
-                .post("process.env.NEXT_PUBLIC_API_URL/signup", body)
+                .post(`${process.env.NEXT_PUBLIC_API_URL}/signup`, body)
                 .then(() => {
                   toast.success("Бүртгэл амжилттай");
                   router.push("/signin");
