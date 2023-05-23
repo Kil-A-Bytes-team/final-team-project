@@ -1,24 +1,24 @@
-import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { nanoid } from "nanoid";
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { nanoid } from 'nanoid';
 
-@Schema({timestamps: true})
+@Schema({ timestamps: true })
 export class News {
-    @Prop({ default:()=> nanoid() })
-    _id: string;
+  @Prop({ default: () => nanoid() })
+  _id: string;
 
-    @Prop({ required: true})
-    title: string;
+  @Prop({ required: true })
+  title: string;
 
-    @Prop()
-    description: string;
+  @Prop()
+  description: string;
 
-    @Prop()
-    imageUrl: string;
-    
-    @Prop()
-    text: string;
+  @Prop()
+  imageUrl: string;
 
-    createdAt: Date;
-    updatedAt: Date;
+  @Prop()
+  text: string;
+
+  createdAt: Date;
+  updatedAt: Date;
 }
-export const NewsSchema = SchemaFactory.createForClass(News)
+export const NewsSchema = SchemaFactory.createForClass(News);

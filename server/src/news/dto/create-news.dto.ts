@@ -1,17 +1,16 @@
-import { IsNotEmpty, isString, IsString } from "class-validator";
+import { IsNotEmpty, isString, IsString } from 'class-validator';
 
 export class CreateNewsDto {
-        @IsString()
-    @IsNotEmpty()
-    title: string;
+  @IsString()
+  @IsNotEmpty()
+  title: string;
 
-    @IsString()
-    description: string;
+  @IsString()
+  description: string;
 
+  @IsString()
+  imageUrl: string;
 
-    @IsString()
-    imageUrl: string;
-
-    @IsString()
-    text: string;
+  @IsString()
+  text: string;
 }
