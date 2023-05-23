@@ -8,7 +8,7 @@ export default function AboutUs() {
   // console.log('us', us);
   return (
     <div className="">
-      <div className="text-center font-bold text-4xl mb-24">
+      <div className="text-center font-bold text-4xl mb-12">
         <h1>Манай баг</h1>
       </div>
       <div className="flex flex-row justify-evenly">
@@ -18,10 +18,10 @@ export default function AboutUs() {
               className="w-44 h-44 rounded-full object-cover"
               src={prop.imgUrl}
             />
-            <span className="text-left text-4xl font-sans font-bold mt-5">
+            <span className="text-left text-3xl font-sans font-bold mt-5">
               {prop.firstName}
             </span>
-            <span className="text-left text-4xl font-sans">
+            <span className="text-left text-2xl font-sans">
               {prop.lastName}
             </span>
           </div>
