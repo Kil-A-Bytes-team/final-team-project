@@ -1,5 +1,5 @@
 import Sorting from "@/components/ui/Listbox";
-import Categories from "./Categories";
+import Categories from "../../components/Categories";
 import NewsCard from "../../components/NewsCard";
 import { Layout } from "../../layouts/layout";
 import axios from "axios";
