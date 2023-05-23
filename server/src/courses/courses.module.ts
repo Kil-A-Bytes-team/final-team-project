@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { CoursesService } from './courses.service';
-import { CoursesController } from './courses.controller';
+import { CoursesController, SearchController } from './courses.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Course, CourseSchema } from './entities/course.entity';
 import {
@@ -15,7 +15,7 @@ import {
       { name: Category.name, schema: CategorySchema },
     ]),
   ],
-  controllers: [CoursesController],
+  controllers: [CoursesController , SearchController],
   exports: [CoursesService],
   providers: [CoursesService],
 })
