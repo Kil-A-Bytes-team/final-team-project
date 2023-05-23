@@ -12,12 +12,10 @@ export class Course {
   name: string;
 
   @Prop()
-  categoryId: string
+  categoryId: string;
 
-  @Prop({type: Types.ObjectId, ref: 'Category'})
-  category: {
-    name:string
-}
+  @Prop({ type: Types.ObjectId, ref: 'Category' })
+  category: { name: string };
 
   @Prop()
   description: string;

@@ -42,7 +42,7 @@ export default function Home({ courses, news }) {
                     className="flex items-center bg-dark dark:bg-light dark:text-dark text-light p-2.5 px-6 rounded-lg text-lg font-semibold hover:bg-light dark:hover:bg-dark dark:hover:text-light hover:text-dark border-2 border-solid border-transparent dark:hover:border-light dark:border-dark hover:border-dark"
                     href="/signin"
                   >
-                    Sign In
+                    Нэвтрэх
                   </Link>
                 </div>
               </div>
