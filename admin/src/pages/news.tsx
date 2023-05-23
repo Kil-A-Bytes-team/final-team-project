@@ -1,5 +1,5 @@
 import { mdiAccount, mdiBallotOutline, mdiMail } from '@mdi/js'
-import { Field, Form, Formik } from 'formik'
+import { Field, Form, Formik, FormikHelpers } from 'formik'
 import Head from 'next/head'
 import { ReactElement, useEffect, useState } from 'react'
 import BaseButton from '../components/BaseButton'
@@ -12,20 +12,15 @@ import SectionMain from '../components/SectionMain'
 import SectionTitleLineWithButton from '../components/SectionTitleLineWithButton'
 import { getPageTitle } from '../config'
 import axios from 'axios'
+import { useCrud } from '../hooks/useCrud'
 
 const NewsCategories = () => {
-  const [categories, setCategories] = useState([])
-  const createCategory = (e) => {
-    return
-  }
-  useEffect(() => {
-    fetchCategories()
-  }, [])
-  async function fetchCategories() {
-    const response = await axios.get('process.env.NEXT_PUBLIC_API_URL/news-categories')
-    const data = await response.data
-    setCategories(data)
-  }
+  const [title, setTitle] = useState('')
+  const [imageUrl, setImageUrl] = useState('')
+  const [text, setText] = useState('')
+  const [category, setCategory] = useState('')
+  const { createItem } = useCrud('news')
+  const { items: categories } = useCrud('news-categories')
 
   return (
     <>
@@ -48,19 +43,41 @@ const NewsCategories = () => {
               category: '',
               textarea: '',
             }}
-            onSubmit={(values) => alert(JSON.stringify(values, null, 2))}
+            onSubmit={undefined}
           >
-            <Form>
+            <Form
+              onSubmit={(e) => {
+                e.preventDefault()
+                createItem({ title, imageUrl, text, newsCategory: category })
+              }}
+            >
               <FormField label="Basic information" icons={[mdiAccount, mdiMail]}>
-                <Field name="title" placeholder="News title" />
+                <Field
+                  name="title"
+                  placeholder="News title"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                />
               </FormField>
 
               <FormField label="Urls" labelFor="phone">
-                <Field name="image" placeholder="Image Url" id="image" />
+                <Field
+                  name="image"
+                  placeholder="Image Url"
+                  id="image"
+                  value={imageUrl}
+                  onChange={(e) => setImageUrl(e.target.value)}
+                />
               </FormField>
 
               <FormField label="Category" labelFor="category">
-                <Field name="category" id="category" component="select">
+                <Field
+                  name="category"
+                  id="category"
+                  component="select"
+                  onChange={(e) => setCategory(e.target.value)}
+                >
+                  <option value="">Select a category</option>
                   {categories.map((category) => (
                     <option value={category._id} key={category._id}>
                       {category.name}
@@ -72,7 +89,13 @@ const NewsCategories = () => {
               <BaseDivider />
 
               <FormField label="Text" hasTextareaHeight>
-                <Field name="textarea" as="textarea" placeholder="Text here" />
+                <Field
+                  name="textarea"
+                  as="textarea"
+                  placeholder="Text here"
+                  value={text}
+                  onChange={(e) => setText(e.target.value)}
+                />
               </FormField>
 
               <BaseDivider />
@@ -85,61 +108,6 @@ const NewsCategories = () => {
           </Formik>
         </CardBox>
       </SectionMain>
-
-      {/* <SectionMain>
-        <CardBox>
-          <Formik
-            initialValues={{ checkboxes: ['lorem'], switches: ['lorem'], radio: 'lorem' }}
-            onSubmit={() => null}
-          >
-            <Form>
-              <FormField label="Checkbox">
-                <FormCheckRadioGroup>
-                  <FormCheckRadio type="checkbox" label="Lorem">
-                    <Field type="checkbox" name="checkboxes" value="lorem" />
-                  </FormCheckRadio>
-                  <FormCheckRadio type="checkbox" label="Ipsum">
-                    <Field type="checkbox" name="checkboxes" value="ipsum" />
-                  </FormCheckRadio>
-                  <FormCheckRadio type="checkbox" label="Dolore">
-                    <Field type="checkbox" name="checkboxes" value="dolore" />
-                  </FormCheckRadio>
-                </FormCheckRadioGroup>
-              </FormField>
-
-              <BaseDivider />
-
-              <FormField label="Radio">
-                <FormCheckRadioGroup>
-                  <FormCheckRadio type="radio" label="Lorem">
-                    <Field type="radio" name="radio" value="lorem" />
-                  </FormCheckRadio>
-                  <FormCheckRadio type="radio" label="Ipsum">
-                    <Field type="radio" name="radio" value="ipsum" />
-                  </FormCheckRadio>
-                </FormCheckRadioGroup>
-              </FormField>
-
-              <BaseDivider />
-
-              <FormField label="Switch">
-                <FormCheckRadioGroup>
-                  <FormCheckRadio type="switch" label="Lorem">
-                    <Field type="checkbox" name="switches" value="lorem" />
-                  </FormCheckRadio>
-                  <FormCheckRadio type="switch" label="Ipsum">
-                    <Field type="checkbox" name="switches" value="ipsum" />
-                  </FormCheckRadio>
-                </FormCheckRadioGroup>
-              </FormField>
-            </Form>
-          </Formik>
-          <BaseDivider />
-          <FormField>
-            <FormFilePicker label="Upload" color="info" icon={mdiUpload} />
-          </FormField>
-        </CardBox>
-      </SectionMain> */}
     </>
   )
 }
