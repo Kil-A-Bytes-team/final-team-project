@@ -13,14 +13,16 @@ export const SignIn = () => {
 
   const submitSignIn = () => {
     const body = { email, password };
-    axios.post("process.env.NEXT_PUBLIC_API_URL/signin", body).then((res) => {
-      console.log(res.status);
-      if (res.status === status) {
-        localStorage.setItem("token", res.data);
-        toast.success("Амжилттай нэвтэрлээ");
-        router.push("/");
-      }
-    });
+    axios
+      .post(`${process.env.NEXT_PUBLIC_API_URL}/signin`, body)
+      .then((res) => {
+        console.log(res.status);
+        if (res.status === status) {
+          localStorage.setItem("token", res.data);
+          toast.success("Амжилттай нэвтэрлээ");
+          router.push("/");
+        }
+      });
   };
   return (
     <section className="bg-white dark:bg-dark min-h-screen">

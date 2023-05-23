@@ -29,7 +29,7 @@ export default function Index(props) {
 export const getServerSideProps = async (ctx) => {
   const { _id } = ctx.params;
   const newsRequest = await axios.get(
-    `process.env.NEXT_PUBLIC_API_URL/news/${_id}`
+    `${process.env.NEXT_PUBLIC_API_URL}/news/${_id}`
   );
   const news = newsRequest.data;
   return {
