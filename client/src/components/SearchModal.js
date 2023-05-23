@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { IoCloseCircleOutline } from "react-icons/io5";
@@ -5,11 +6,6 @@ import { IoCloseCircleOutline } from "react-icons/io5";
 const SearchModal = ({ searchModal, setSearchModal }) => {
   const router = useRouter();
   const [input, setInput] = useState("");
-
-  const styles = {
-    searchIcon: {},
-    formInput: {},
-  };
 
   useEffect(() => {
     if (searchModal) {
