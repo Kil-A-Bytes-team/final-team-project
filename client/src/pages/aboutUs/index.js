@@ -1,5 +1,5 @@
-import AboutUs from '../../components/AboutUs';
-import { Layout } from '../layout';
+import AboutUs from "../../components/AboutUs";
+import { Layout } from "../../layouts/layout";
 
 export default function aboutUs() {
   // const props = [
