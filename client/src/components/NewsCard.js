@@ -9,11 +9,11 @@ export default function Card({ news }) {
     console.log(newRating);
   };
   return (
-    <div className="flex justify-center ">
+    <div className="flex  justify-center ">
       <div className="max-w-sm mx-auto bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <Link href={`/news/${news._id}`}>
           <img
-            className="rounded-t-lg w-full h-auto"
+            className="rounded-t-lg w-full h-[210px]"
             src={imageUrl}
             alt="card image"
             width="400"
@@ -31,8 +31,8 @@ export default function Card({ news }) {
             </div>
 
             <a href="#">
-              <h5 className="mt-3 mb-5 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                {title}
+              <h5 className="mt-3 mb-5 h-24 overflow-hidden text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
+                <span className="line-clamp-3">{title}</span>
               </h5>
             </a>
             <p className="mb-5 font-normal text-gray-700 dark:text-gray-400 line-clamp-4">

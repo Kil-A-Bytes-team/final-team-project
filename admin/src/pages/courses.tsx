@@ -77,7 +77,7 @@ const Categories = ({ course }) => {
 
               <BaseDivider />
 
-              <FormField label="description" hasTextareaHeight>
+              <FormField label="Description" hasTextareaHeight>
                 <Field name="description" as="textarea" placeholder="Course description here" />
               </FormField>
 

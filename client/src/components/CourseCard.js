@@ -14,7 +14,7 @@ export default function Card({ course }) {
       <div className="max-w-sm mx-auto bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <a href={`courses/${course._id}`}>
           <img
-            className="rounded-t-lg w-full h-auto"
+            className="rounded-t-lg w-full h-[210px]"
             src={imageUrl}
             alt="card image"
             width="400"
