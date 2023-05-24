@@ -8,7 +8,7 @@ export default function Card({ course }) {
   const ratingChanged = (newRating) => {
     console.log(newRating);
   };
-  console.log(course.category?.name);
+  console.log(course);
   return (
     <div className="flex justify-center ">
       <div className="max-w-sm mx-auto bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">

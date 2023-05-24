@@ -16,7 +16,7 @@ export default function Index(props) {
               <p>"{news.description}"</p>
             </blockquote>
             <div className="mb-96 max-w-7xl font-semibold leading-loose text-gray-900 dark:text-white">
-              <h5>{news.category}</h5>
+              <h5> {news.newsCategory?.name}</h5>
               <p>{news.text}</p>
             </div>
           </div>
