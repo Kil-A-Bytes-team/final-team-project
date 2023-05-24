@@ -4,10 +4,12 @@ import ReactStars from "react-rating-stars-component";
 
 import { Pagination, Navigation } from "swiper";
 import { FaChevronCircleLeft, FaChevronCircleRight } from "react-icons/fa";
+import { useBasket } from "../hooks/useBasket";
 
 const placeHolder = "https://via.placeholder.com/230x150";
 
 export default ({ items }) => {
+  const { addToBasket } = useBasket();
   return (
     <Swiper
       spaceBetween={20}
@@ -55,7 +57,7 @@ export default ({ items }) => {
               <div className="pt-5 px-6">
                 <div className="mb-1 flex justify-between flex-wrap items-center h-12">
                   <a
-                    href="#"
+                    href="/courses"
                     className=" text-sm text-blue-500 hover:text-black focus:ring-4 focus:outline-none dark:text-white dark:hover:text-gray-300"
                   >
                     {slide.category?.name}
@@ -69,8 +71,8 @@ export default ({ items }) => {
                   />
                 </div>
 
-                <a href="#">
-                  <h3 className="mb-8 h-12 font-semibold tracking-tight text-gray-900 dark:text-white transform transition duration-200 hover:scale-105 line-clamp-2">
+                <a href={`/courses/${slide._id}`}>
+                  <h3 className="mb-8 h-12 font-semibold tracking-tight text-gray-900 dark:text-white transform transition duration-200 hover:scale-105">
                     {slide.name}
                   </h3>
                 </a>
@@ -80,8 +82,8 @@ export default ({ items }) => {
                   <span className="text-l mr-auto text-blue-500  dark:text-white">
                     {slide.price}
                   </span>
-                  <a
-                    href="#"
+                  <button
+                    onClick={() => addToBasket(slide._id)}
                     className="focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm py-2.5 text-center dark:white dark:focus:ring-blue-800 transform transition duration-200 hover:scale-105"
                   >
                     <svg
@@ -93,7 +95,7 @@ export default ({ items }) => {
                     >
                       <path d="M2.25 2.25a.75.75 0 000 1.5h1.386c.17 0 .318.114.362.278l2.558 9.592a3.752 3.752 0 00-2.806 3.63c0 .414.336.75.75.75h15.75a.75.75 0 000-1.5H5.378A2.25 2.25 0 017.5 15h11.218a.75.75 0 00.674-.421 60.358 60.358 0 002.96-7.228.75.75 0 00-.525-.965A60.864 60.864 0 005.68 4.509l-.232-.867A1.875 1.875 0 003.636 2.25H2.25zM3.75 20.25a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zM16.5 20.25a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0z"></path>
                     </svg>
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>

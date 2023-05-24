@@ -6,7 +6,7 @@ import { Student, StudentSchema } from './entities/student.entity';
 
 @Module({
   imports: [
-    MongooseModule.forFeature([{ name: Student.name, schema: StudentSchema }]),
+    MongooseModule.forFeature([{ name: Student.name, schema: StudentSchema }])
   ],
   controllers: [StudentsController],
   providers: [StudentsService],

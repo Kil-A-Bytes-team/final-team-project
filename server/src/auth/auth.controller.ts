@@ -16,8 +16,7 @@ export class AuthController {
   // }
   @Secured()
   @Get('/currentUser')
-  currentUser(@CurrentUser() currentUser) {
-    console.log(`current user is : ${currentUser}`);
+  currentUser(@CurrentUser() currentUser:any) {
     return currentUser;
   }
 

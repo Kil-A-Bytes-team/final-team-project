@@ -13,7 +13,7 @@ import {
     MongooseModule.forFeature([
       { name: Course.name, schema: CourseSchema },
       { name: Category.name, schema: CategorySchema },
-    ]),
+    ])
   ],
   controllers: [CoursesController , SearchController],
   exports: [CoursesService],

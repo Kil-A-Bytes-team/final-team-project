@@ -1,34 +1,21 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { BasketsService } from './baskets.service';
-import { CreateBasketDto } from './dto/create-basket.dto';
-import { UpdateBasketDto } from './dto/update-basket.dto';
+import { CurrentUser } from 'src/auth/current-user.decorator';
+import { Student } from 'src/students/entities/student.entity';
+import { Secured } from 'src/auth/secured.decorator';
 
+@Secured()
 @Controller('baskets')
 export class BasketsController {
   constructor(private readonly basketsService: BasketsService) {}
 
-  @Post()
-  create(@Body() createBasketDto: CreateBasketDto) {
-    return this.basketsService.create(createBasketDto);
+  @Get('main')
+  findOne(@CurrentUser() student: Student) {
+    return this.basketsService.findMainBasket(student._id);
   }
 
-  @Get()
-  findAll() {
-    return this.basketsService.findAll();
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.basketsService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateBasketDto: UpdateBasketDto) {
-    return this.basketsService.update(+id, updateBasketDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.basketsService.remove(+id);
+  @Post('/add') 
+  addCourse(@CurrentUser() student: Student, @Body('courseId') courseId: string,@Body('quantity') quantity: number){
+    return this.basketsService.addCourseToBasket(student._id, courseId, quantity);
   }
 }

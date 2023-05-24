@@ -9,7 +9,6 @@ export const Layout = ({ children }) => {
   const { currentUser, setCurrentUser } = useCurrentUser();
   const { basket, setBasket } = useBasket();
   // const loading = useLoading();
-
   useEffect(() => {
     if (!currentUser) {
       axios
@@ -19,7 +18,6 @@ export const Layout = ({ children }) => {
           },
         })
         .then((res) => {
-          console.log(res);
           setCurrentUser(res.data);
         })
         .catch((error) => {
@@ -37,14 +35,19 @@ export const Layout = ({ children }) => {
           },
         })
         .then((res) => {
+          console.log("123:", res.data);
           setBasket(res.data);
         });
     }
   }, [currentUser]);
+  console.log("qwe: ", basket?.items?.length);
   return (
     <>
       <div className="bg-light dark:bg-dark w-full min-h-screen text-dark dark:text-light">
-        <Header currentUser={currentUser} />
+        <Header
+          currentUser={currentUser}
+          cardCount={basket?.items?.length || 0}
+        />
         {children}
         <Footer />
       </div>
