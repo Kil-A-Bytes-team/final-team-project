@@ -23,19 +23,17 @@ export class CoursesService {
     return (await createdCourse.save()).populate('category');
   }
   async findAllCourse(search): Promise<Course[]> {
-     const condition: any = {};
-     if (search) {
+    const condition: any = {};
+    if (search) {
       condition.name = { $regex: new RegExp(search, 'i') };
-
     }
     return await this.courseModel.find(condition).populate('category').exec();
   }
 
   async findAllCourseByKey(key): Promise<Course[]> {
-     const condition: any = {};
-     if (key) {
+    const condition: any = {};
+    if (key) {
       condition.name = { $regex: new RegExp(key, 'i') };
-
     }
     return await this.courseModel.find(condition).populate('category').exec();
   }

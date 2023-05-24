@@ -99,10 +99,10 @@ export const Logo = () => {
               press: { scale: 1.1 },
             }}
             // className="label flex items-center bg-dark text-light p-2.5 px-6 rounded-lg text-lg font-semibold hover:bg-light hover:text-dark border-2 border-solid border-transparent hover:border-dark"
-            className="label flex items-center"
+            className="label flex items-center ml-[-5px]"
             href="/"
           >
-            Kil-A-Bytes
+            Scholarly
           </MotionLink>
         </motion.button>
       </MotionConfig>
