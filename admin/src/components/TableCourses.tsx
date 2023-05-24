@@ -72,11 +72,17 @@ const TableCourses = () => {
               <td className="border-b-0 lg:w-6 before:hidden">
                 {/* <UserAvatar username={client.name} className="w-24 h-24 mx-auto lg:w-6 lg:h-6" /> */}
               </td>
-              <td data-label="Name">{item.name || item.title}</td>
-              <td data-label="Price">{item.price}</td>
-              <td data-label="Category">{item.category?.name}</td>
+              <td data-label="Name" className="lg:w-1 whitespace-wrap">
+                {item.name || item.title}
+              </td>
+              <td data-label="Price" className="lg:w-1 whitespace-wrap">
+                {item.price}
+              </td>
+              <td data-label="Category" className="lg:w-1 whitespace-wrap">
+                {item.category?.name}
+              </td>
 
-              <td data-label="Description" className="lg:w-1 whitespace-nowrap">
+              <td data-label="Description" className="lg:w-1 whitespace-wrap">
                 {item.description}
               </td>
               <td className="before:hidden lg:w-1 whitespace-nowrap">

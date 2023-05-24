@@ -3,19 +3,22 @@ import { Layout } from "../../layouts/layout";
 
 export default function Index(props) {
   const { news } = props;
+  console.log(news);
   return (
     <>
       <Layout>
-        <div className="wrapper">
-          <div className="container mx-auto bg-slate-100 dark:bg-dark">
-            <div className="color: #222 text-3xl font font-medium text-center mb-20">
+        <div className="container mx-auto px-60">
+          <div className="container mx-auto dark:bg-dark flex flex-col items-center">
+            <div className="color: #222 text-3xl font font-medium text-center mb-10">
               <h1>{news.title}</h1>
             </div>
-            <blockquote className="flex text-xl italic font-semibold text-gray-900 dark:text-white gap-10 mb-20 max-w-6xl align-middle">
-              <img className="w-96 h-96 rounded-lg" src={news.imageUrl} />
-              <p>"{news.description}"</p>
-            </blockquote>
-            <div className="mb-96 max-w-7xl font-semibold leading-loose text-gray-900 dark:text-white">
+            <div className="">
+              <img
+                className="w-[45rem] h-[25rem] rounded-lg"
+                src={news.imageUrl}
+              />
+            </div>
+            <div className="mb-36 mt-16 max-w-7xl font-semibold leading-loose text-gray-900 dark:text-white">
               <h5> {news.newsCategory?.name}</h5>
               <p>{news.text}</p>
             </div>

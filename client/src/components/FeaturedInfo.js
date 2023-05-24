@@ -38,40 +38,6 @@ export default ({ items }) => {
       {items?.map((slide, i) => {
         return (
           <SwiperSlide key={i}>
-            <div className=" bg-white border border-gray-200 rounded-lg shadow dark:bg-dark dark:border-gray-400">
-              <a
-                href="#"
-                className="aspect-video block relative overflow-hidden"
-              >
-                <img
-                  className="rounded-t-lg absolute w-full h-full object-cover hover:opacity-75 hover:scale-110 transition duration-500 "
-                  src={placeHolder}
-                  alt="product image"
-                />
-              </a>
-              <div className="pt-5 px-4">
-                <div className="mb-2 flex justify-between items-center">
-                  <a
-                    href="#"
-                    className="text-blue-500 hover:text-black focus:ring-4 focus:outline-none dark:text-white dark:hover:text-gray-300"
-                  >
-                    {slide.newsCategory?.name}
-                  </a>
-                </div>
-
-                <a href="#">
-                  <h3 className="mb-8 h-12 font-semibold tracking-tight text-gray-900 dark:text-white transform transition duration-200 hover:scale-105">
-                    {slide.title}
-                  </h3>
-                </a>
-              </div>
-            </div>
-          </SwiperSlide>
-        );
-      })}
-      {items?.map((slide, i) => {
-        return (
-          <SwiperSlide key={i}>
             <div className=" bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
               <a
                 href="#"
@@ -89,12 +55,12 @@ export default ({ items }) => {
                     href="#"
                     className="text-blue-500 hover:text-black focus:ring-4 focus:outline-none dark:text-white dark:hover:text-gray-300"
                   >
-                    {slide.category}
+                    {slide.newsCategory?.name}
                   </a>
                 </div>
 
                 <a href="#">
-                  <h3 className="mb-8 h-12 font-semibold tracking-tight text-gray-900 dark:text-white transform transition duration-200 hover:scale-105">
+                  <h3 className="line-clamp-2 mb-8 h-12 font-semibold tracking-tight text-gray-900 dark:text-white transform transition duration-200 hover:scale-105">
                     {slide.title}
                   </h3>
                 </a>
