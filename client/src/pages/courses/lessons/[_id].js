@@ -17,7 +17,7 @@ function Lesson(props) {
             <iframe
               width="560"
               height="315"
-              src="https://www.youtube-nocookie.com/embed/x7X9w_GIm1s"
+              src={`${course.videoUrl}`}
               title="YouTube video player"
               frameborder="0"
               className="top-0 left-0 w-full h-full"
