@@ -1,26 +1,51 @@
-import { Injectable } from '@nestjs/common';
-import { CreateBasketDto } from './dto/create-basket.dto';
-import { UpdateBasketDto } from './dto/update-basket.dto';
+import { BadRequestException, Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Basket } from './entities/basket.entity';
+import { Model } from 'mongoose';
+import { CoursesService } from 'src/courses/courses.service';
 
 @Injectable()
 export class BasketsService {
-  create(createBasketDto: CreateBasketDto) {
-    return 'This action adds a new basket';
+  constructor(@InjectModel(Basket.name) private readonly basketModel: Model<Basket>, private readonly coursesService: CoursesService){}
+
+  async findMainBasket(studentId: string) {
+    let mainBasket: Basket = await this.basketModel.findOne({studentId, isMain: true})
+    if(!mainBasket) {
+      mainBasket = await this.createNewMainBasket(studentId)
+    }
+    return mainBasket;
   }
 
-  findAll() {
-    return `This action returns all baskets`;
+  async createNewMainBasket(studentId: string) {
+    return await this.basketModel.create({ studentId , isMain: true });
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} basket`;
-  }
+  async addCourseToBasket(studentId: string, courseId: string, quantity: number){
+    const mainBasket = await this.findMainBasket(studentId);
+    const course = this.coursesService.findOneCourse(courseId);
+    if(!course){
+      throw new BadRequestException('Course not found');
+    }
+    console.log('courseId :', courseId);
+    let updatedQuantity = false;
+    if(!mainBasket.items) {
+      mainBasket.items = [{ courseId, quantity }];
+    } else {
+      mainBasket.items = mainBasket.items?.map((item)=>{
+        if(item.courseId === courseId) {
+          item.quantity += quantity;
+          updatedQuantity = true
+        }
+        return item
+      });
 
-  update(id: number, updateBasketDto: UpdateBasketDto) {
-    return `This action updates a #${id} basket`;
-  }
+      if(!updatedQuantity){
+        mainBasket.items.push({ courseId , quantity})
+      }
+    }
 
-  remove(id: number) {
-    return `This action removes a #${id} basket`;
+    const { _id , ...updatedBasket } = mainBasket;
+    await this.basketModel.findOneAndUpdate({_id}, updatedBasket);
+    return mainBasket
   }
 }
