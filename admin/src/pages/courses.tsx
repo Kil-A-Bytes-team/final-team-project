@@ -1,34 +1,24 @@
-import { mdiAccount, mdiBallotOutline, mdiGithub, mdiMail, mdiUpload } from '@mdi/js'
+import { mdiAccount, mdiBallotOutline, mdiMail } from '@mdi/js'
 import { Field, Form, Formik } from 'formik'
 import Head from 'next/head'
-import { ReactElement, useState } from 'react'
+import { ReactElement } from 'react'
 import BaseButton from '../components/BaseButton'
 import BaseButtons from '../components/BaseButtons'
 import BaseDivider from '../components/BaseDivider'
 import CardBox from '../components/CardBox'
-import FormCheckRadio from '../components/FormCheckRadio'
-import FormCheckRadioGroup from '../components/FormCheckRadioGroup'
 import FormField from '../components/FormField'
-import FormFilePicker from '../components/FormFilePicker'
 import LayoutAuthenticated from '../layouts/Authenticated'
 import SectionMain from '../components/SectionMain'
-import SectionTitle from '../components/SectionTitle'
 import SectionTitleLineWithButton from '../components/SectionTitleLineWithButton'
 import { getPageTitle } from '../config'
-import { useEffect } from 'react'
-import axios from 'axios'
 import { useCrud } from '../hooks/useCrud'
+import { GetServerSidePropsContext } from 'next'
+import axios from 'axios'
 
-const Categories = () => {
-  const [name, setName] = useState('')
-  const [price, setPrice] = useState('')
-  const [imageUrl, setImageUrl] = useState('')
-  const [videoUrl, setVideoUrl] = useState('')
-  const [description, setDescription] = useState('')
-  const [category, setCategory] = useState('')
-  const { createItem } = useCrud('courses')
+const Categories = ({ course }) => {
+  const { createItem, updateItem } = useCrud('courses')
   const { items: categories } = useCrud('categories')
-
+  const isNew = !course ? true : false
   return (
     <>
       <Head>
@@ -38,81 +28,57 @@ const Categories = () => {
       <SectionMain>
         <SectionTitleLineWithButton
           icon={mdiBallotOutline}
-          title="Add courses"
+          title={isNew ? 'Add course' : 'Edit course'}
           main
         ></SectionTitleLineWithButton>
 
         <CardBox>
           <Formik
-            initialValues={{
-              name: '',
-              price: '',
-              image: '',
-              video: '',
-              category: '',
-              textarea: '',
+            initialValues={
+              course
+                ? course
+                : {
+                    name: '',
+                    price: '',
+                    imageUrl: '',
+                    videoUrl: '',
+                    category: '',
+                    textarea: '',
+                  }
+            }
+            onSubmit={(values) => {
+              if (isNew) {
+                createItem(values)
+              } else {
+                updateItem(course._id, values)
+              }
             }}
-            onSubmit={undefined}
           >
-            <Form
-              onSubmit={(e) => {
-                e.preventDefault()
-                createItem({ name, imageUrl, description, ategory: category, videoUrl })
-              }}
-            >
+            <Form>
               <FormField label="Basic information" icons={[mdiAccount, mdiMail]}>
-                <Field
-                  name="title"
-                  placeholder="Course title"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
-                <Field
-                  type="number"
-                  name="price"
-                  placeholder="Price"
-                  value={price}
-                  onChange={(e) => setPrice(e.target.value)}
-                />
+                <Field name="name" placeholder="Course title" />
+                <Field type="number" name="price" placeholder="Price" />
               </FormField>
 
               <FormField label="Urls" labelFor="phone">
-                <Field
-                  name="image"
-                  placeholder="Image Url"
-                  id="image"
-                  value={imageUrl}
-                  onChange={(e) => setImageUrl(e.target.value)}
-                />
-                <Field
-                  name="video"
-                  placeholder="Video Url"
-                  id="video"
-                  value={videoUrl}
-                  onChange={(e) => setVideoUrl(e.target.value)}
-                />
+                <Field name="imageUrl" placeholder="Image Url" id="image" />
+                <Field name="videoUrl" placeholder="Video Url" id="video" />
               </FormField>
 
               <FormField label="Category" labelFor="category">
-                <select name="category" id="category" onChange={(e) => setCategory(e.target.value)}>
+                <Field as="select" name="category" id="category">
                   {categories.map((category) => (
                     <option value={category._id} key={category._id}>
                       {category.name}
                     </option>
                   ))}
-                </select>
+                </Field>
               </FormField>
 
               <BaseDivider />
 
-              <FormField label="Description" hasTextareaHeight>
-                <Field
-                  name="textarea"
-                  as="textarea"
-                  placeholder="Course description here"
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
-                />
+              <FormField label="description" hasTextareaHeight>
+                <Field name="description" as="textarea" placeholder="Course description here" />
               </FormField>
 
               <BaseDivider />
@@ -131,6 +97,19 @@ const Categories = () => {
 
 Categories.getLayout = function getLayout(page: ReactElement) {
   return <LayoutAuthenticated>{page}</LayoutAuthenticated>
+}
+
+export async function getServerSideProps(ctx: GetServerSidePropsContext) {
+  const { _id } = ctx.query
+
+  const request = await axios.get('http://localhost:5000/courses/' + _id)
+  const course = request.data
+
+  return {
+    props: {
+      course,
+    },
+  }
 }
 
 export default Categories

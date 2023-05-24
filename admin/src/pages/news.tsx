@@ -13,15 +13,12 @@ import SectionTitleLineWithButton from '../components/SectionTitleLineWithButton
 import { getPageTitle } from '../config'
 import axios from 'axios'
 import { useCrud } from '../hooks/useCrud'
+import { GetServerSidePropsContext } from 'next'
 
-const NewsCategories = () => {
-  const [title, setTitle] = useState('')
-  const [imageUrl, setImageUrl] = useState('')
-  const [text, setText] = useState('')
-  const [category, setCategory] = useState('')
-  const { createItem } = useCrud('news')
+const NewsCategories = ({ news }) => {
+  const { createItem, updateItem } = useCrud('news')
   const { items: categories } = useCrud('news-categories')
-
+  const isNew = !news ? true : false
   return (
     <>
       <Head>
@@ -31,69 +28,59 @@ const NewsCategories = () => {
       <SectionMain>
         <SectionTitleLineWithButton
           icon={mdiBallotOutline}
-          title="Add news"
+          title={isNew ? 'Add news' : 'Edit news'}
           main
         ></SectionTitleLineWithButton>
 
         <CardBox>
           <Formik
-            initialValues={{
-              title: '',
-              image: '',
-              category: '',
-              textarea: '',
+            initialValues={
+              news
+                ? news
+                : {
+                    title: '',
+                    imageUrl: '',
+                    newsCategory: '',
+                    description: '',
+                    text: '',
+                  }
+            }
+            onSubmit={(values) => {
+              if (isNew) {
+                createItem(values)
+              } else {
+                updateItem(news._id, values)
+              }
             }}
-            onSubmit={undefined}
           >
-            <Form
-              onSubmit={(e) => {
-                e.preventDefault()
-                createItem({ title, imageUrl, text, newsCategory: category })
-              }}
-            >
+            <Form>
               <FormField label="Basic information" icons={[mdiAccount, mdiMail]}>
-                <Field
-                  name="title"
-                  placeholder="News title"
-                  value={title}
-                  onChange={(e) => setTitle(e.target.value)}
-                />
+                <Field name="title" placeholder="News title" />
               </FormField>
 
-              <FormField label="Urls" labelFor="phone">
-                <Field
-                  name="image"
-                  placeholder="Image Url"
-                  id="image"
-                  value={imageUrl}
-                  onChange={(e) => setImageUrl(e.target.value)}
-                />
+              <FormField label="Url" labelFor="Url">
+                <Field name="imageUrl" placeholder="Image Url" id="image" />
               </FormField>
 
-              <FormField label="Category" labelFor="category">
-                <select
-                  name="category"
-                  id="category"
-                  onChange={(e) => setCategory(e.target.value)}
-                >
+              <FormField label="Category" labelFor="newsCategory">
+                <Field as="select" name="newsCategory" id="newsCategory">
+                  <option value="">Category...</option>
                   {categories.map((category) => (
                     <option value={category._id} key={category._id}>
                       {category.name}
                     </option>
                   ))}
-                </select>
+                </Field>
               </FormField>
 
               <BaseDivider />
 
+              <FormField label="Description" hasTextareaHeight>
+                <Field name="description" as="textarea" placeholder="Description here" />
+              </FormField>
+
               <FormField label="Text" hasTextareaHeight>
-                <Field
-                  name="textarea"
-                  as="textarea"
-                  placeholder="Text here"
-                  value={text}
-                  onChange={(e) => setText(e.target.value)}
-                />
+                <Field name="text" as="textarea" placeholder="Text here" />
               </FormField>
 
               <BaseDivider />
@@ -112,6 +99,19 @@ const NewsCategories = () => {
 
 NewsCategories.getLayout = function getLayout(page: ReactElement) {
   return <LayoutAuthenticated>{page}</LayoutAuthenticated>
+}
+
+export async function getServerSideProps(ctx: GetServerSidePropsContext) {
+  const { _id } = ctx.query
+
+  const request = await axios.get('http://localhost:5000/news/' + _id)
+  const news = request.data
+
+  return {
+    props: {
+      news,
+    },
+  }
 }
 
 export default NewsCategories

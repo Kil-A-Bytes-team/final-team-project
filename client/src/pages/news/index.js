@@ -16,7 +16,6 @@ const placeHolder = "https://via.placeholder.com/400x230";
 
 export default function Courses(props) {
   const { news } = props;
-
   return (
     <Layout>
       <div className="mx-10">

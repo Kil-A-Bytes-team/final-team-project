@@ -4,7 +4,7 @@ import env from './env';
 import { Logger } from '@nestjs/common';
 
 async function bootstrap() {
-  const PORT = env.PORT || 5000
+  const PORT = env.PORT || 5000;
   const app = await NestFactory.create(AppModule);
   app.enableCors();
 

@@ -16,9 +16,20 @@ const menuAside: MenuAsideItem[] = [
     label: 'Dashboard',
   },
   {
-    href: '/tables',
     label: 'Tables',
     icon: mdiTable,
+    menu: [
+      {
+        href: '/coursesTables',
+        label: 'Courses table',
+        icon: mdiTable,
+      },
+      {
+        href: '/newsTables',
+        label: 'News table',
+        icon: mdiTable,
+      },
+    ],
   },
   {
     label: 'Add',

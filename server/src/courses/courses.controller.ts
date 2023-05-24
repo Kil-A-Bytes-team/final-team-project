@@ -27,7 +27,7 @@ export class CoursesController {
     return this.coursesService.getTotalCourse();
   }
   @Get()
-  findAll(@Query('search') search: string,) {
+  findAll(@Query('search') search: string) {
     return this.coursesService.findAllCourse(search);
   }
 
@@ -49,10 +49,10 @@ export class CoursesController {
 @Controller('search')
 export class SearchController {
   constructor(private readonly coursesService: CoursesService) {}
-    @Get()
-  findAll(@Query('key') key: string,) {
-    console.log("key",key);
-    
+  @Get()
+  findAll(@Query('key') key: string) {
+    console.log('key', key);
+
     return this.coursesService.findAllCourseByKey(key);
   }
 }

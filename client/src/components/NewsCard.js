@@ -3,7 +3,7 @@ import Link from "next/link";
 const placeHolder = "https://via.placeholder.com/400x230";
 
 export default function Card({ news }) {
-  const { imageUrl, category, title, description, buttonLabel, buttonUrl } =
+  const { imageUrl, newsCategory, title, description, buttonLabel, buttonUrl } =
     news;
   const ratingChanged = (newRating) => {
     console.log(newRating);
@@ -26,7 +26,7 @@ export default function Card({ news }) {
                 href="#"
                 className="text-blue-500 hover:text-black focus:ring-4 focus:outline-none dark:text-white dark:hover:text-gray-300"
               >
-                {category}
+                {newsCategory?.name}
               </a>
             </div>
 

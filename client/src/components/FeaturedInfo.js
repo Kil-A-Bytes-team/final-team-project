@@ -55,7 +55,7 @@ export default ({ items }) => {
                     href="#"
                     className="text-blue-500 hover:text-black focus:ring-4 focus:outline-none dark:text-white dark:hover:text-gray-300"
                   >
-                    {slide.category}
+                    {slide.newsCategory?.name}
                   </a>
                 </div>
 

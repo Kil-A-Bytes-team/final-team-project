@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
 
 export const useCrud = (path: string) => {
   const [items, setItems] = useState<any>([])
@@ -15,17 +16,19 @@ export const useCrud = (path: string) => {
       .delete('http://localhost:5000/' + path + '/' + id)
       .then(() => {
         setItems(items.filter((item: any) => item._id !== id))
+        toast.success('Amjilttai ustgalaa!')
       })
       .catch((err) => {
         console.log(err)
       })
   }
 
-  const updateItem = (id: string) => {
+  const updateItem = (id: string, item: any) => {
     axios
-      .put('http://localhost:5000/' + path + '/' + id)
+      .patch('http://localhost:5000/' + path + '/' + id, item)
       .then((res) => {
         setItems(items.map((item: any) => (item.id === id ? res.data : item)))
+        toast.success('Amjilttai zaslaa!')
       })
       .catch((err) => {
         console.log(err)
@@ -38,6 +41,7 @@ export const useCrud = (path: string) => {
       .post('http://localhost:5000/' + path, item)
       .then((res) => {
         setItems([...items, res.data])
+        toast.success('Amjilttai nemlee!')
         console.log('res and items', [...items, res.data])
       })
       .catch((err) => {

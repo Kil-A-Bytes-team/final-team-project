@@ -23,10 +23,13 @@ export class NewsService {
     return (await createdNews.save()).populate('newsCategory');
   }
   async findAllNews(): Promise<News[]> {
-    return await this.newsModel.find().populate('newsCategory').exec();
+    return await this.newsModel.find().populate('newsCategory');
   }
   async findOneNews(_id: string): Promise<News | null> {
-    return await this.newsModel.findById({ _id });
+    const result = await this.newsModel.findById(_id);
+    if (!result) return null;
+    result.populate('newsCategory');
+    return result;
   }
 
   async updateNews(_id: string, updateNewsDto: UpdateNewsDto): Promise<News> {
