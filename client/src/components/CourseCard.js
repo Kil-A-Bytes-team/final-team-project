@@ -1,10 +1,12 @@
 import ReactStars from "react-rating-stars-component";
+import { useBasket } from "../hooks/useBasket";
 
 const placeHolder = "https://via.placeholder.com/400x230";
 
 export default function Card({ course }) {
   // const data = course.map((cour) => cour.category);
   const { imageUrl, category, name, description, price, rating } = course;
+  const {addToBasket} = useBasket()
   const ratingChanged = (newRating) => {
     console.log(newRating);
   };
@@ -49,6 +51,7 @@ export default function Card({ course }) {
             </div>
             <div className="self-end">
               <button
+                onClick={()=>addToBasket(course._id)}
                 href={`courses/${course._id}`}
                 className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >
