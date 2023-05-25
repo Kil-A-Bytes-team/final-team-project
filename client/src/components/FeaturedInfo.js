@@ -3,11 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import ReactStars from "react-rating-stars-component";
 
 import { Pagination, Navigation } from "swiper";
-import {
-  FaChevronCircleLeft,
-  FaChevronCircleRight,
-  CgRead,
-} from "react-icons/fa";
+import { FaChevronCircleLeft, FaChevronCircleRight } from "react-icons/fa";
 
 const placeHolder = "https://via.placeholder.com/230x150";
 
@@ -16,7 +12,7 @@ export default ({ items }) => {
     <Swiper
       spaceBetween={20}
       loop={true}
-      className={`w-full mb-10 relative py-[50px] mx-auto px-5 sm:px-0`}
+      className={`mySwiper w-full mb-10 relative py-[50px] mx-auto px-5 sm:px-0`}
       breakpoints={{
         639: {
           slidesPerView: 1,
@@ -35,9 +31,9 @@ export default ({ items }) => {
         },
       }}
       autoplay={false}
-      navigation={{ nextEl: ".next-nav", prevEl: ".prev-nav" }}
-      //   pagination={{ clickable: true }}
-      modules={[Navigation, Pagination]}
+      navigation={{ prevEl: ".prev-nav", nextEl: ".next-nav" }}
+      pagination={{ clickable: true }}
+      modules={[Navigation]}
     >
       {items?.map((slide, i) => {
         return (
@@ -65,7 +61,7 @@ export default ({ items }) => {
                 <h3 className="mb-8 h-12 font-semibold tracking-tight text-gray-900 dark:text-white transform transition duration-200 hover:scale-105 line-clamp-2">
                   <a href={`/news/${slide._id}`}>{slide.title}</a>
                 </h3>
-                
+
                 <div className="mb-4 flex justify-end">
                   <button
                     href={`/news/${slide._id}`}
@@ -96,7 +92,7 @@ export default ({ items }) => {
         <button className="p-2 cursor-pointer prev-nav flex items-center justify-center text-blue-400 hover:text-black dark:hover:text-white transition-colors duration-300">
           <FaChevronCircleLeft />
         </button>
-        <button className="p-2 cursor-pointer next-nav text-3xl flex items-center justify-center text-blue-400 hover:text-black dark:hover:text-white transition-colors duration-300">
+        <button className="p-2 cursor-pointer next-nav flex items-center justify-center text-blue-400 hover:text-black dark:hover:text-white transition-colors duration-300">
           <FaChevronCircleRight />
         </button>
       </div>

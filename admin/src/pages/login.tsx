@@ -7,7 +7,6 @@ import SectionFullScreen from '../components/SectionFullScreen'
 import LayoutGuest from '../layouts/Guest'
 import { Field, Form, Formik } from 'formik'
 import FormField from '../components/FormField'
-import FormCheckRadio from '../components/FormCheckRadio'
 import BaseDivider from '../components/BaseDivider'
 import BaseButtons from '../components/BaseButtons'
 import { useRouter } from 'next/router'
@@ -25,8 +24,7 @@ export default function Error() {
       .then((res: any) => {
         console.log(res.status)
         localStorage.setItem('token', res.data)
-        // toast.success('Амжилттай нэвтэрлээ')
-        toast.success('Success')
+        toast.success('Амжилттай нэвтэрлээ')
         router.push('/dashboard')
       })
       .catch((err) => {
