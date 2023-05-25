@@ -24,7 +24,12 @@ const AsideMenuItem = ({ item, isDropdownList = false }: Props) => {
   const activeClassAddon = !item.color && isLinkActive ? asideMenuItemActiveStyle : ''
 
   const { asPath, isReady } = useRouter()
+  const router = useRouter()
 
+  const logOut = () => {
+    localStorage.removeItem('token')
+    router.push('/login')
+  }
   useEffect(() => {
     if (item.href && isReady) {
       const linkPathName = new URL(item.href, location.href).pathname
@@ -44,6 +49,7 @@ const AsideMenuItem = ({ item, isDropdownList = false }: Props) => {
         className={`grow text-ellipsis line-clamp-1 ${
           item.menu ? '' : 'pr-12'
         } ${activeClassAddon}`}
+        onClick={() => logOut()}
       >
         {item.label}
       </span>

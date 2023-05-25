@@ -98,5 +98,9 @@ export default function NavBarItem({ item }: Props) {
     )
   }
 
-  return <div className={componentClass}>{NavBarItemComponentContents}</div>
+  return (
+    <div className={componentClass}>
+      {NavBarItemComponentContents}
+    </div>
+  )
 }
