@@ -80,7 +80,7 @@ export default ({ items }) => {
                 <hr></hr>
                 <div className="flex items-center justify-between">
                   <span className="text-l mr-auto text-blue-500  dark:text-white">
-                    {slide.price}
+                    {slide.price} $
                   </span>
                   <button
                     onClick={() => addToBasket(slide._id)}

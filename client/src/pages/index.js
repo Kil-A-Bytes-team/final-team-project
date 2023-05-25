@@ -29,12 +29,12 @@ export default function Home({ courses, news }) {
         <main className="flex flex-col items-center text-dark dark:text-light w-full sm:px-32 md:px-16 px-8">
           <HomeLayout className="pt-0 pb-16 ">
             <div className="block items-center justify-between lg:flex w-full px-32 md:px-32 sm:px-16">
-              <div className="lg:w-1/2 flex flex-col items-center self-center md:w-full">
+              <div className="lg:w-1/2 flex flex-col  md:w-full">
                 <AnimatedText
                   text={"Welcome to Kil -A- Bytes team project"}
                   className="!text-left"
                 />
-                <p className="my-4 text-base font-medium ">
+                <p className="my-4 text-[19px] font-semibold ">
                   Цахим хичээл болон тэтгэлэгийн мэдээллийн нэгдсэн сан.
                 </p>
                 <div className="flex invisible lg:visible items-center self-start mt-2">
