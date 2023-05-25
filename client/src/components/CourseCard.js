@@ -37,7 +37,7 @@ export default function Card({ course }) {
             />
           </div>
           <h5 className="mt-3 mb-5 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-            <a href={`courses/${course._id}`}>{name}</a>{" "}
+            <a href={`courses/${course._id}`}>{name}</a>
           </h5>
           <p className="mb-5 font-normal text-gray-700 dark:text-gray-400 line-clamp-4">
             {description}
