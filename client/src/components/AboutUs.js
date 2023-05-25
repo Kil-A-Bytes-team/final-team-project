@@ -30,7 +30,10 @@ export default function AboutUs() {
       </div>
       <div className="flex flex-row gap-10 justify-center">
         {props?.map((prop, index) => (
-          <div className="transition-all duration-400 flex-1 group bg-white shadow-sm hover:shadow-lg py-7 px-6 cursor-pointer flex flex-col items-center">
+          <div
+            key={index}
+            className="transition-all duration-400 flex-1 group bg-white shadow-sm hover:shadow-lg py-7 px-6 cursor-pointer flex flex-col items-center"
+          >
             <div className="transition-all duration-400 translate-y-0 group-hover:-translate-y-4 flex flex-col items-center">
               <div className="w-[120px] h-[120px] rounded-full overflow-hidden mb-4">
                 <img

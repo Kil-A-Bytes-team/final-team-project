@@ -94,14 +94,14 @@ const ProductView = (props) => {
                 height="315"
                 src={`${course.videoUrl}`}
                 title="YouTube video player"
-                frameborder="0"
+                frameBorder="0"
                 className="top-0 left-0 w-full h-full"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
-                allowfullscreen="allowfullscreen"
-                mozallowfullscreen="mozallowfullscreen"
-                msallowfullscreen="msallowfullscreen"
-                oallowfullscreen="oallowfullscreen"
-                webkitallowfullscreen="webkitallowfullscreen"
+                allowFullScreen="allowFullScreen"
+                mozallowFullScreen="mozallowFullScreen"
+                msallowFullScreen="msallowFullScreen"
+                oallowFullScreen="oallowFullScreen"
+                webkitallowFullScreen="webkitallowFullScreen"
               ></iframe>
             </div>
             <div className="flex justify-center items-center">

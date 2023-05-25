@@ -67,7 +67,7 @@ export default ({ items }) => {
                     activeColor="#ffd700"
                   />
                 </div>
-                <h3 className="mb-8 h-12 font-semibold tracking-tight text-gray-900 dark:text-white transform transition duration-200 hover:scale-105">
+                <h3 className="mb-8 h-12 font-semibold tracking-tight text-gray-900 dark:text-white transform transition duration-200 hover:scale-105 line-clamp-3">
                   <a href={`/courses/${slide._id}`}>{slide.name}</a>
                 </h3>
 
