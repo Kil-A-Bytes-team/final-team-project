@@ -13,7 +13,7 @@ const AllDiv = () => {
     { side: "End time" },
   ];
   return (
-    <div className="w-[810px]  sm:rounded-lg">
+    <div className="w-[810px] sm:rounded-lg">
       <table className="text-sm text-left text-gray-500 dark:text-gray-400">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
@@ -155,18 +155,6 @@ export default function UserProfile() {
 
   return (
     <Layout>
-      {/* <ul>
-        <li>
-          <button onClick={() => setTabIndex(0)}>Tab 1</button>
-        </li>
-        <li>
-          <button onClick={() => setTabIndex(1)}>Tab 2</button>
-        </li>
-      </ul>
-      <div>
-        {tabIndex === 0 && <Comp />}
-        {tabIndex === 1 && <Comp2 />}
-      </div> */}
       <div className="sm:container sm:mx-auto 2xl:max-xl xl:max-lg lg:max-md">
         <div className="grid grid-rows-3 grid-flow-col gap-4 ">
           <div className="row-span-2 col-auto ">
@@ -177,7 +165,7 @@ export default function UserProfile() {
                   alt="Profile Image"
                   className="w-36 h-36 rounded-full ml-12"
                 />
-
+                <div className="mt-4">{currentUser?.email}</div>
                 <div className="row-start-auto md:flex hidden">
                   <div className="w-64 mt-12 text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
                     <Link

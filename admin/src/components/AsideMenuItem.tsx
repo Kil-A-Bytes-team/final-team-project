@@ -45,14 +45,23 @@ const AsideMenuItem = ({ item, isDropdownList = false }: Props) => {
       {item.icon && (
         <BaseIcon path={item.icon} className={`flex-none ${activeClassAddon}`} w="w-16" size="18" />
       )}
-      <span
+      {/* <span
         className={`grow text-ellipsis line-clamp-1 ${
           item.menu ? '' : 'pr-12'
         } ${activeClassAddon}`}
         onClick={() => logOut()}
       >
         {item.label}
-      </span>
+      </span> */}
+       {item.label.includes('Logout') ? <span className={`grow text-ellipsis line-clamp-1 ${
+          item.menu ? '' : 'pr-12'
+        } ${activeClassAddon}`} onClick={()=>logOut()}>{item.label}</span> : <span
+        className={`grow text-ellipsis line-clamp-1 ${
+          item.menu ? '' : 'pr-12'
+        } ${activeClassAddon}`}
+      >
+        {item.label}
+      </span>}
       {item.menu && (
         <BaseIcon
           path={isDropdownActive ? mdiMinus : mdiPlus}

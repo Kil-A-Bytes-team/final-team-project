@@ -99,11 +99,11 @@ const menuAside: MenuAsideItem[] = [
     label: 'Profile',
     icon: mdiAccountCircle,
   },
-  {
-    href: '/login',
-    label: 'Login',
-    icon: mdiLock,
-  },
+  // {
+  //   href: '/login',
+  //   label: 'Login',
+  //   icon: mdiLock,
+  // },
   // {
   //   href: '/error',
   //   label: 'Error',
