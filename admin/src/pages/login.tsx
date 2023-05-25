@@ -20,7 +20,7 @@ export default function Error() {
   const handleSubmit = (values) => {
     console.log('values:', values)
     axios
-      .post(`${process.env.NEXT_PUBLIC_API_URL}/signin`, values)
+      .post(`/signin`, values)
       .then((res: any) => {
         console.log(res.status)
         localStorage.setItem('token', res.data)
