@@ -32,7 +32,7 @@ export default function Card({ course }) {
             <ReactStars
               value={rating}
               count={5}
-              edit={false}
+              edit={true}
               size={18}
               activeColor="#ffd700"
             />
@@ -49,7 +49,7 @@ export default function Card({ course }) {
           <hr></hr>
           <div className="flex justify-between items-center mt-5">
             <div className="text-xl mr-auto text-blue-500  dark:text-white">
-              {price}
+              {price} $
             </div>
             <div className="self-end">
               <a
