@@ -3,7 +3,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import ReactStars from "react-rating-stars-component";
 
 import { Pagination, Navigation } from "swiper";
-import { FaChevronCircleLeft, FaChevronCircleRight } from "react-icons/fa";
+import {
+  FaChevronCircleLeft,
+  FaChevronCircleRight,
+  CgRead,
+} from "react-icons/fa";
 
 const placeHolder = "https://via.placeholder.com/230x150";
 
@@ -64,28 +68,27 @@ export default ({ items }) => {
                     {slide.title}
                   </h3>
                 </a>
-                <div className="flex justify-between items-center mt-5">
-                  <div className="self-end">
-                    <a
-                      href={`/news/${slide._id}`}
-                      className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+
+                <div className="mb-4 flex justify-end">
+                  <a
+                    href={`/news/${slide._id}`}
+                    className="inline-flex items-center px-3 py-2 text-[12px] font-semibold text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  >
+                    Унших
+                    <svg
+                      aria-hidden="true"
+                      className="w-4 h-4 ml-2 -mr-1"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
                     >
-                      Дэлгэрэнгүй
-                      <svg
-                        aria-hidden="true"
-                        className="w-4 h-4 ml-2 -mr-1"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                          clipRule="evenodd"
-                        ></path>
-                      </svg>
-                    </a>
-                  </div>
+                      <path
+                        fillRule="evenodd"
+                        d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                        clipRule="evenodd"
+                      ></path>
+                    </svg>
+                  </a>
                 </div>
               </div>
             </div>

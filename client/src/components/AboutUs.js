@@ -14,7 +14,12 @@ export default function AboutUs() {
       linkedin: "https://www.linkedin.com/in/usukhbayar-tumenbayar-40b00825a/",
       email: "osoho_123@yahoo.com",
     },
-    { firstName: "Temuulen", lastName: "Munkhjargal", imgUrl: "/darga.png" },
+    {
+      firstName: "Temuulen",
+      lastName: "Munkhjargal",
+      imgUrl: "/temka.jpg",
+      email: "temuulen.m@ebazaar.mn",
+    },
   ];
   // const { us } = props;
   // console.log('us', us);
@@ -30,7 +35,7 @@ export default function AboutUs() {
               <div className="w-[120px] h-[120px] rounded-full overflow-hidden mb-4">
                 <img
                   src={prop.imgUrl}
-                  className="w-full h-full object-cover hover:scale-110 transition duration-500"
+                  className="w-full h-full object-[center_top] object-cover hover:scale-110 transition duration-500"
                 />
               </div>
               <h3 className="text-xl mb-3">

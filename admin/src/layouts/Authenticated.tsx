@@ -55,6 +55,12 @@ export default function LayoutAuthenticated({ children }: Props) {
   }, [router.events, dispatch])
 
   const layoutAsidePadding = 'xl:pl-60'
+  if (typeof window !== 'undefined') {
+    const token = localStorage.getItem('token')
+    if (!token) {
+      router.push('/login')
+    }
+  }
 
   return (
     <div className={`${darkMode ? 'dark' : ''} overflow-hidden lg:overflow-visible`}>
