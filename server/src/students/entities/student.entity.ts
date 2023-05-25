@@ -10,6 +10,21 @@ export class Student {
   email: string;
 
   @Prop()
+  first_name: string;
+
+  @Prop()
+  last_name:string;
+
+  @Prop()
+  display_name: string;
+  
+  @Prop()
+  phone_number: number;
+
+  @Prop()
+  imageUrl: string;
+
+  @Prop()
   password: string;
 
   createdAt: Date;

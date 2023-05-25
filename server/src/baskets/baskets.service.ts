@@ -9,7 +9,7 @@ export class BasketsService {
   constructor(@InjectModel(Basket.name) private readonly basketModel: Model<Basket>, private readonly coursesService: CoursesService){}
 
   async findMainBasket(studentId: string) {
-    let mainBasket: Basket = await this.basketModel.findOne({studentId, isMain: true})
+    let mainBasket: Basket = await this.basketModel.findOne({studentId, isMain: true});
     if(!mainBasket) {
       mainBasket = await this.createNewMainBasket(studentId)
     }
@@ -17,7 +17,18 @@ export class BasketsService {
   }
 
   async createNewMainBasket(studentId: string) {
-    return await this.basketModel.create({ studentId , isMain: true });
+    return (await this.basketModel.create({ studentId , isMain: true }));
+  }
+
+  async removeItem(studentId: string, courseId: string){
+    let mainBasket = await this.findMainBasket(studentId)
+    if(!mainBasket.items) {
+      throw new BadRequestException('Ustgah course algaa');
+    } else {
+        const filteredItems = { items: mainBasket.items?.filter(item => item.courseId !== courseId)}
+        await this.basketModel.findOneAndUpdate({studentId}, {items:filteredItems.items});
+      }
+      return mainBasket;
   }
 
   async addCourseToBasket(studentId: string, courseId: string, quantity: number){
@@ -38,7 +49,6 @@ export class BasketsService {
         }
         return item
       });
-
       if(!updatedQuantity){
         mainBasket.items.push({ courseId , quantity})
       }

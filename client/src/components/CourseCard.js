@@ -8,7 +8,6 @@ export default function Card({ course }) {
   const ratingChanged = (newRating) => {
     console.log(newRating);
   };
-  console.log(course);
   return (
     <div className="flex justify-center ">
       <div className="max-w-sm mx-auto bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
@@ -37,12 +36,9 @@ export default function Card({ course }) {
               activeColor="#ffd700"
             />
           </div>
-
-          <a href={`courses/${course._id}`}>
-            <h5 className="mt-3 mb-5 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              {name}
-            </h5>
-          </a>
+          <h5 className="mt-3 mb-5 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            <a href={`courses/${course._id}`}>{name}</a>{" "}
+          </h5>
           <p className="mb-5 font-normal text-gray-700 dark:text-gray-400 line-clamp-4">
             {description}
           </p>
@@ -52,7 +48,7 @@ export default function Card({ course }) {
               {price} $
             </div>
             <div className="self-end">
-              <a
+              <button
                 href={`courses/${course._id}`}
                 className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >
@@ -70,7 +66,7 @@ export default function Card({ course }) {
                     clipRule="evenodd"
                   ></path>
                 </svg>
-              </a>
+              </button>
             </div>
           </div>
         </div>

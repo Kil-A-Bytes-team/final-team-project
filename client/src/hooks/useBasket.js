@@ -9,45 +9,47 @@ export const useBasket = () => {
   const [basket, setBasket] = useRecoilState(BasketState);
 
   useEffect(() => {
-    console.log("basket: ", basket);
+    // console.log("basket: ", basket);
   }, [basket]);
   const { currentUser } = useCurrentUser();
 
-  const addToBasket = async (courseId, quantity) => {
-    const basket = await updateBasket(courseId, quantity);
+  const addToBasket = async (courseId) => {
+    const basket = await updateBasket(courseId);
     setBasket(basket);
     toast.success("Hicheeliig amjilttai sagsallaa");
   };
 
-  const updateBasket = async (courseId, quantity) => {
+  const updateBasket = async (courseId) => {
     if (!currentUser) {
       if (!basket) {
         console.log("created basket cuz it was empty");
-        return { items: [{ courseId, quantity }] };
+        return { items: [{ courseId }] };
       }
       const newBasket = { items: [] };
       let { items } = basket;
       items = [...items];
       let updatedQuantiy = false;
+      toast.warn("Ali hediin sagsalsan hicheel baina!");
 
       newBasket.items = items.map((item, index) => {
         if (item.courseId === courseId) {
-          toast.warn("Ali hediin sagsalsan hicheel baina!");
-          const newQuantity = item.quantity + quantity;
           updatedQuantiy = true;
-          return { courseId: courseId, quantity: newQuantity };
+
+          return { courseId: courseId };
         }
         return item;
       });
+      toast.warn("Ali hediin sagsalsan hicheel baina!");
+
       if (!updatedQuantiy) {
-        newBasket.items.push({ courseId, quantity });
+        newBasket.items.push({ courseId });
       }
       return newBasket;
     }
 
     const res = await axios.post(
       `${process.env.NEXT_PUBLIC_API_URL}/baskets/add`,
-      { courseId, quantity },
+      { courseId },
       { headers: { Authorization: "Bearer " + localStorage.getItem("token") } }
     );
     return res.data;

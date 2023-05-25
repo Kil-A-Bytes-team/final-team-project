@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestjs/common';
 import { BasketsService } from './baskets.service';
 import { CurrentUser } from 'src/auth/current-user.decorator';
 import { Student } from 'src/students/entities/student.entity';
@@ -15,7 +15,11 @@ export class BasketsController {
   }
 
   @Post('/add') 
-  addCourse(@CurrentUser() student: Student, @Body('courseId') courseId: string,@Body('quantity') quantity: number){
+  addCourse(@CurrentUser() student: Student, @Body('courseId') courseId: string, @Body('quantity') quantity: number){
     return this.basketsService.addCourseToBasket(student._id, courseId, quantity);
+  }
+  @Delete('/remove')
+  removeCourse(@CurrentUser() student: Student, @Query('courseId') courseId: string){
+    return this.basketsService.removeItem(student._id, courseId)
   }
 }

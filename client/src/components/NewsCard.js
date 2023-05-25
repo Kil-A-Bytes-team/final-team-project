@@ -29,18 +29,17 @@ export default function Card({ news }) {
                 {newsCategory?.name}
               </a>
             </div>
-
-            <a href="#">
-              <h5 className="mt-3 mb-5 h-24 overflow-hidden text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
+            <h5 className="mt-3 mb-5 h-24 overflow-hidden text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
+              <a href="#">
                 <span className="line-clamp-3">{title}</span>
-              </h5>
-            </a>
+              </a>
+            </h5>
             <p className="mb-5 font-normal text-gray-700 dark:text-gray-400 line-clamp-4">
               {description}
             </p>
             <div className="flex justify-between items-center mt-5">
-              <div className="self-center">
-                <a
+              <div className="self-end">
+                <button
                   href={buttonUrl}
                   className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 >
@@ -58,7 +57,7 @@ export default function Card({ news }) {
                       clipRule="evenodd"
                     ></path>
                   </svg>
-                </a>
+                </button>
               </div>
             </div>
           </div>

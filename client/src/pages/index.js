@@ -15,9 +15,12 @@ import axios from "axios";
 // import { Banner } from "@/components/Banner";
 import Decoration from "../components/Decoration";
 import AboutUs from "../components/AboutUs";
+import { useCurrentUser } from "../hooks/useCurrentUser";
 
 export default function Home({ courses, news }) {
   const placeHolder = "https://via.placeholder.com/400x600";
+
+  const { currentUser } = useCurrentUser();
 
   return (
     <>
@@ -38,12 +41,14 @@ export default function Home({ courses, news }) {
                   Цахим хичээл болон тэтгэлэгийн мэдээллийн нэгдсэн сан.
                 </p>
                 <div className="flex invisible lg:visible items-center self-start mt-2">
-                  <Link
-                    className="flex items-center bg-dark dark:bg-light dark:text-dark text-light p-2.5 px-6 rounded-lg text-lg font-semibold hover:bg-light dark:hover:bg-dark dark:hover:text-light hover:text-dark border-2 border-solid border-transparent dark:hover:border-light dark:border-dark hover:border-dark"
-                    href="/signin"
-                  >
-                    Нэвтрэх
-                  </Link>
+                  {currentUser ? null : (
+                    <Link
+                      className="flex items-center bg-dark dark:bg-light dark:text-dark text-light p-2.5 px-6 rounded-lg text-lg font-semibold hover:bg-light dark:hover:bg-dark dark:hover:text-light hover:text-dark border-2 border-solid border-transparent dark:hover:border-light dark:border-dark hover:border-dark"
+                      href="/signin"
+                    >
+                      Нэвтрэх
+                    </Link>
+                  )}
                 </div>
               </div>
               <div className="lg:w-1/2 h-1/3 md:w-full w-full">

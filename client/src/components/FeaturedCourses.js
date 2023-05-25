@@ -38,9 +38,6 @@ export default ({ items }) => {
       modules={[Navigation, Pagination]}
     >
       {items.map((slide, i) => {
-        // console.log(slide.category);
-        // const categoryItem = slide.category;
-        // console.log(`categoryItem is ${categoryItem}`);
         return (
           <SwiperSlide key={i}>
             <div className=" bg-white border border-gray-200 rounded-lg shadow dark:bg-dark dark:border-y-gray-400">
@@ -70,12 +67,9 @@ export default ({ items }) => {
                     activeColor="#ffd700"
                   />
                 </div>
-
-                <a href={`/courses/${slide._id}`}>
-                  <h3 className="mb-8 h-12 font-semibold tracking-tight text-gray-900 dark:text-white transform transition duration-200 hover:scale-105 line-clamp-3">
-                    {slide.name}
-                  </h3>
-                </a>
+                <h3 className="mb-8 h-12 font-semibold tracking-tight text-gray-900 dark:text-white transform transition duration-200 hover:scale-105">
+                  <a href={`/courses/${slide._id}`}>{slide.name}</a>
+                </h3>
 
                 <hr></hr>
                 <div className="flex items-center justify-between">

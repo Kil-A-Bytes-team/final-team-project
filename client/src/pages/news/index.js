@@ -33,7 +33,7 @@ export default function Courses(props) {
   );
 }
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const newsRequest = await axios.get(
     `${process.env.NEXT_PUBLIC_API_URL}/news`
   );
