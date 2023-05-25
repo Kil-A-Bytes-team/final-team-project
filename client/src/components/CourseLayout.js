@@ -90,9 +90,9 @@ function CourseLayout({ children }) {
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                 ></path>
               </svg>
@@ -106,7 +106,7 @@ function CourseLayout({ children }) {
           <ul>
             {lessons.map((lesson) => (
               <li key={lesson.id}>
-                <a className="p-4 flex justify-between border cursor-pointer">
+                <button className="p-4 flex justify-between border cursor-pointer">
                   <div className="flex gap-4 w-[calc(100%-80px)]">
                     <MdMenuBook className="text-xl w-[20px]" />
                     <span className="text-[15px] font-medium w-[calc(100%-20px)]">
@@ -116,7 +116,7 @@ function CourseLayout({ children }) {
                   <span className="text-sm text-gray-500 w-[85px] text-right">
                     {lesson.time}
                   </span>
-                </a>
+                </button>
               </li>
             ))}
           </ul>

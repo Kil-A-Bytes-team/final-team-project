@@ -50,9 +50,9 @@ const ProductView = (props) => {
   };
   return (
     <Layout>
-      <div className="px-32">
+      <div className="px-32 pb-10">
         <div className="flex justify-between mb-20">
-          <div className=" w-2/3">
+          <div className=" w-3/5">
             <div className="text-5xl font-semibold pb-5">1.1 {course.name}</div>
             <div className="text-lg text-stone-700 pb-5">
               1.2 {course.description}
@@ -87,14 +87,32 @@ const ProductView = (props) => {
               </ul>
             </div>
           </div>
-          <div className="mt-20 mr-40 flex flex-col gap-y-10 items-center">
-            <span className=" font-semibold">{course.price} $$$</span>
-            <Link
-              className="flex shadow-xl items-center bg-dark dark:bg-light dark:text-dark text-light p-2.5 px-6 rounded-lg text-lg font-semibold hover:bg-light dark:hover:bg-dark dark:hover:text-light hover:text-dark border-2 border-solid border-transparent dark:hover:border-light dark:border-dark hover:border-dark"
-              href={`lessons/${course._id}`}
-            >
-              Buy
-            </Link>
+          <div className="grid w-1/3  pt-24 gap-y-10 items-center">
+            <div className=" aspect-video">
+              <iframe
+                width="560"
+                height="315"
+                src={`${course.videoUrl}`}
+                title="YouTube video player"
+                frameborder="0"
+                className="top-0 left-0 w-full h-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
+                allowfullscreen="allowfullscreen"
+                mozallowfullscreen="mozallowfullscreen"
+                msallowfullscreen="msallowfullscreen"
+                oallowfullscreen="oallowfullscreen"
+                webkitallowfullscreen="webkitallowfullscreen"
+              ></iframe>
+            </div>
+            <div className="flex justify-center items-center">
+              <span className="mr-8 font-semibold">{course.price}$</span>
+              <Link
+                className="flex shadow-xl items-center bg-dark dark:bg-light dark:text-dark text-light p-2.5 px-6 rounded-lg text-lg font-semibold hover:bg-light dark:hover:bg-dark dark:hover:text-light hover:text-dark border-2 border-solid border-transparent dark:hover:border-light dark:border-dark hover:border-dark"
+                href={`lessons/${course._id}`}
+              >
+                Buy
+              </Link>
+            </div>
           </div>
         </div>
         <div>
