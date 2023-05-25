@@ -6,12 +6,11 @@ import axios from "axios";
 function Lesson(props) {
   const { course } = props;
   return (
-    <CourseLayout>
-      <div className="w-full max-w-5xl  mx-auto">
+    <CourseLayout course={course}>
+      <div className="w-full max-w-5xl  mx-auto ">
         <div className="p-8">
           <div className="pb-[40px]">
             <h1 className="font-semibold text-[36px] mb-4">{course.name}</h1>
-            <span className="text-[20px]">{course.description}</span>
           </div>
           <div className="mb-10 aspect-video relative">
             <iframe
@@ -29,7 +28,9 @@ function Lesson(props) {
               webkitallowFullScreen="webkitallowFullScreen"
             ></iframe>
           </div>
-          <p className="box-border">
+          <div className="text-[16px] mb-10">{course.description}</div>
+          <hr></hr>
+          <p className="box-border mt-10">
             Open the door to sought-after technology careers with a world-class
             online Bachelor of Science (BSc) in Computer Science degree from the
             University of London. You’ll master in-demand computing skills,

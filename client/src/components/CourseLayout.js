@@ -1,7 +1,7 @@
 import React from "react";
 import { MdMenuBook } from "react-icons/md";
 
-function CourseLayout({ children }) {
+function CourseLayout({ children, course }) {
   const lessons = [
     {
       id: 1,
@@ -106,8 +106,8 @@ function CourseLayout({ children }) {
           <ul>
             {lessons.map((lesson) => (
               <li key={lesson.id}>
-                <button className="p-4 flex justify-between border cursor-pointer">
-                  <div className="flex gap-4 w-[calc(100%-80px)]">
+                <button className="p-4 flex justify-between w-full border cursor-pointer">
+                  <div className="flex gap-4 w-[calc(100%-80px)] text-start">
                     <MdMenuBook className="text-xl w-[20px]" />
                     <span className="text-[15px] font-medium w-[calc(100%-20px)]">
                       {lesson.title}
@@ -127,7 +127,7 @@ function CourseLayout({ children }) {
       <div className="ml-[300px] xl:ml-[480px] w-full fixed top-0 flex items-center h-[50px] bg-slate-50 ">
         <h2 className="font-bold text-base pl-8">
           <a href="" className="w-full cursor-pointer">
-            Financial Markets Introduction
+            {course.name}
           </a>
         </h2>
       </div>

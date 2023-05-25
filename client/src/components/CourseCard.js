@@ -29,10 +29,10 @@ export default function Card({ course }) {
               {course.category?.name}
             </a>
             <ReactStars
-              value={rating}
+              value={5}
               count={5}
-              edit={true}
-              size={18}
+              edit={false}
+              size={15}
               activeColor="#ffd700"
             />
           </div>
