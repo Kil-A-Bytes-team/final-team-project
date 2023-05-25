@@ -348,16 +348,16 @@ export default function UserProfile() {
               </div>
               <div className="w-3/4">
                 <h1 className="text-2xl font-bold my-20 px-30">User Profile</h1>
-                <div className="2xl:flex mb-16 xl:block w-full">
-                  <div className="mx-12 box-content text-center h-12 2xl:w-40 p-4 border-4 xl: border-bg-[#F5F5F5] bg-[#F5F5F5] md:w-1/2 sm:w-1/4">
+                <div className="flex mb-16">
+                  <div className="mx-20 box-content text-center h-12 w-40 p-4 border-4 border-bg-[#F5F5F5] bg-[#F5F5F5]">
                     <div className="text-[#666]">Enrolled Courses</div>
                     <div>3</div>
                   </div>
-                  <div className="mx-12 box-content text-center h-12 2xl:w-40 p-4 border-4 border-bg-[#F5F5F5] bg-[#F5F5F5] md:w-1/2 sm:w-1/4">
+                  <div className="mx-20 box-content text-center h-12 w-40 p-4 border-4 border-bg-[#F5F5F5] bg-[#F5F5F5]">
                     <div className="text-[#666]">Active Courses</div>
                     <div>3</div>
                   </div>
-                  <div className="mx-12 box-content text-center h-12 2xl:w-40 p-4 border-4 border-bg-[#F5F5F5] bg-[#F5F5F5] md:w-1/2 sm:w-1/4">
+                  <div className="mx-20 box-content text-center h-12 w-40 p-4 border-4 border-bg-[#F5F5F5] bg-[#F5F5F5]">
                     <div className="text-[#666]">Completed Courses</div>
                     <div>0</div>
                   </div>
