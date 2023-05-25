@@ -14,7 +14,7 @@ export default function settings() {
         <div className="flex justify-between gap-5">
           <div className="w-1/4">
             <img
-              src="https://placeimg.com/640/480/any"
+              src="https://avatars.dicebear.com/api/avataaars/example.svg?options[top][]=shortHair&options[accessoriesChance]=93"
               alt="Profile Image"
               className="w-36 h-36 rounded-full ml-12"
             />

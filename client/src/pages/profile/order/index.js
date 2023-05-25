@@ -19,7 +19,7 @@ export default function Order() {
         <div className="flex justify-between gap-5">
           <div className="w-1/4">
             <img
-              src="https://placeimg.com/640/480/any"
+              src="https://avatars.dicebear.com/api/avataaars/example.svg?options[top][]=shortHair&options[accessoriesChance]=93"
               alt="Profile Image"
               className="w-36 h-36 rounded-full ml-12"
             />
@@ -198,17 +198,17 @@ export default function Order() {
             </h1>
             <div className="md:container md:mx-auto flex mb-16 ">
               <div className=" mx-auto box-content text-center h-12 w-40 p-4 border-4 border-bg-[#F5F5F5] bg-[#F5F5F5]">
-                <div className="text-[#666]">My Orders</div>
+                <div className="text-[#666]">My orders</div>
                 <div>{basket?.items?.length}</div>
               </div>
               <div className="mx-auto box-content text-center h-12 w-40 p-4 border-4 border-bg-[#F5F5F5] bg-[#F5F5F5]">
-                <div className="text-[#666]">Price</div>
-                <div>150</div>
+                <div className="text-[#666]">Total price</div>
+                <div>150$</div>
               </div>
-              <div className="mx-auto box-content text-center h-12 w-40 p-4 border-4 border-bg-[#F5F5F5] bg-[#F5F5F5]">
-                <div className="text-[#666]">Buy all</div>
+              <Link className="hover:shadow-xl hover:border-blue-300 transition mx-auto text-[#666] box-content text-center h-12 w-40 p-4 border-4 border-bg-[#F5F5F5] bg-[#F5F5F5]" href={'/orderPage'}>
+                 Buy all
                 <div>{basket?.items?.length}</div>
-              </div>
+              </Link>
             </div>
             <hr />
 

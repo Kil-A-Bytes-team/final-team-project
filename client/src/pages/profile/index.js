@@ -13,8 +13,8 @@ const AllDiv = () => {
     { side: "End time" },
   ];
   return (
-    <div className=" shadow-md sm:rounded-lg">
-      <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+    <div className="w-[810px]  sm:rounded-lg">
+      <table className="text-sm text-left text-gray-500 dark:text-gray-400">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
             <th scope="col" className="px-6 py-3">
@@ -78,7 +78,7 @@ const AllDiv = () => {
 };
 const InProgressDiv = () => {
   return (
-    <div className=" shadow-md sm:rounded-lg">
+    <div className="w-[810px] sm:rounded-lg">
       <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
@@ -171,9 +171,9 @@ export default function UserProfile() {
         <div className="grid grid-rows-3 grid-flow-col gap-4 ">
           <div className="row-span-2 col-auto ">
             <div className="flex justify-between gap-5 sm:flex ">
-              <div className="w-1/4">
+              <div className="mt-[120px] w-1/4">
                 <img
-                  src="https://placeimg.com/640/480/any"
+                  src="https://avatars.dicebear.com/api/avataaars/example.svg?options[top][]=shortHair&options[accessoriesChance]=93"
                   alt="Profile Image"
                   className="w-36 h-36 rounded-full ml-12"
                 />
@@ -358,13 +358,13 @@ export default function UserProfile() {
                     <div>3</div>
                   </div>
                   <div className="mx-20 box-content text-center h-12 w-40 p-4 border-4 border-bg-[#F5F5F5] bg-[#F5F5F5]">
-                    <div className="text-[#666]">Completed Courses</div>
+                    <div className="text-[#666]">Completed</div>
                     <div>0</div>
                   </div>
                 </div>
                 <hr />
 
-                <div className="sm:-mx-32 ">
+                <div className=" sm:mr-32 ">
                   <a className="mt-10 inline-block p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500">
                     Enrolled
                   </a>
