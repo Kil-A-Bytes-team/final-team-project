@@ -55,12 +55,12 @@ export default ({ items }) => {
                     href={`/news/${slide._id}`}
                     className="text-blue-500 hover:text-black focus:ring-4 focus:outline-none dark:text-white dark:hover:text-gray-300"
                   >
-                    {slide.category}
+                    {slide.newsCategory?.name}
                   </a>
                 </div>
 
                 <a href={`/news/${slide._id}`}>
-                  <h3 className="mb-8 h-12 font-semibold tracking-tight text-gray-900 dark:text-white transform transition duration-200 hover:scale-105">
+                  <h3 className="mb-8 h-12 font-semibold tracking-tight text-gray-900 dark:text-white transform transition duration-200 hover:scale-105 line-clamp-2">
                     {slide.title}
                   </h3>
                 </a>

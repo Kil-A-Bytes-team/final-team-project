@@ -72,7 +72,7 @@ export default ({ items }) => {
                 </div>
 
                 <a href={`/courses/${slide._id}`}>
-                  <h3 className="mb-8 h-12 font-semibold tracking-tight text-gray-900 dark:text-white transform transition duration-200 hover:scale-105">
+                  <h3 className="mb-8 h-12 font-semibold tracking-tight text-gray-900 dark:text-white transform transition duration-200 hover:scale-105 line-clamp-3">
                     {slide.name}
                   </h3>
                 </a>
