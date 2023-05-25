@@ -12,12 +12,26 @@ import BaseDivider from '../components/BaseDivider'
 import BaseButtons from '../components/BaseButtons'
 import { useRouter } from 'next/router'
 import { getPageTitle } from '../config'
+import axios from 'axios'
+import { toast } from 'react-toastify'
 
 export default function Error() {
   const router = useRouter()
 
-  const handleSubmit = () => {
-    router.push('/dashboard')
+  const handleSubmit = (values) => {
+    console.log('values:', values)
+    axios
+      .post(`${process.env.NEXT_PUBLIC_API_URL}/signin`, values)
+      .then((res: any) => {
+        console.log(res.status)
+        localStorage.setItem('token', res.data)
+        // toast.success('Амжилттай нэвтэрлээ')
+        toast.success('Success')
+        router.push('/dashboard')
+      })
+      .catch((err) => {
+        toast.error('Medeelel buruu baina!')
+      })
   }
 
   return (
@@ -29,21 +43,17 @@ export default function Error() {
       <SectionFullScreen bg="purplePink">
         <CardBox className="w-11/12 md:w-7/12 lg:w-6/12 xl:w-4/12 shadow-2xl">
           <Formik
-            initialValues={{ login: 'john.doe', password: 'bG1sL9eQ1uD2sK3b', remember: true }}
-            onSubmit={() => handleSubmit()}
+            initialValues={{ email: '', password: '' }}
+            onSubmit={(values) => handleSubmit(values)}
           >
             <Form>
-              <FormField label="Login" help="Please enter your login">
-                <Field name="login" />
+              <FormField label="email" help="Please enter your email">
+                <Field name="email" />
               </FormField>
 
               <FormField label="Password" help="Please enter your password">
                 <Field name="password" type="password" />
               </FormField>
-
-              <FormCheckRadio type="checkbox" label="Remember">
-                <Field type="checkbox" name="remember" />
-              </FormCheckRadio>
 
               <BaseDivider />
 
