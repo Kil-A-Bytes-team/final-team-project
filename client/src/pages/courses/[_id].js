@@ -54,9 +54,7 @@ const ProductView = (props) => {
         <div className="flex justify-between mb-20">
           <div className=" w-3/5">
             <div className="text-5xl font-semibold pb-5">1.1 {course.name}</div>
-            <div className="text-lg text-stone-700 pb-5">
-              1.2 {course.description}
-            </div>
+            <div className="text-lg text-stone-700 pb-5">1.2 {course.description}</div>
             <div>
               <ul className="flex gap-x-28 gap-y-5 flex-wrap">
                 <li className="flex  text-lg items-center gap-2">
@@ -72,7 +70,7 @@ const ProductView = (props) => {
                   <span className=" font-semibold">1.3.3 language</span>
                 </li>
                 <li className="flex items-center gap-2 text-lg">
-                  {" "}
+                  {' '}
                   <FaGraduationCap />
                   <span className=" font-semibold">1.3.4 skill level</span>
                 </li>
@@ -104,13 +102,19 @@ const ProductView = (props) => {
                 webkitallowFullScreen="webkitallowFullScreen"
               ></iframe>
             </div>
-            <div className="flex justify-center items-center">
+            <div className="flex justify-center items-center gap-3">
               <span className="mr-8 font-semibold">{course.price}$</span>
               <Link
-                className="flex shadow-xl items-center bg-dark dark:bg-light dark:text-dark text-light p-2.5 px-6 rounded-lg text-lg font-semibold hover:bg-light dark:hover:bg-dark dark:hover:text-light hover:text-dark border-2 border-solid border-transparent dark:hover:border-light dark:border-dark hover:border-dark"
+                className="flex shadow-xl items-center bg-dark dark:bg-light dark:text-dark text-light p-2.5 px-6 rounded-lg text-lg font-semibold hover:bg-light dark:hover:bg-dark dark:hover:text-light hover:text-dark border-2 border-solid border-transparent dark:hover:border-light dark:border-dark hover:border-dark "
                 href={`lessons/${course._id}`}
               >
-                Buy
+                Жишээ хичээл үзэх
+              </Link>
+              <Link
+                className="flex shadow-xl items-center bg-dark dark:bg-light dark:text-dark text-light p-2.5 px-6 rounded-lg text-lg font-semibold hover:bg-light dark:hover:bg-dark dark:hover:text-light hover:text-dark border-2 border-solid border-transparent dark:hover:border-light dark:border-dark hover:border-dark"
+                href={'/orderPage'}
+              >
+                Худалдаж авах
               </Link>
             </div>
           </div>
@@ -127,13 +131,7 @@ const ProductView = (props) => {
                     }}
                   >
                     {singleTabData.title}
-                    <span
-                      className={`h-[1px] inline-block bg-dark group-hover:w-full  transition-all ease-in duration-300 ${
-                        singleTabData.id === tabIndex ? "w-full" : "w-0"
-                      }`}
-                    >
-                      &nbsp;
-                    </span>
+                    <span className={`h-[1px] inline-block bg-dark group-hover:w-full  transition-all ease-in duration-300 ${singleTabData.id === tabIndex ? 'w-full' : 'w-0'}`}>&nbsp;</span>
                   </button>
                 </li>
               ))}
