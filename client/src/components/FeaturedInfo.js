@@ -65,6 +65,7 @@ export default ({ items }) => {
                 <h3 className="mb-8 h-12 font-semibold tracking-tight text-gray-900 dark:text-white transform transition duration-200 hover:scale-105 line-clamp-2">
                   <a href={`/news/${slide._id}`}>{slide.title}</a>
                 </h3>
+                
                 <div className="mb-4 flex justify-end">
                   <button
                     href={`/news/${slide._id}`}

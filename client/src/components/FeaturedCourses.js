@@ -42,7 +42,7 @@ export default ({ items }) => {
           <SwiperSlide key={i}>
             <div className=" bg-white border border-gray-200 rounded-lg shadow dark:bg-dark dark:border-y-gray-400">
               <a
-                href={`${slide.imageUrl}`}
+                href={`/courses/${slide._id}`}
                 className="aspect-video block relative overflow-hidden"
               >
                 <img
