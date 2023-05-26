@@ -15,7 +15,7 @@ export const Footer = () => {
             by&nbsp;
             <Link href="/">Kil-A-Bytes</Link>
           </div>
-          <Link href="/">Scholarly Online Courses</Link>
+          <Link href="/">Hi Scholarly Online Courses</Link>
         </HomeLayout>
       </footer>
     </>
